@@ -1,0 +1,35 @@
+allprojects {
+   repositories {
+        google()
+        mavenCentral()
+        maven { url "https://nexus.hands.com.br/repository/maven-repository/" }
+        mavenLocal()
+    }
+}
+
+
+rootProject.buildDir = '../build'
+subprojects {
+     afterEvaluate {
+        android {
+            compileSdkVersion 34
+        }
+    }
+     afterEvaluate { project ->
+            if (project.hasProperty('android')) {
+                project.android {
+                    if (namespace == null) {
+                        namespace project.group
+                    }
+               }
+           }
+      }
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+subprojects {
+    project.evaluationDependsOn(':app')
+}
+
+tasks.register("clean", Delete) {
+    delete rootProject.buildDir
+}
