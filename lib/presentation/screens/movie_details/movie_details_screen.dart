@@ -79,7 +79,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
               ? SizedBox(
                   child: Image.network(
                     height: kToolbarHeight,
-                    "https://image.tmdb.org/t/p/w300/${state.selectedMovieDetails?.movieImages?.logos?.firstOrNull?.filePath}",
+                    "https://image.tmdb.org/t/p/w1280/${state.selectedMovieDetails?.movieImages?.logos?.firstOrNull?.filePath}",
                     fit: BoxFit.contain,
                   ),
                 )
@@ -242,13 +242,15 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: [
-                                          _buildDetailItem(
-                                              AppSvgs.calendarIcon,
-                                              state.selectedMovieDetails
-                                                      ?.releaseDate
-                                                      ?.split("-")
-                                                      .first ??
-                                                  ""),
+                                          Flexible(
+                                            child: _buildDetailItem(
+                                                AppSvgs.calendarIcon,
+                                                state.selectedMovieDetails
+                                                        ?.releaseDate
+                                                        ?.split("-")
+                                                        .first ??
+                                                    ""),
+                                          ),
                                           const Padding(
                                             padding: EdgeInsets.symmetric(
                                                 horizontal: 12),
@@ -265,8 +267,11 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                                                           ?.runtime ??
                                                       0) >
                                                   0) ...[
-                                            _buildDetailItem(AppSvgs.clockIcon,
-                                                "${state.selectedMovieDetails?.runtime.toString()} ${context.text.minutes}"),
+                                            Flexible(
+                                              child: _buildDetailItem(
+                                                  AppSvgs.clockIcon,
+                                                  "${state.selectedMovieDetails?.runtime.toString()} ${context.text.minutes}"),
+                                            ),
                                             const Padding(
                                               padding: EdgeInsets.symmetric(
                                                   horizontal: 12),
@@ -277,11 +282,13 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                                               ),
                                             ),
                                           ],
-                                          _buildDetailItem(
-                                              AppSvgs.movieIcon,
-                                              state.selectedMovieDetails?.genres
-                                                      ?.first.name ??
-                                                  ""),
+                                          Flexible(
+                                            child: _buildDetailItem(
+                                                AppSvgs.movieIcon,
+                                                state.selectedMovieDetails
+                                                        ?.genres?.first.name ??
+                                                    ""),
+                                          ),
                                         ],
                                       ),
                                     ),
@@ -520,16 +527,20 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
 
   Widget _buildDetailItem(String iconAsset, String text) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       children: [
         SvgPicture.asset(iconAsset,
             colorFilter:
                 const ColorFilter.mode(AppColors.grey, BlendMode.srcIn),
             height: 16),
         const SizedBox(width: 4),
-        Text(
-          text,
-          style: context.typography.heading5
-              .copyWith(color: Colors.white, fontWeight: FontWeight.normal),
+        Flexible(
+          child: Text(
+            text,
+            overflow: TextOverflow.ellipsis,
+            style: context.typography.heading5
+                .copyWith(color: Colors.white, fontWeight: FontWeight.normal),
+          ),
         ),
       ],
     );

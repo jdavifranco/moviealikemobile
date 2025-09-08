@@ -26,9 +26,9 @@
 
 ## 🌟 About This Project
 
-As a movie enthusiast, I've always found the search and recommendation features in mainstream streaming apps to be surprisingly limited. It felt like a solved problem, but finding a movie based on a specific director, production company, or even a nuanced combination of genres was often impossible.
+As a movie enthusiast, I've always been curious about how recommendation and search systems work under the hood. I noticed that many streaming apps, while great for browsing, often lack the deep, specific filtering I was looking for—like finding films from a particular production company or combining niche genres.
 
-`MovieAlike` is my answer to that problem. It started as a personal challenge: to build the movie discovery tool I always wanted and, in the process, to take a project from a simple idea all the way to a published app on the Google Play Store. This repository documents that journey and the engineering decisions behind it.
+This project started as a way to explore that problem. I wanted to build a movie discovery tool that was more granular and powerful, and also use it as a practical exercise to take an app from concept to production on the Google Play Store. It's been a fantastic learning experience in building a full-stack mobile application, and this repository serves as a log of that journey and the architectural choices made along the way.
 
 ---
 
@@ -81,14 +81,14 @@ This app is built with a focus on creating a scalable, maintainable, and testabl
 
 ### Technology Choices & Justifications
 
-| Logo | Technology | Why It Was Chosen |
+| Logo | Technology | Purpose in This Project |
 | :--- | :--- | :--- |
-| <img src="https://img.shields.io/badge/Flutter-1F1D2B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter"> | **Flutter & Dart** | Chosen for its cross-platform capabilities, expressive UI toolkit, and excellent performance, allowing for a single codebase for Android, iOS, and beyond. |
-| <img src="https://img.shields.io/badge/Bloc-1F1D2B?style=for-the-badge&logo=flutter&logoColor=white" alt="Bloc"> | **Flutter Bloc** | Selected for its robust and predictable state management. It enforces a clear separation between UI and business logic, which was critical for managing the state of the complex, multi-filter search feature. |
-| <img src="https://img.shields.io/badge/GetIt-1F1D2B?style=for-the-badge&logo=flutter&logoColor=white" alt="GetIt"> | **GetIt & Injectable** | Used for service location and dependency injection. This decouples the layers of the application, making it easier to manage dependencies and swap out implementations for testing. |
-| <img src="https://img.shields.io/badge/Dio-1F1D2B?style=for-the-badge" alt="Dio"> | **Dio** | A powerful HTTP client chosen for its rich feature set, including interceptors for easy API key injection, logging, and streamlined error handling when communicating with the TMDB API. |
-| <img src="https://img.shields.io/badge/Drift-1F1D2B?style=for-the-badge" alt="Drift"> | **Drift (Moor)** | Selected for its powerful, type-safe, and reactive persistence layer. It allows the UI to automatically react to changes in the local database, creating a seamless experience for the user's watchlist. |
-| <img src="https://img.shields.io/badge/GoRouter-1F1D2B?style=for-the-badge" alt="GoRouter"> | **GoRouter** | Implemented for its robust, URL-based navigation system. It simplifies complex navigation flows, handles deep linking, and provides a clear structure for the app's routing logic. |
+| <img src="https://img.shields.io/badge/Flutter-1F1D2B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter"> | **Flutter & Dart** | Used to build the entire cross-platform application for Android and iOS from a single codebase. Flutter's expressive UI toolkit and high performance were essential for creating a smooth, visually appealing user experience. |
+| <img src="https://img.shields.io/badge/Bloc-1F1D2B?style=for-the-badge&logo=flutter&logoColor=white" alt="Bloc"> | **Flutter Bloc** | Used to manage the state of the application's UI. It is most prominently used in the multi-faceted search screen to handle the complex state of various filters, loading states, and search results, ensuring a predictable data flow. |
+| <img src="https://img.shields.io/badge/GetIt-1F1D2B?style=for-the-badge&logo=flutter&logoColor=white" alt="GetIt"> | **GetIt & Injectable** | Used to implement dependency injection. This decouples the Presentation, Domain, and Data layers by providing dependencies like Repositories and Use Cases wherever they are needed, which is crucial for a clean architecture and makes testing significantly easier. |
+| <img src="https://img.shields.io/badge/Dio-1F1D2B?style=for-the-badge" alt="Dio"> | **Dio** | Used for all network communication with the TMDB API. Its interceptor feature was specifically used to automatically inject the API key into every request and to handle logging and error responses consistently across the app. |
+| <img src="https://img.shields.io/badge/Drift-1F1D2B?style=for-the-badge" alt="Drift"> | **Drift (Moor)** | Used for creating and managing the local database that stores the user's personal watchlist. It was chosen for its type-safe SQL generation and reactive API, which allows the UI to listen to a stream of database changes and update automatically. |
+| <img src="https://img.shields.io/badge/GoRouter-1F1D2B?style=for-the-badge" alt="GoRouter"> | **GoRouter** | Used to manage all navigation within the app. It defines a clear routing structure, handling navigation from the movie lists to detail pages, and managing the app's overall screen flow in a robust, URL-based manner. |
 | <img src="https://img.shields.io/badge/Firebase-1F1D2B?style=for-the-badge&logo=firebase&logoColor=white" alt="Firebase"> | **Firebase** | Integrated for analytics and crash reporting. `Firebase Analytics` provides insights into user engagement, while `Crashlytics` is essential for monitoring the app's stability in production. |
 
 ---
@@ -133,6 +133,8 @@ This project is actively developed. Future plans to expand its capabilities incl
 -   **✅ Robust Automated Testing:** Implement a full suite of Unit, Widget, and Integration tests to ensure code quality and prevent regressions.
 -   **✅ CI/CD Automation:** Set up a GitHub Actions workflow to automate testing and build processes.
 -   **✅ User Authentication & Cloud Sync:** Integrate Firebase Authentication to allow users to sync their watchlists and preferences across devices.
+-   **📈 Advanced Analytics:** Implement detailed event tracking to gain deeper insights into user behavior, such as which search filters are most popular and how users discover new content.
+-   **🤖 AI-Powered Movie Analysis:** Integrate a generative AI model to provide unique, AI-driven summaries or analyses of movies.
 
 ---
 
