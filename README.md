@@ -1,8 +1,8 @@
 <div align="center">
-  <img src="assets/images/moviealike_image.png" alt="MovieAlike Logo" width="200"/>
+  <img src="assets/images/splash.png" alt="MovieAlike Logo" width="200"/>
   <h1 align="center">MovieAlike</h1>
   <p align="center">
-    Find your next favorite movie with intelligent recommendations.
+    An intelligent movie discovery app built by a developer, for movie lovers.
     <br />
     <a href="https://github.com/your-username/moviealikemobile/issues">Report Bug</a>
     ·
@@ -14,8 +14,8 @@
       <img src="https://img.shields.io/badge/Google_Play-414141?style=for-the-badge&logo=google-play&logoColor=white" alt="Get it on Google Play">
     </a>
     <br>
-    <img src="https://img.shields.io/badge/Flutter-02569B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter">
-    <img src="https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white" alt="Dart">
+    <img src="https://img.shields.io/badge/Flutter-1F1D2B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter">
+    <img src="https://img.shields.io/badge/Dart-1F1D2B?style=for-the-badge&logo=dart&logoColor=white" alt="Dart">
     <br>
     <img src="https://img.shields.io/github/stars/your-username/moviealikemobile.svg?style=social&label=Star&maxAge=2592000" alt="GitHub stars">
     <img src="https://img.shields.io/github/forks/your-username/moviealikemobile.svg?style=social&label=Fork&maxAge=2592000" alt="GitHub forks">
@@ -24,69 +24,72 @@
 
 ---
 
-## 🌟 About The Project
+## 🌟 About This Project
 
-MovieAlike was born from two key motivations: a personal passion for film and a professional goal to master the entire mobile application lifecycle.
+As a movie enthusiast, I've always found the search and recommendation features in mainstream streaming apps to be surprisingly limited. It felt like a solved problem, but finding a movie based on a specific director, production company, or even a nuanced combination of genres was often impossible.
 
-As a developer, I had experience updating existing applications but wanted to build a project from scratch and navigate the full journey to production. As a movie enthusiast, I was frustrated with the simplistic search and recommendation features of major streaming platforms.
-
-This project solves that problem by offering a powerful, multi-faceted search engine and an intelligent recommendation system, all while serving as a demonstration of my skills in building and publishing a production-ready Flutter application.
-
-### 🖼️ Visual Showcase
-
-*(Here you should add high-quality GIFs or screenshots of your app. For example:)*
-
-| Smart Search                                       | Movie Details                                  | Recommendations                                |
-| -------------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| <img src="https://via.placeholder.com/250x500.png?text=Search+Screen" width="250"> | <img src="https://via.placeholder.com/250x500.png?text=Details+Screen" width="250"> | <img src="https://via.placeholder.com/250x500.png?text=Recommendations" width="250"> |
+`MovieAlike` is my answer to that problem. It started as a personal challenge: to build the movie discovery tool I always wanted and, in the process, to take a project from a simple idea all the way to a published app on the Google Play Store. This repository documents that journey and the engineering decisions behind it.
 
 ---
 
-## ✨ Core Features
+## ✨ Features Showcase
 
--   **Advanced Multi-Faceted Search:** Go beyond simple title searches. Discover movies by:
-    -   Crew & Cast Members
-    -   Director or Actor
-    -   Production Company or Country
-    -   Genre and Language
--   **Intelligent Recommendations:** The recommendation engine uses a **Jaccard Similarity** algorithm to provide a clear, percentage-based similarity score between movies, helping you find truly related content.
--   **Comprehensive Details:** Get all the information you need, including trailers, cast, crew, and where to watch.
--   **Personal Watchlist:** Keep track of movies you want to watch.
--   **Multi-language Support:** Available in English, Spanish, and Portuguese.
--   **Now on Google Play:** The app has been successfully published and is available on the Google Play Store.
+<table>
+  <tr>
+    <td width="70%">
+      <h3>Advanced Multi-Faceted Search</h3>
+      <p>The core of the app. Go beyond simple title searches and combine multiple filters to find exactly what you're looking for. Search by crew, cast members, director, production company, genre, and more.</p>
+    </td>
+    <td width="30%">
+      <img src="https://via.placeholder.com/300x600.gif?text=Search+Feature+GIF" alt="Advanced Search GIF" width="250">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>Intelligent Recommendations</h3>
+      <p>Instead of a black box, the recommendation engine uses a <strong>Jaccard Similarity</strong> algorithm. This provides a clear, percentage-based "similarity score," giving you a tangible reason why a movie is recommended.</p>
+    </td>
+    <td>
+      <img src="https://via.placeholder.com/300x600.gif?text=Recommendations+GIF" alt="Recommendations GIF" width="250">
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <h3>Personal Watchlist & Details</h3>
+      <p>Keep track of movies you want to watch and dive deep into details with trailers, cast bios, and crew information, all stored locally for a smooth and responsive experience.</p>
+    </td>
+    <td>
+      <img src="https://via.placeholder.com/300x600.gif?text=Watchlist+GIF" alt="Watchlist GIF" width="250">
+    </td>
+  </tr>
+</table>
 
 ---
 
-## 🛠️ Technical Architecture Deep Dive
+## 🚀 Architecture & Tech Stack
 
-This project is built using **Clean Architecture** principles to create a scalable, maintainable, and testable codebase. The code is strictly separated into three layers: Presentation, Domain, and Data.
+This app is built with a focus on creating a scalable, maintainable, and testable codebase. The foundation is **Clean Architecture**, which strictly separates the project into three distinct layers: Presentation, Domain, and Data.
 
-![Clean Architecture Diagram](https://i.imgur.com/B1p6t0u.png)
+<div align="center">
+  <img src="https://i.imgur.com/B1p6t0u.png" alt="Clean Architecture Diagram" width="600"/>
+</div>
 
--   **Presentation Layer:** Built with **Flutter** and the **Bloc** pattern for state management. It is responsible for the UI and user interaction, remaining completely unaware of the business logic's implementation details.
--   **Domain Layer:** This is the core of the application, containing the business logic, use cases, and entities. It is pure Dart and has no dependencies on the other layers, making it highly testable.
--   **Data Layer:** Handles all data operations. It implements the repositories defined in the Domain layer and is responsible for fetching data from remote sources (TMDB API via **Dio**) and local sources (**Drift** database).
+### Core Principles:
+-   **Presentation Layer:** The UI, built entirely in Flutter. It uses the **Bloc** pattern to manage state and remains blissfully unaware of where the data comes from.
+-   **Domain Layer:** The heart of the app. It contains the core business logic (use cases) and data models. It's pure Dart, making it framework-agnostic and highly testable.
+-   **Data Layer:** The implementation layer. It's responsible for fetching data from the TMDB API and managing the local database, fulfilling the contracts (repositories) defined by the Domain layer.
 
-### Key Technical Decisions:
+### Technology Choices & Justifications
 
--   **Dependency Injection:** Uses `get_it` and `injectable` to manage dependencies, promoting a loosely coupled architecture and simplifying the process of providing implementations for testing.
--   **Navigation:** `go_router` is used for a robust, URL-based navigation system that handles deep linking and complex navigation scenarios.
--   **Local Persistence:** The **Drift** library provides a reactive persistence layer, allowing the UI to automatically update when underlying data changes.
--   **API Key Security:** API keys are secured using `envied` to obfuscate them at compile-time, ensuring they are not exposed in the source code.
-
----
-
-## 🚀 Tech Stack
-
--   **Framework:** [Flutter](https://flutter.dev/)
--   **Language:** [Dart](https://dart.dev/)
--   **Architecture:** Clean Architecture
--   **State Management:** [Flutter Bloc](https://bloclibrary.dev/)
--   **Dependency Injection:** [GetIt](https://pub.dev/packages/get_it) & [Injectable](https://pub.dev/packages/injectable)
--   **Networking:** [Dio](https://pub.dev/packages/dio)
--   **Routing:** [GoRouter](https://pub.dev/packages/go_router)
--   **Local Storage:** [Drift](https://drift.simonbinder.eu/)
--   **API Security:** [Envied](https://pub.dev/packages/envied)
+| Logo | Technology | Why It Was Chosen |
+| :--- | :--- | :--- |
+| <img src="https://img.shields.io/badge/Flutter-1F1D2B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter"> | **Flutter & Dart** | Chosen for its cross-platform capabilities, expressive UI toolkit, and excellent performance, allowing for a single codebase for Android, iOS, and beyond. |
+| <img src="https://img.shields.io/badge/Bloc-1F1D2B?style=for-the-badge&logo=flutter&logoColor=white" alt="Bloc"> | **Flutter Bloc** | Selected for its robust and predictable state management. It enforces a clear separation between UI and business logic, which was critical for managing the state of the complex, multi-filter search feature. |
+| <img src="https://img.shields.io/badge/GetIt-1F1D2B?style=for-the-badge&logo=flutter&logoColor=white" alt="GetIt"> | **GetIt & Injectable** | Used for service location and dependency injection. This decouples the layers of the application, making it easier to manage dependencies and swap out implementations for testing. |
+| <img src="https://img.shields.io/badge/Dio-1F1D2B?style=for-the-badge" alt="Dio"> | **Dio** | A powerful HTTP client chosen for its rich feature set, including interceptors for easy API key injection, logging, and streamlined error handling when communicating with the TMDB API. |
+| <img src="https://img.shields.io/badge/Drift-1F1D2B?style=for-the-badge" alt="Drift"> | **Drift (Moor)** | Selected for its powerful, type-safe, and reactive persistence layer. It allows the UI to automatically react to changes in the local database, creating a seamless experience for the user's watchlist. |
+| <img src="https://img.shields.io/badge/GoRouter-1F1D2B?style=for-the-badge" alt="GoRouter"> | **GoRouter** | Implemented for its robust, URL-based navigation system. It simplifies complex navigation flows, handles deep linking, and provides a clear structure for the app's routing logic. |
+| <img src="https://img.shields.io/badge/Firebase-1F1D2B?style=for-the-badge&logo=firebase&logoColor=white" alt="Firebase"> | **Firebase** | Integrated for analytics and crash reporting. `Firebase Analytics` provides insights into user engagement, while `Crashlytics` is essential for monitoring the app's stability in production. |
 
 ---
 
@@ -109,7 +112,7 @@ To get a local copy up and running, follow these simple steps.
     ```sh
     flutter pub get
     ```
-3.  Set up your API keys. This project requires API keys for the [TMDB API](https://www.themoviedb.org/documentation/api) and [YouTube API](https://developers.google.com/youtube/v3).
+3.  Set up your API keys for [TMDB](https://www.themoviedb.org/documentation/api) and [YouTube](https://developers.google.com/youtube/v3).
     -   Copy `env_template` to a new file named `.env`
     -   Add your API keys to the `.env` file.
 4.  Generate the environment configuration:
@@ -125,15 +128,11 @@ To get a local copy up and running, follow these simple steps.
 
 ## 📈 Future Enhancements
 
-To further showcase advanced development skills, the roadmap for this project includes:
+This project is actively developed. Future plans to expand its capabilities include:
 
--   **✅ Robust Automated Testing:**
-    -   Implement comprehensive Unit and Widget tests for the Domain and Presentation layers.
-    -   Add Integration tests for key user flows.
--   **✅ CI/CD Automation:**
-    -   Set up a GitHub Actions workflow to run tests and linters on every push and pull request.
--   **✅ User Authentication & Cloud Sync:**
-    -   Integrate Firebase Authentication and sync user data (like watchlists) with Firestore.
+-   **✅ Robust Automated Testing:** Implement a full suite of Unit, Widget, and Integration tests to ensure code quality and prevent regressions.
+-   **✅ CI/CD Automation:** Set up a GitHub Actions workflow to automate testing and build processes.
+-   **✅ User Authentication & Cloud Sync:** Integrate Firebase Authentication to allow users to sync their watchlists and preferences across devices.
 
 ---
 
