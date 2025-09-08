@@ -34,35 +34,33 @@ This project started as a way to explore that problem. I wanted to build a movie
 
 ## ✨ Features Showcase
 
+-   **Contextual Movie Exploration:** Start with a single movie and dive into a deep exploration path. From a movie's detail page, you can pivot your discovery by tapping on any actor, director, genre, or production company to see a list of related films.
+-   **Intelligent Recommendations:** Instead of a black box, the recommendation engine uses a **Jaccard Similarity** algorithm. This provides a clear, percentage-based "similarity score," giving you a tangible reason why a movie is recommended.
+-   **Personal Watchlist & Details:** Keep track of movies you want to watch and dive deep into details with trailers, cast bios, and crew information, all stored locally for a smooth and responsive experience.
+  <img width="320"  alt="Screenshot_1757367428" src="https://github.com/user-attachments/assets/bd553037-c1c3-49b5-8ee7-497982cc0c7b" />
+<img width="320" alt="Screenshot_1757367440" src="https://github.com/user-attachments/assets/99d17ca3-ff39-427e-8a52-396852bc87c7" /> 
+  <img width="320"  alt="Screenshot_1757369041" src="https://github.com/user-attachments/assets/b26edcdb-6cb9-4dda-a69c-deba3caa511e" />
+<br>
+
 <table>
   <tr>
-    <td width="70%">
-      <h3>Advanced Multi-Faceted Search</h3>
-      <p>The core of the app. Go beyond simple title searches and combine multiple filters to find exactly what you're looking for. Search by crew, cast members, director, production company, genre, and more.</p>
-    </td>
-    <td width="30%">
-      <img src="https://via.placeholder.com/300x600.gif?text=Search+Feature+GIF" alt="Advanced Search GIF" width="250">
-    </td>
+    <td align="center"><strong>Contextual Exploration</strong></td>
+    <td align="center"><strong>Intelligent Recommendations</strong></td>
+    <td align="center"><strong>Personal Watchlist</strong></td>
   </tr>
+
+
   <tr>
     <td>
-      <h3>Intelligent Recommendations</h3>
-      <p>Instead of a black box, the recommendation engine uses a <strong>Jaccard Similarity</strong> algorithm. This provides a clear, percentage-based "similarity score," giving you a tangible reason why a movie is recommended.</p>
+     <video src="https://github.com/user-attachments/assets/75752440-24d4-4aaf-ba7a-72784630c0fb" />
     </td>
-    <td>
-      <img src="https://via.placeholder.com/300x600.gif?text=Recommendations+GIF" alt="Recommendations GIF" width="250">
-    </td>
-  </tr>
-  <tr>
-    <td>
-      <h3>Personal Watchlist & Details</h3>
-      <p>Keep track of movies you want to watch and dive deep into details with trailers, cast bios, and crew information, all stored locally for a smooth and responsive experience.</p>
-    </td>
-    <td>
-      <img src="https://via.placeholder.com/300x600.gif?text=Watchlist+GIF" alt="Watchlist GIF" width="250">
-    </td>
+    <td> <video src="https://github.com/user-attachments/assets/35d6850c-0645-4c65-acbd-a2cee9719ce8" /></td>
+    <td> <video src="https://github.com/user-attachments/assets/e2f06835-90a4-4ef7-9523-d2d3c226ad1c"</td>
+
   </tr>
 </table>
+
+
 
 ---
 
