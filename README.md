@@ -19,17 +19,18 @@
 
 </div>
 
----
 
-<img src="https://img.shields.io/badge/About%20This%20Project-252836?style=for-the-badge" alt="About This Project">
+<p><br></br></p>
+
+
+## 🚀 About This Project
 
 As a movie enthusiast, I've always been curious about how recommendation and search systems work under the hood. I noticed that many streaming apps, that may be great for browsing, often lack the a deep, specific movie details exploration i was looking for—like seeing films from a particular production company or by director.
 
 This project started as a way to explore that problem. I wanted to build a movie discovery tool that was more granular and powerful, and also use it as a practical exercise to take an app from concept to production on the [Google Play Store](https://play.google.com/store/apps/details?id=com.jozaforge.moviealike&hl=en). It's been a fantastic learning experience in building a full-stack mobile application, and this repository serves as a log of that journey and the architectural choices made along the way.
 
 ---
-
-<img src="https://img.shields.io/badge/Features%20Showcase-252836?style=for-the-badge" alt="Features Showcase">
+## ✨ Features Showcase
 
 -   **Contextual Movie Exploration:** Start with a movie you already like and dive into a deep exploration path. From a movie's detail page, you can discover new movies by tapping on any actor, director, genre, or production company to see a filtered list of filmes.
 -   **Intelligent Recommendations:** Instead of a black box, the recommendation engine uses a **[Jaccard Similarity](https://en.wikipedia.org/wiki/Jaccard_index)** algorithm. This provides a clear, percentage-based "similarity score," giving a tangible reason why a movie is recommended, compared to many modern recommendations systems that use machine learn models, this project jaccard similatiry system using genres and keywords from tmdb database, has a really good result in showing similar recommendations and sometimes better ones, with the plus that it shows how much similar a recommended movie is to the one selected.
@@ -60,12 +61,9 @@ This project started as a way to explore that problem. I wanted to build a movie
 
 ---
 
-<img src="https://img.shields.io/badge/Architecture%20&%20Tech%20Stack-252836?style=for-the-badge" alt="Architecture & Tech Stack">
+## 🛠️ Architecture & Tech Stack
 
 This app is built with a focus on creating a scalable, maintainable, and testable codebase. The foundation is <strong style="color:#FF4081;">Clean Architecture</strong>, which strictly separates the project into three distinct layers: Presentation, Domain, and Data.
-
-### Architecture Layers:
-
 
 **🎨 Presentation Layer** (`lib/presentation/`)
 - **Screens & Widgets**: Flutter UI components (Home, Search, MovieDetails, Watchlist)
@@ -88,7 +86,7 @@ This app is built with a focus on creating a scalable, maintainable, and testabl
 
 
 
-### Tech Stack and Libraries
+### ⚙️ Tech Stack
 
 - **[Bloc/Cubit](https://github.com/felangel/bloc/tree/master/packages/bloc)** - For State Management and reactive UI.
   
@@ -110,14 +108,12 @@ This app is built with a focus on creating a scalable, maintainable, and testabl
   
 - <img width="20" height="20" alt="image" src="https://github.com/user-attachments/assets/4b42a490-eeb5-4e23-9eb3-ba5a3b054ab2" /> **[RxDart](https://pub.dev/packages/rxdart)** - For reactive updates in UI.
 
-
-**Analytics & Monitoring**
 - **[Firebase](https://firebase.google.com/)** - Analytics for user engagement insights and Crashlytics for production stability monitoring.
 
 
 ---
 
-<img src="https://img.shields.io/badge/Getting%20Started-252836?style=for-the-badge" alt="Getting Started">
+## 🏁 Getting Started
 
 To get a local copy up and running, follow these simple steps.
 
@@ -141,7 +137,7 @@ To get a local copy up and running, follow these simple steps.
     -   Add your API keys to the `.env` file.
 4.  Generate the environment configuration:
     ```sh
-    make buil_runner
+    make build_runner
     ```
 4.  Generate App localization:
     ```sh
@@ -154,15 +150,15 @@ To get a local copy up and running, follow these simple steps.
 
 ---
 
-<img src="https://img.shields.io/badge/Future%20Enhancements-252836?style=for-the-badge" alt="Future Enhancements">
+## 🗺️ Future Enhancements
 
 This project is actively developed. Future plans to expand its capabilities include:
 
--   **✅ Robust Automated Testing:** Implement a full suite of Unit, Widget, and Integration tests to ensure code quality and prevent regressions.
--   **✅ CI/CD Automation:** Set up a GitHub Actions workflow to automate testing and build processes.
--   **✅ User Authentication & Cloud Sync:** Integrate Firebase Authentication to allow users to sync their watchlists and preferences across devices.
--   **📈 Advanced Analytics:** Implement detailed event tracking to gain deeper insights into user behavior, such as which search filters are most popular and how users discover new content.
--   **🤖 AI-Powered Movie Analysis:** Integrate a generative AI model to provide unique, AI-driven summaries or analyses of movies.
+- **Robust Automated Testing:** Implement a full suite of Unit, Widget, and Integration tests to ensure code quality and prevent regressions.
+- **CI/CD Automation:** Set up a GitHub Actions workflow to automate testing and build processes.
+- **User Authentication & Cloud Sync:** Integrate Firebase Authentication to allow users to sync their watchlists and preferences across devices.
+- **Advanced Analytics:** Implement detailed event tracking to gain deeper insights into user behavior, such as which search filters are most popular and how users discover new content.
+- **AI-Powered Movie Analysis:** Integrate a generative AI model to provide unique, AI-driven summaries or analyses of movies.
 
 ---
 
