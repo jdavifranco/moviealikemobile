@@ -1,12 +1,12 @@
 <div align="center">
   <img src="assets/images/splash.png" alt="MovieAlike Logo" width="200"/>
-  <h1 align="center">MovieAlike</h1>
+  
   <p align="center">
-    An intelligent movie discovery app built by a developer, for movie lovers.
+    An intelligent movie discovery app.
     <br />
-    <a href="https://github.com/your-username/moviealikemobile/issues">Report Bug</a>
+    <a href="https://github.com/jdavifranco/moviealikemobile/issues">Report Bug</a>
     ·
-    <a href="https://github.com/your-username/moviealikemobile/issues">Request Feature</a>
+    <a href="https://github.com/jdavifranco/moviealikemobile/issues">Request Feature</a>
   </p>
 
   <p align="center">
@@ -37,9 +37,9 @@ This project started as a way to explore that problem. I wanted to build a movie
 -   **Contextual Movie Exploration:** Start with a single movie and dive into a deep exploration path. From a movie's detail page, you can pivot your discovery by tapping on any actor, director, genre, or production company to see a list of related films.
 -   **Intelligent Recommendations:** Instead of a black box, the recommendation engine uses a **Jaccard Similarity** algorithm. This provides a clear, percentage-based "similarity score," giving you a tangible reason why a movie is recommended.
 -   **Personal Watchlist & Details:** Keep track of movies you want to watch and dive deep into details with trailers, cast bios, and crew information, all stored locally for a smooth and responsive experience.
-  <img width="320"  alt="Screenshot_1757367428" src="https://github.com/user-attachments/assets/bd553037-c1c3-49b5-8ee7-497982cc0c7b" />
-<img width="320" alt="Screenshot_1757367440" src="https://github.com/user-attachments/assets/99d17ca3-ff39-427e-8a52-396852bc87c7" /> 
-  <img width="320"  alt="Screenshot_1757369041" src="https://github.com/user-attachments/assets/b26edcdb-6cb9-4dda-a69c-deba3caa511e" />
+  <img width="322"  alt="Screenshot_1757367428" src="https://github.com/user-attachments/assets/bd553037-c1c3-49b5-8ee7-497982cc0c7b" />
+<img width="322" alt="Screenshot_1757367440" src="https://github.com/user-attachments/assets/99d17ca3-ff39-427e-8a52-396852bc87c7" /> 
+  <img width="322"  alt="Screenshot_1757369041" src="https://github.com/user-attachments/assets/b26edcdb-6cb9-4dda-a69c-deba3caa511e" />
 <br>
 
 <table>
