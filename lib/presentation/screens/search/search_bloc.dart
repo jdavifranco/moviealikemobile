@@ -69,8 +69,11 @@ class SearchBloc extends Cubit<SearchState> {
   }
 
   void onQueryChanged(String query) {
-    _currentQuery = query;
     _queryController.add(query);
+  }
+
+  void onTryAgain() {
+    loadNextPage(isNewSearch: true);
   }
 
   void changeSearchType(SearchType searchType) {
@@ -231,7 +234,8 @@ class SearchBloc extends Cubit<SearchState> {
 
   int _getNextPageNumber(bool isNewSearch) {
     if (isNewSearch) return 1;
-    return (state.keys?.last ?? 0) + 1;
+    if (state.keys == null || state.keys!.isEmpty) return 1;
+    return state.keys!.last + 1;
   }
 
   Future<void> _onSearchQueryChanged(String query) async {
@@ -240,7 +244,7 @@ class SearchBloc extends Cubit<SearchState> {
       return;
     }
 
+    loadNextPage(isNewSearch: query != _currentQuery);
     _currentQuery = query;
-    await loadNextPage(isNewSearch: query != _currentQuery);
   }
 }
