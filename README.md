@@ -1,6 +1,6 @@
 <div align="center">
   <img src="assets/images/splash.png" alt="MovieAlike Logo" width="200"/>
-  
+  <h1>MovieAlike</h1>
   <p align="center">
     An intelligent movie discovery app.
     <br />
@@ -17,14 +17,14 @@
     <img src="https://img.shields.io/badge/Flutter-1F1D2B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter">
     <img src="https://img.shields.io/badge/Dart-1F1D2B?style=for-the-badge&logo=dart&logoColor=white" alt="Dart">
     <br>
-    <img src="https://img.shields.io/github/stars/your-username/moviealikemobile.svg?style=social&label=Star&maxAge=2592000" alt="GitHub stars">
-    <img src="https://img.shields.io/github/forks/your-username/moviealikemobile.svg?style=social&label=Fork&maxAge=2592000" alt="GitHub forks">
+    <img src="https://img.shields.io/github/stars/jdavifranco/moviealikemobile.svg?style=social&label=Star&maxAge=2592000" alt="GitHub stars">
+    <img src="https://img.shields.io/github/forks/jdavifranco/moviealikemobile.svg?style=social&label=Fork&maxAge=2592000" alt="GitHub forks">
   </p>
 </div>
 
 ---
 
-## 🌟 About This Project
+<img src="https://img.shields.io/badge/About%20This%20Project-252836?style=for-the-badge" alt="About This Project">
 
 As a movie enthusiast, I've always been curious about how recommendation and search systems work under the hood. I noticed that many streaming apps, while great for browsing, often lack the deep, specific filtering I was looking for—like finding films from a particular production company or combining niche genres.
 
@@ -32,10 +32,10 @@ This project started as a way to explore that problem. I wanted to build a movie
 
 ---
 
-## ✨ Features Showcase
+<img src="https://img.shields.io/badge/Features%20Showcase-252836?style=for-the-badge" alt="Features Showcase">
 
 -   **Contextual Movie Exploration:** Start with a single movie and dive into a deep exploration path. From a movie's detail page, you can pivot your discovery by tapping on any actor, director, genre, or production company to see a list of related films.
--   **Intelligent Recommendations:** Instead of a black box, the recommendation engine uses a **Jaccard Similarity** algorithm. This provides a clear, percentage-based "similarity score," giving you a tangible reason why a movie is recommended.
+-   **Intelligent Recommendations:** Instead of a black box, the recommendation engine uses a <strong style="color:#FF4081;">Jaccard Similarity</strong> algorithm. This provides a clear, percentage-based "similarity score," giving you a tangible reason why a movie is recommended.
 -   **Personal Watchlist & Details:** Keep track of movies you want to watch and dive deep into details with trailers, cast bios, and crew information, all stored locally for a smooth and responsive experience.
   <img width="322"  alt="Screenshot_1757367428" src="https://github.com/user-attachments/assets/bd553037-c1c3-49b5-8ee7-497982cc0c7b" />
 <img width="322" alt="Screenshot_1757367440" src="https://github.com/user-attachments/assets/99d17ca3-ff39-427e-8a52-396852bc87c7" /> 
@@ -48,25 +48,24 @@ This project started as a way to explore that problem. I wanted to build a movie
     <td align="center"><strong>Intelligent Recommendations</strong></td>
     <td align="center"><strong>Personal Watchlist</strong></td>
   </tr>
-
-
   <tr>
     <td>
      <video src="https://github.com/user-attachments/assets/75752440-24d4-4aaf-ba7a-72784630c0fb" />
     </td>
-    <td> <video src="https://github.com/user-attachments/assets/35d6850c-0645-4c65-acbd-a2cee9719ce8" /></td>
-    <td> <video src="https://github.com/user-attachments/assets/e2f06835-90a4-4ef7-9523-d2d3c226ad1c"</td>
-
+    <td>
+     <video src="https://github.com/user-attachments/assets/35d6850c-0645-4c65-acbd-a2cee9719ce8" />
+    </td>
+    <td>
+     <video src="https://github.com/user-attachments/assets/e2f06835-90a4-4ef7-9523-d2d3c226ad1c" />
+    </td>
   </tr>
 </table>
 
-
-
 ---
 
-## 🚀 Architecture & Tech Stack
+<img src="https://img.shields.io/badge/Architecture%20&%20Tech%20Stack-252836?style=for-the-badge" alt="Architecture & Tech Stack">
 
-This app is built with a focus on creating a scalable, maintainable, and testable codebase. The foundation is **Clean Architecture**, which strictly separates the project into three distinct layers: Presentation, Domain, and Data.
+This app is built with a focus on creating a scalable, maintainable, and testable codebase. The foundation is <strong style="color:#FF4081;">Clean Architecture</strong>, which strictly separates the project into three distinct layers: Presentation, Domain, and Data.
 
 <div align="center">
   <img src="https://i.imgur.com/B1p6t0u.png" alt="Clean Architecture Diagram" width="600"/>
@@ -91,7 +90,7 @@ This app is built with a focus on creating a scalable, maintainable, and testabl
 
 ---
 
-## 🔧 Getting Started
+<img src="https://img.shields.io/badge/Getting%20Started-252836?style=for-the-badge" alt="Getting Started">
 
 To get a local copy up and running, follow these simple steps.
 
@@ -104,7 +103,7 @@ To get a local copy up and running, follow these simple steps.
 
 1.  Clone the repo
     ```sh
-    git clone https://github.com/your-username/moviealikemobile.git
+    git clone https://github.com/jdavifranco/moviealikemobile.git
     ```
 2.  Install packages
     ```sh
@@ -124,7 +123,7 @@ To get a local copy up and running, follow these simple steps.
 
 ---
 
-## 📈 Future Enhancements
+<img src="https://img.shields.io/badge/Future%20Enhancements-252836?style=for-the-badge" alt="Future Enhancements">
 
 This project is actively developed. Future plans to expand its capabilities include:
 
@@ -136,6 +135,6 @@ This project is actively developed. Future plans to expand its capabilities incl
 
 ---
 
-## 📄 License
+<img src="https://img.shields.io/badge/License-252836?style=for-the-badge" alt="License">
 
 Distributed under the MIT License. See `LICENSE` for more information.
