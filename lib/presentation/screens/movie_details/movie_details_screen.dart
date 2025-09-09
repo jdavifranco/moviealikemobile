@@ -154,7 +154,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                           children: [
                             RemoteImage(
                               imageUrl:
-                                  "https://image.tmdb.org/t/p/w1280/${state.selectedMovieDetails?.backdropPath}",
+                                  "https://image.tmdb.org/t/p/w780/${state.selectedMovieDetails?.backdropPath}",
                               fit: BoxFit.cover,
                               imageBuilder: (context, imageProvider) =>
                                   Container(
