@@ -1,14 +1,12 @@
 <div align="center">
-  <img src="assets/images/splash.png" alt="MovieAlike Logo" width="200"/>
+  <img src="assets/images/ic_launcher-playstore.png" alt="MovieAlike Logo" width="200"/>
   <h1>MovieAlike</h1>
   <p align="center">
-    An intelligent movie discovery app.
-    <br />
-    <a href="https://github.com/jdavifranco/moviealikemobile/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/jdavifranco/moviealikemobile/issues">Request Feature</a>
+    Find your next favorite movie!
   </p>
 
+
+  
   <p align="center">
     <a href="https://play.google.com/store/apps/details?id=com.jozaforge.moviealike">
       <img src="https://img.shields.io/badge/Google_Play-414141?style=for-the-badge&logo=google-play&logoColor=white" alt="Get it on Google Play">
@@ -17,25 +15,24 @@
     <img src="https://img.shields.io/badge/Flutter-1F1D2B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter">
     <img src="https://img.shields.io/badge/Dart-1F1D2B?style=for-the-badge&logo=dart&logoColor=white" alt="Dart">
     <br>
-    <img src="https://img.shields.io/github/stars/jdavifranco/moviealikemobile.svg?style=social&label=Star&maxAge=2592000" alt="GitHub stars">
-    <img src="https://img.shields.io/github/forks/jdavifranco/moviealikemobile.svg?style=social&label=Fork&maxAge=2592000" alt="GitHub forks">
   </p>
+
 </div>
 
 ---
 
 <img src="https://img.shields.io/badge/About%20This%20Project-252836?style=for-the-badge" alt="About This Project">
 
-As a movie enthusiast, I've always been curious about how recommendation and search systems work under the hood. I noticed that many streaming apps, while great for browsing, often lack the deep, specific filtering I was looking for—like finding films from a particular production company or combining niche genres.
+As a movie enthusiast, I've always been curious about how recommendation and search systems work under the hood. I noticed that many streaming apps, that may be great for browsing, often lack the a deep, specific movie details exploration i was looking for—like seeing films from a particular production company or by director.
 
-This project started as a way to explore that problem. I wanted to build a movie discovery tool that was more granular and powerful, and also use it as a practical exercise to take an app from concept to production on the Google Play Store. It's been a fantastic learning experience in building a full-stack mobile application, and this repository serves as a log of that journey and the architectural choices made along the way.
+This project started as a way to explore that problem. I wanted to build a movie discovery tool that was more granular and powerful, and also use it as a practical exercise to take an app from concept to production on the [Google Play Store](https://play.google.com/store/apps/details?id=com.jozaforge.moviealike&hl=en). It's been a fantastic learning experience in building a full-stack mobile application, and this repository serves as a log of that journey and the architectural choices made along the way.
 
 ---
 
 <img src="https://img.shields.io/badge/Features%20Showcase-252836?style=for-the-badge" alt="Features Showcase">
 
--   **Contextual Movie Exploration:** Start with a single movie and dive into a deep exploration path. From a movie's detail page, you can pivot your discovery by tapping on any actor, director, genre, or production company to see a list of related films.
--   **Intelligent Recommendations:** Instead of a black box, the recommendation engine uses a <strong style="color:#FF4081;">Jaccard Similarity</strong> algorithm. This provides a clear, percentage-based "similarity score," giving you a tangible reason why a movie is recommended.
+-   **Contextual Movie Exploration:** Start with a movie you already like and dive into a deep exploration path. From a movie's detail page, you can discover new movies by tapping on any actor, director, genre, or production company to see a filtered list of filmes.
+-   **Intelligent Recommendations:** Instead of a black box, the recommendation engine uses a **[Jaccard Similarity](https://en.wikipedia.org/wiki/Jaccard_index)** algorithm. This provides a clear, percentage-based "similarity score," giving a tangible reason why a movie is recommended, compared to many modern recommendations systems that use machine learn models, this project jaccard similatiry system using genres and keywords from tmdb database, has a really good result in showing similar recommendations and sometimes better ones, with the plus that it shows how much similar a recommended movie is to the one selected.
 -   **Personal Watchlist & Details:** Keep track of movies you want to watch and dive deep into details with trailers, cast bios, and crew information, all stored locally for a smooth and responsive experience.
   <img width="322"  alt="Screenshot_1757367428" src="https://github.com/user-attachments/assets/bd553037-c1c3-49b5-8ee7-497982cc0c7b" />
 <img width="322" alt="Screenshot_1757367440" src="https://github.com/user-attachments/assets/99d17ca3-ff39-427e-8a52-396852bc87c7" /> 
@@ -67,26 +64,56 @@ This project started as a way to explore that problem. I wanted to build a movie
 
 This app is built with a focus on creating a scalable, maintainable, and testable codebase. The foundation is <strong style="color:#FF4081;">Clean Architecture</strong>, which strictly separates the project into three distinct layers: Presentation, Domain, and Data.
 
+### Architecture Layers:
+
+
+**🎨 Presentation Layer** (`lib/presentation/`)
+- **Screens & Widgets**: Flutter UI components (Home, Search, MovieDetails, Watchlist)
+- **BLoCs**: State management using BLoC pattern (HomeBloc, SearchBloc, etc.)
+- **Navigation**: GoRouter for declarative routing
+
+**🧠 Domain Layer** (`lib/domain/`)
+- **Use Cases**: Single-purpose business operations (`GetPopularMovies`, `GetMovieDetails`)
+- **Repository Interfaces**: Abstract contracts (`MovieRepository`, `SearchRepository`)
+- **Domain Models**: Pure business entities (`Movie`, `CastMember`, `MovieDetails`)
+
+**💾 Data Layer** (`lib/data/`)
+- **Repository Implementations**: Concrete implementations (`MovieRepositoryImpl`)
+- **Data Sources**: API and database access (`MovieDataSource`, `WatchListDataSource`)
+- **DTOs**: Data Transfer Objects for external communication
 <div align="center">
-  <img src="https://i.imgur.com/B1p6t0u.png" alt="Clean Architecture Diagram" width="600"/>
+  <p> <br> Architecture Diagram </br> </p>
+ <img width="872" height="1145" alt="image" src="https://github.com/user-attachments/assets/60aa4776-0dd0-4ff0-aeb8-9ed7c0f75ba3" />
 </div>
 
-### Core Principles:
--   **Presentation Layer:** The UI, built entirely in Flutter. It uses the **Bloc** pattern to manage state and remains blissfully unaware of where the data comes from.
--   **Domain Layer:** The heart of the app. It contains the core business logic (use cases) and data models. It's pure Dart, making it framework-agnostic and highly testable.
--   **Data Layer:** The implementation layer. It's responsible for fetching data from the TMDB API and managing the local database, fulfilling the contracts (repositories) defined by the Domain layer.
 
-### Technology Choices & Justifications
 
-| Logo | Technology | Purpose in This Project |
-| :--- | :--- | :--- |
-| <img src="https://img.shields.io/badge/Flutter-1F1D2B?style=for-the-badge&logo=flutter&logoColor=white" alt="Flutter"> | **Flutter & Dart** | Used to build the entire cross-platform application for Android and iOS from a single codebase. Flutter's expressive UI toolkit and high performance were essential for creating a smooth, visually appealing user experience. |
-| <img src="https://img.shields.io/badge/Bloc-1F1D2B?style=for-the-badge&logo=flutter&logoColor=white" alt="Bloc"> | **Flutter Bloc** | Used to manage the state of the application's UI. It is most prominently used in the multi-faceted search screen to handle the complex state of various filters, loading states, and search results, ensuring a predictable data flow. |
-| <img src="https://img.shields.io/badge/GetIt-1F1D2B?style=for-the-badge&logo=flutter&logoColor=white" alt="GetIt"> | **GetIt & Injectable** | Used to implement dependency injection. This decouples the Presentation, Domain, and Data layers by providing dependencies like Repositories and Use Cases wherever they are needed, which is crucial for a clean architecture and makes testing significantly easier. |
-| <img src="https://img.shields.io/badge/Dio-1F1D2B?style=for-the-badge" alt="Dio"> | **Dio** | Used for all network communication with the TMDB API. Its interceptor feature was specifically used to automatically inject the API key into every request and to handle logging and error responses consistently across the app. |
-| <img src="https://img.shields.io/badge/Drift-1F1D2B?style=for-the-badge" alt="Drift"> | **Drift (Moor)** | Used for creating and managing the local database that stores the user's personal watchlist. It was chosen for its type-safe SQL generation and reactive API, which allows the UI to listen to a stream of database changes and update automatically. |
-| <img src="https://img.shields.io/badge/GoRouter-1F1D2B?style=for-the-badge" alt="GoRouter"> | **GoRouter** | Used to manage all navigation within the app. It defines a clear routing structure, handling navigation from the movie lists to detail pages, and managing the app's overall screen flow in a robust, URL-based manner. |
-| <img src="https://img.shields.io/badge/Firebase-1F1D2B?style=for-the-badge&logo=firebase&logoColor=white" alt="Firebase"> | **Firebase** | Integrated for analytics and crash reporting. `Firebase Analytics` provides insights into user engagement, while `Crashlytics` is essential for monitoring the app's stability in production. |
+### Tech Stack and Libraries
+
+- **[Bloc/Cubit](https://github.com/felangel/bloc/tree/master/packages/bloc)** - For State Management and reactive UI.
+  
+- **[GetIt & Injectable](https://pub.dev/packages/get_it)** -For Dependency Injection.
+  
+- **[Dio](https://pub.dev/packages/dio)** -  Network & API. Handle HTTP requests with auth interceptors.
+  
+- **[Drift (Moor)](https://pub.dev/packages/drift)** - Local database for storing user watchlist with reactive data streams.
+  
+- **[GoRouter](https://pub.dev/packages/go_router)** - Declarative routing for managing app navigation and screen flow.
+
+- **[Infinite scroll](https://pub.dev/packages/infinite_scroll_pagination)** - Used on the search screen to load more pages of a query when scrolling.
+
+- **[Flutter native splash](https://pub.dev/packages/flutter_native_splash)** - Used to generate the splash screen.
+
+- **[Result Type](https://pub.dev/packages/result_type)** - For handling success and failed requests
+
+- **[Intl](https://pub.dev/packages/intl)** - For internacionalization, the app supports Portuguese, English and Spanish.
+  
+- <img width="20" height="20" alt="image" src="https://github.com/user-attachments/assets/4b42a490-eeb5-4e23-9eb3-ba5a3b054ab2" /> **[RxDart](https://pub.dev/packages/rxdart)** - For reactive updates in UI.
+
+
+**Analytics & Monitoring**
+- **[Firebase](https://firebase.google.com/)** - Analytics for user engagement insights and Crashlytics for production stability monitoring.
+
 
 ---
 
@@ -114,8 +141,12 @@ To get a local copy up and running, follow these simple steps.
     -   Add your API keys to the `.env` file.
 4.  Generate the environment configuration:
     ```sh
-    flutter pub run build_runner build --delete-conflicting-outputs
+    make buil_runner
     ```
+4.  Generate App localization:
+    ```sh
+    make intl_gen
+    ```    
 5.  Run the app:
     ```sh
     flutter run
@@ -135,6 +166,4 @@ This project is actively developed. Future plans to expand its capabilities incl
 
 ---
 
-<img src="https://img.shields.io/badge/License-252836?style=for-the-badge" alt="License">
-
-Distributed under the MIT License. See `LICENSE` for more information.
+   Made with ❤️ by jdavifranco
