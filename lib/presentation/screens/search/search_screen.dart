@@ -67,7 +67,7 @@ class SearchScreenState extends State<SearchScreen> {
                               assetPath: AppWebps.noResults,
                               errorMessage: context.text.errorMessage,
                               onTryAgain: () {
-                                _bloc.onQueryChanged(_searchController.text);
+                                _bloc.onTryAgain();
                               },
                               requestError: state.error,
                             )),
