@@ -1,12 +1,10 @@
 <div align="center">
-  <img src="assets/images/ic_launcher-playstore.png" alt="MovieAlike Logo" width="200"/>
+  <img src="assets/images/ic_launcher-playstore.png" alt="MovieAlike Logo" width="300"/>
   <h1>MovieAlike</h1>
   <p align="center">
     Find your next favorite movie!
   </p>
 
-
-  
   <p align="center">
     <a href="https://play.google.com/store/apps/details?id=com.jozaforge.moviealike">
       <img src="https://img.shields.io/badge/Google_Play-414141?style=for-the-badge&logo=google-play&logoColor=white" alt="Get it on Google Play">
@@ -32,8 +30,8 @@ This project started as a way to explore that problem. I wanted to build a movie
 ---
 ## ✨ Features Showcase
 
--   **Contextual Movie Exploration:** Start with a movie you already like and dive into a deep exploration path. From a movie's detail page, you can discover new movies by tapping on any actor, director, genre, or production company to see a filtered list of filmes.
--   **Intelligent Recommendations:** Instead of a black box, the recommendation engine uses a **[Jaccard Similarity](https://en.wikipedia.org/wiki/Jaccard_index)** algorithm. This provides a clear, percentage-based "similarity score," giving a tangible reason why a movie is recommended, compared to many modern recommendations systems that use machine learn models, this project jaccard similatiry system using genres and keywords from tmdb database, has a really good result in showing similar recommendations and sometimes better ones, with the plus that it shows how much similar a recommended movie is to the one selected.
+-   **Contextual Movie Exploration:** Start with a movie you already like and dive into a deep exploration path. From a movie's detail page, you can discover new movies by tapping on any actor, director, genre, or production company to see a filtered list of movies.
+-   **Intelligent Recommendations:** Instead of a black box, the recommendation engine uses a **[Jaccard Similarity](https://en.wikipedia.org/wiki/Jaccard_index)** algorithm. This way we can provide a clear percentage-based "similarity score," showing how similar the recommended movie is to the one selected. Compared to modern recommendation systems that use machine learning models, this project's Jaccard Similarity system, which uses genres and keywords from the TMDB database, shows excellent results in providing similar and sometimes better recommendations. Additionally, it shows how similar a recommended movie is.
 -   **Personal Watchlist & Details:** Keep track of movies you want to watch and dive deep into details with trailers, cast bios, and crew information, all stored locally for a smooth and responsive experience.
   <img width="322"  alt="Screenshot_1757367428" src="https://github.com/user-attachments/assets/bd553037-c1c3-49b5-8ee7-497982cc0c7b" />
 <img width="322" alt="Screenshot_1757367440" src="https://github.com/user-attachments/assets/99d17ca3-ff39-427e-8a52-396852bc87c7" /> 
@@ -63,22 +61,22 @@ This project started as a way to explore that problem. I wanted to build a movie
 
 ## 🛠️ Architecture & Tech Stack
 
-This app is built with a focus on creating a scalable, maintainable, and testable codebase. The foundation is <strong style="color:#FF4081;">Clean Architecture</strong>, which strictly separates the project into three distinct layers: Presentation, Domain, and Data.
+This app is built with a focus on creating a scalable, maintainable, and testable codebase. The foundation is <strong style="color:#FF4081;">Clean Architecture</strong>, which strictly separates the presentation, domain, and data layers.
 
 **🎨 Presentation Layer** (`lib/presentation/`)
-- **Screens & Widgets**: Flutter UI components (Home, Search, MovieDetails, Watchlist)
-- **BLoCs**: State management using BLoC pattern (HomeBloc, SearchBloc, etc.)
-- **Navigation**: GoRouter for declarative routing
+- **Screens & Widgets**: Flutter UI components (Home, Search, MovieDetails, Watchlist).
+- **BLoCs**: State management using the BLoC pattern (HomeBloc, SearchBloc, etc.).
+- **Navigation**: GoRouter for declarative routing.
 
 **🧠 Domain Layer** (`lib/domain/`)
-- **Use Cases**: Single-purpose business operations (`GetPopularMovies`, `GetMovieDetails`)
-- **Repository Interfaces**: Abstract contracts (`MovieRepository`, `SearchRepository`)
-- **Domain Models**: Pure business entities (`Movie`, `CastMember`, `MovieDetails`)
+- **Use Cases**: Single-purpose business operations (`GetPopularMovies`, `GetMovieDetails`).
+- **Repository Interfaces**: Abstract contracts (`MovieRepository`, `SearchRepository`).
+- **Domain Models**: Pure business entities (`Movie`, `CastMember`, `MovieDetails`).
 
 **💾 Data Layer** (`lib/data/`)
-- **Repository Implementations**: Concrete implementations (`MovieRepositoryImpl`)
-- **Data Sources**: API and database access (`MovieDataSource`, `WatchListDataSource`)
-- **DTOs**: Data Transfer Objects for external communication
+- **Repository Implementations**: Concrete implementations (`MovieRepositoryImpl`).
+- **Data Sources**: API and database access (`MovieDataSource`, `WatchListDataSource`).
+- **DTOs**: Data Transfer Objects for external communication.
 <div align="center">
   <p> <br> Architecture Diagram </br> </p>
  <img width="872" height="1145" alt="image" src="https://github.com/user-attachments/assets/60aa4776-0dd0-4ff0-aeb8-9ed7c0f75ba3" />
@@ -88,27 +86,27 @@ This app is built with a focus on creating a scalable, maintainable, and testabl
 
 ### ⚙️ Tech Stack
 
-- **[Bloc/Cubit](https://github.com/felangel/bloc/tree/master/packages/bloc)** - For State Management and reactive UI.
+- **[Bloc/Cubit](https://github.com/felangel/bloc/tree/master/packages/bloc)**: For State Management and reactive UI.
   
-- **[GetIt & Injectable](https://pub.dev/packages/get_it)** -For Dependency Injection.
+- **[GetIt & Injectable](https://pub.dev/packages/get_it)**: For Dependency Injection.
   
-- **[Dio](https://pub.dev/packages/dio)** -  Network & API. Handle HTTP requests with auth interceptors.
+- **[Dio](https://pub.dev/packages/dio)**: Network & API. Handles HTTP requests with auth interceptors.
   
-- **[Drift (Moor)](https://pub.dev/packages/drift)** - Local database for storing user watchlist with reactive data streams.
+- **[Drift (Moor)](https://pub.dev/packages/drift)**: Local database for storing user watchlist with reactive data streams.
   
-- **[GoRouter](https://pub.dev/packages/go_router)** - Declarative routing for managing app navigation and screen flow.
+- **[GoRouter](https://pub.dev/packages/go_router)**: Declarative routing for managing app navigation and screen flow.
 
-- **[Infinite scroll](https://pub.dev/packages/infinite_scroll_pagination)** - Used on the search screen to load more pages of a query when scrolling.
+- **[Infinite scroll](https://pub.dev/packages/infinite_scroll_pagination)**: Used on the search screen to load more pages of a query when scrolling.
 
-- **[Flutter native splash](https://pub.dev/packages/flutter_native_splash)** - Used to generate the splash screen.
+- **[Flutter native splash](https://pub.dev/packages/flutter_native_splash)**: Used to generate the splash screen.
 
-- **[Result Type](https://pub.dev/packages/result_type)** - For handling success and failed requests
+- **[Result Type](https://pub.dev/packages/result_type)**: For handling success and failed requests.
 
-- **[Intl](https://pub.dev/packages/intl)** - For internacionalization, the app supports Portuguese, English and Spanish.
+- **[Intl](https://pub.dev/packages/intl)**: For internationalization; the app supports Portuguese, English, and Spanish.
   
-- <img width="20" height="20" alt="image" src="https://github.com/user-attachments/assets/4b42a490-eeb5-4e23-9eb3-ba5a3b054ab2" /> **[RxDart](https://pub.dev/packages/rxdart)** - For reactive updates in UI.
+- <img width="20" height="20" alt="image" src="https://github.com/user-attachments/assets/4b42a490-eeb5-4e23-9eb3-ba5a3b054ab2" /> **[RxDart](https://pub.dev/packages/rxdart)**: For reactive updates and stream manipulation.
 
-- **[Firebase](https://firebase.google.com/)** - Analytics for user engagement insights and Crashlytics for production stability monitoring.
+- **[Firebase](https://firebase.google.com/)**: Analytics for user engagement insights and Crashlytics for production stability monitoring.
 
 
 ---
@@ -124,26 +122,26 @@ To get a local copy up and running, follow these simple steps.
 
 ### Installation
 
-1.  Clone the repo
+1.  Clone the repo:
     ```sh
     git clone https://github.com/jdavifranco/moviealikemobile.git
     ```
-2.  Install packages
+2.  Install packages:
     ```sh
     flutter pub get
     ```
 3.  Set up your API keys for [TMDB](https://www.themoviedb.org/documentation/api) and [YouTube](https://developers.google.com/youtube/v3).
-    -   Copy `env_template` to a new file named `.env`
+    -   Copy `env_template` to a new file named `.env`.
     -   Add your API keys to the `.env` file.
 4.  Generate the environment configuration:
     ```sh
     make build_runner
     ```
-4.  Generate App localization:
+5.  Generate App localization:
     ```sh
     make intl_gen
     ```    
-5.  Run the app:
+6.  Run the app:
     ```sh
     flutter run
     ```
