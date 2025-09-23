@@ -69,9 +69,6 @@ class GetMoviesWithGenres {
   double calculateGenreSimilarity(List<int> genresA, List<int> genresB) {
     final setA = genresA.toSet();
     final setB = genresB.toSet();
-    print("Genre ids");
-    print(setA);
-    print(setB);
     final intersection = setA.intersection(setB).length;
     final union = setA.union(setB).length;
     final jaccardSimilarity = (intersection / union);
@@ -86,9 +83,6 @@ class GetMoviesWithGenres {
       List<MovieKeyword> keywordsA, List<MovieKeyword> keywordsB) {
     final setA = keywordsA.map((e) => e.id).toSet();
     final setB = keywordsB.map((e) => e.id).toSet();
-    print("keywords ids");
-    print(setA);
-    print(setB);
     final intersection = setA.intersection(setB).length;
     final union = setA.union(setB).length;
     final jaccardSimilarity = (intersection / union);

@@ -1,3 +1,4 @@
+import 'package:async/async.dart' hide Result;
 import 'package:injectable/injectable.dart';
 import 'package:moviealike/data/movie/models/movie_results_dto.dart';
 import 'package:moviealike/data/network_client/network_service.dart';
@@ -16,10 +17,10 @@ class SearchDataSource {
 
   SearchDataSource(this._networkService, this._userLanguage);
 
-  Future<Result<List<SearchItemDto>, RequestError>> getSearchMoviesAndTvShows(
-      String query, SearchType searchType, int page) async {
-    final result = await _networkService.get(
-      "/search/${searchType.apiType}",
+  CancelableOperation<Result<List<SearchItemDto>, RequestError>>
+      getSearchMoviesAndTvShows(String query, SearchType searchType, int page) {
+    final cancelableOperation = _networkService.cancellableGet(
+      path: "/search/${searchType.apiType}",
       queryParameters: {
         'query': query,
         'include_adult': 'false',
@@ -27,14 +28,14 @@ class SearchDataSource {
         'page': page.toString(),
       },
     );
-
-    return result.map((data) => SearchResultsDto.fromJson(data).results);
+    return cancelableOperation.then((result) =>
+        result.map((data) => SearchResultsDto.fromJson(data).results));
   }
 
-  Future<Result<List<SearchItemDto>, RequestError>> getMoviesWithFilter(
-      SearchFilter filter, String query, int page) async {
-    final result = await _networkService.get(
-      "/discover/movie",
+  CancelableOperation<Result<List<SearchItemDto>, RequestError>>
+      getMoviesWithFilter(SearchFilter filter, String query, int page) {
+    final cancelableOperation = _networkService.cancellableGet(
+      path: "/discover/movie",
       queryParameters: {
         'include_adult': 'false',
         'include_video': 'false',
@@ -45,9 +46,13 @@ class SearchDataSource {
       },
     );
 
-    return result.map((data) => MovieResultsDto.fromJson(data)
-        .results
-        .map((e) => e.toSearchItem())
-        .toList());
+    return cancelableOperation.then(
+      (result) => result.map(
+        (data) => MovieResultsDto.fromJson(data)
+            .results
+            .map((e) => e.toSearchItem())
+            .toList(),
+      ),
+    );
   }
 }

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:moviealike/data/network_client/request_error.dart';
 import 'package:result_type/result_type.dart';
+import 'package:async/async.dart' hide Result;
 
 class NetworkService {
   final Dio _dio;
@@ -82,6 +83,42 @@ class NetworkService {
       queryParameters: queryParameters,
       headers: headers,
       cancelToken: cancelToken,
+    );
+  }
+
+  CancelableOperation<Result<Map<String, dynamic>, RequestError>>
+      cancellableGet<T>({
+    required String path,
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? headers,
+    CancelToken? cancelToken,
+  }) {
+    final token = cancelToken ?? CancelToken();
+    return CancelableOperation.fromFuture(
+      get(path,
+          queryParameters: queryParameters,
+          headers: headers,
+          cancelToken: token),
+      onCancel: token.cancel,
+    );
+  }
+
+  CancelableOperation<Result<Map<String, dynamic>, RequestError>>
+      cancellablePost<T>({
+    required String path,
+    dynamic data,
+    Map<String, dynamic>? queryParameters,
+    Map<String, dynamic>? headers,
+    CancelToken? cancelToken,
+  }) {
+    final token = cancelToken ?? CancelToken();
+    return CancelableOperation.fromFuture(
+      post(path,
+          data: data,
+          queryParameters: queryParameters,
+          headers: headers,
+          cancelToken: token),
+      onCancel: token.cancel,
     );
   }
 }

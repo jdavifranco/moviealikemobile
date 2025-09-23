@@ -1,3 +1,4 @@
+import 'package:async/async.dart' hide Result;
 import 'package:injectable/injectable.dart';
 import 'package:moviealike/data/network_client/request_error.dart';
 import 'package:moviealike/data/search/datasource/search_data_source.dart';
@@ -14,27 +15,30 @@ class SearchRepositoryImpl implements SearchRepository {
   SearchRepositoryImpl(this.searchDataSource);
 
   @override
-  Future<Result<List<SearchItem>, RequestError>> getMoviesAndSeries(
-      String query, SearchType type, int page) async {
-    final result =
-        await searchDataSource.getSearchMoviesAndTvShows(query, type, page);
-    if (result.isSuccess && result.success.isEmpty) {
-      return Failure(NoResultsFound());
-    }
-    return result.map((movieDtos) =>
-        movieDtos.map((movieDto) => movieDto.toDomain()).toList());
+  CancelableOperation<Result<List<SearchItem>, RequestError>>
+      getMoviesAndSeries(String query, SearchType type, int page) {
+    final cancelableOperation =
+        searchDataSource.getSearchMoviesAndTvShows(query, type, page);
+
+    return cancelableOperation.then((result) {
+      if (result.isSuccess && result.success.isEmpty) {
+        return Failure(NoResultsFound());
+      }
+      return result.map((movieDtos) =>
+          movieDtos.map((movieDto) => movieDto.toDomain()).toList());
+    });
   }
 
   @override
-  Future<Result<List<SearchItem>, RequestError>> getMoviesByFilter(
+  CancelableOperation<Result<List<SearchItem>, RequestError>> getMoviesByFilter(
       {required SearchType searchType,
       required SearchFilter filter,
       required String query,
-      int page = 1}) async {
-    final result =
-        await searchDataSource.getMoviesWithFilter(filter, query, page);
+      int page = 1}) {
+    final cancelableOperation =
+        searchDataSource.getMoviesWithFilter(filter, query, page);
 
-    return result.map((movieDtos) =>
-        movieDtos.map((movieDto) => movieDto.toDomain()).toList());
+    return cancelableOperation.then((result) => result.map((movieDtos) =>
+        movieDtos.map((movieDto) => movieDto.toDomain()).toList()));
   }
 }

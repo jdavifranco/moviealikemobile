@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:async/async.dart' hide Result;
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:moviealike/data/network_client/request_error.dart';
 import 'package:moviealike/data/network_client/result_extensions.dart';
@@ -10,6 +11,7 @@ import 'package:moviealike/domain/movies/use_cases/get_popular_movies.dart';
 import 'package:moviealike/domain/search/use_cases/search_movie_by_title.dart';
 
 import 'package:moviealike/presentation/screens/search/search_state.dart';
+import 'package:result_type/result_type.dart';
 import 'package:rxdart/rxdart.dart';
 
 class SearchBloc extends Cubit<SearchState> {
@@ -22,6 +24,8 @@ class SearchBloc extends Cubit<SearchState> {
   String _currentQuery = "";
   final _queryController = StreamController<String>();
   late final StreamSubscription<String> _querySubscription;
+  CancelableOperation<Result<List<SearchItem>, RequestError>>?
+      _currentOperation;
 
   static const Duration _debounceTime = Duration(milliseconds: 300);
 
@@ -83,6 +87,13 @@ class SearchBloc extends Cubit<SearchState> {
     }
   }
 
+  void changeSearchFilter(SearchFilter? filter) {
+    emit(state.copyWith(searchFilter: filter));
+    if (_currentQuery.isNotEmpty) {
+      loadNextPage(isNewSearch: true);
+    }
+  }
+
   void clearSearch() {
     _currentQuery = "";
     _loadPopularContent(state.selectedType);
@@ -90,6 +101,7 @@ class SearchBloc extends Cubit<SearchState> {
 
   @override
   Future<void> close() {
+    _currentOperation?.cancel();
     _querySubscription.cancel();
     _queryController.close();
     return super.close();
@@ -140,12 +152,17 @@ class SearchBloc extends Cubit<SearchState> {
     SearchType searchType,
   ) async {
     _currentQuery = query;
+    _currentOperation?.cancel();
 
-    final result = await _searchMovieWithFilter(
+    _currentOperation = _searchMovieWithFilter(
       query: query,
       filter: filter,
       page: 1,
     );
+
+    final result = await _currentOperation!.valueOrCancellation();
+
+    if (result == null || query != _currentQuery) return;
 
     result.when(
       success: (movies) {
@@ -179,12 +196,18 @@ class SearchBloc extends Cubit<SearchState> {
 
   Future<void> _loadNextPageWithFilter(bool isNewSearch) async {
     final nextPage = _getNextPageNumber(isNewSearch);
+    final currentQuery = _currentQuery;
+    _currentOperation?.cancel();
 
-    final result = await _searchMovieWithFilter(
+    _currentOperation = _searchMovieWithFilter(
       query: _currentQuery,
       filter: state.searchFilter!,
       page: nextPage,
     );
+
+    final result = await _currentOperation!.valueOrCancellation();
+
+    if (result == null || currentQuery != _currentQuery) return;
 
     result.when(
       success: (movies) {
@@ -200,12 +223,18 @@ class SearchBloc extends Cubit<SearchState> {
 
   Future<void> _loadNextPageWithQuery(bool isNewSearch) async {
     final nextPage = _getNextPageNumber(isNewSearch);
+    final currentQuery = _currentQuery;
+    _currentOperation?.cancel();
 
-    final result = await _searchMovieOrSeriesByTitle(
+    _currentOperation = _searchMovieOrSeriesByTitle(
       _currentQuery,
       state.selectedType,
       nextPage,
     );
+
+    final result = await _currentOperation!.valueOrCancellation();
+
+    if (result == null || currentQuery != _currentQuery) return;
 
     result.when(
       success: (movies) {
@@ -244,7 +273,15 @@ class SearchBloc extends Cubit<SearchState> {
       return;
     }
 
-    loadNextPage(isNewSearch: query != _currentQuery);
+    final isNewSearch = query != _currentQuery;
     _currentQuery = query;
+
+    // If there's a filter selected, perform filtered search
+    if (state.searchFilter != null) {
+      await _performFilteredSearch(
+          query, state.searchFilter!, state.selectedType);
+    } else {
+      loadNextPage(isNewSearch: isNewSearch);
+    }
   }
 }
