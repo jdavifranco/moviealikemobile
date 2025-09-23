@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:moviealike/l10n/app_localizations.dart';
 import 'package:moviealike/presentation/common/style/dimensions/app_dimensions_scheme.dart';
 import 'package:moviealike/presentation/common/style/dimensions/app_dimensions_scheme_large_screen.dart';
 import 'package:moviealike/presentation/common/style/dimensions/app_dimenstions_scheme_phone.dart';
 import 'package:moviealike/presentation/common/style/typography/app_typography_large.dart';
 import 'package:moviealike/presentation/common/style/typography/app_typography_phone.dart';
 import 'package:moviealike/presentation/common/style/typography/app_typography_scheme.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:moviealike/presentation/widgets/device_type_builder.dart';
 
 extension AppLocalizationsExt on BuildContext {
