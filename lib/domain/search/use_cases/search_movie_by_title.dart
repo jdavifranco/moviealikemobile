@@ -1,4 +1,5 @@
 // coverage:ignore-file
+import 'package:async/async.dart' hide Result;
 import 'package:injectable/injectable.dart';
 import 'package:moviealike/data/network_client/request_error.dart';
 import 'package:moviealike/data/search/models/search_type.dart';
@@ -14,7 +15,7 @@ class SearchMovieByTitle {
     this._searchRepository,
   );
 
-  Future<Result<List<SearchItem>, RequestError>> call(
+  CancelableOperation<Result<List<SearchItem>, RequestError>> call(
           String query, SearchType type,
           [int page = 1]) =>
       _searchRepository.getMoviesAndSeries(query, type, page);

@@ -1,3 +1,4 @@
+import 'package:async/async.dart' hide Result;
 import 'package:injectable/injectable.dart';
 import 'package:moviealike/data/network_client/request_error.dart';
 import 'package:moviealike/data/search/models/search_type.dart';
@@ -14,7 +15,7 @@ class SearchMovieWithFilter {
     this._searchRepository,
   );
 
-  Future<Result<List<SearchItem>, RequestError>> call(
+  CancelableOperation<Result<List<SearchItem>, RequestError>> call(
           {required String query,
           SearchType type = SearchType.movie,
           required SearchFilter filter,

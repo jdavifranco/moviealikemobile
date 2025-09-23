@@ -40,7 +40,7 @@ class CustomSearchBar extends StatelessWidget {
               style: const TextStyle(color: AppColors.grey, fontSize: 16),
               decoration: InputDecoration(
                 hintText: context.text.searchHint,
-                hintStyle: TextStyle(color: AppColors.grey, fontSize: 16),
+                hintStyle: const TextStyle(color: AppColors.grey, fontSize: 16),
                 border: InputBorder.none,
               ),
             ),
