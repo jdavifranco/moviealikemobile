@@ -23,25 +23,27 @@ abstract class _$SearchStateCWProxy {
 
   SearchState error(RequestError? error);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `SearchState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `SearchState(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// SearchState(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   SearchState call({
-    bool? isLoading,
-    SearchType? selectedType,
+    bool isLoading,
+    SearchType selectedType,
     SearchFilter? searchFilter,
-    bool? hasError,
+    bool hasError,
     List<List<SearchItem>>? pages,
     List<int>? keys,
-    bool? hasNextPage,
+    bool hasNextPage,
     RequestError? error,
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfSearchState.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfSearchState.copyWith.fieldName(...)`
+/// Callable proxy for `copyWith` functionality.
+/// Use as `instanceOfSearchState.copyWith(...)` or call `instanceOfSearchState.copyWith.fieldName(value)` for a single field.
 class _$SearchStateCWProxyImpl implements _$SearchStateCWProxy {
   const _$SearchStateCWProxyImpl(this._value);
 
@@ -75,12 +77,13 @@ class _$SearchStateCWProxyImpl implements _$SearchStateCWProxy {
 
   @override
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `SearchState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `SearchState(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// SearchState(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   SearchState call({
     Object? isLoading = const $CopyWithPlaceholder(),
     Object? selectedType = const $CopyWithPlaceholder(),
@@ -92,20 +95,19 @@ class _$SearchStateCWProxyImpl implements _$SearchStateCWProxy {
     Object? error = const $CopyWithPlaceholder(),
   }) {
     return SearchState(
-      isLoading: isLoading == const $CopyWithPlaceholder() || isLoading == null
+      isLoading: isLoading == const $CopyWithPlaceholder()
           ? _value.isLoading
           // ignore: cast_nullable_to_non_nullable
           : isLoading as bool,
-      selectedType:
-          selectedType == const $CopyWithPlaceholder() || selectedType == null
-              ? _value.selectedType
-              // ignore: cast_nullable_to_non_nullable
-              : selectedType as SearchType,
+      selectedType: selectedType == const $CopyWithPlaceholder()
+          ? _value.selectedType
+          // ignore: cast_nullable_to_non_nullable
+          : selectedType as SearchType,
       searchFilter: searchFilter == const $CopyWithPlaceholder()
           ? _value.searchFilter
           // ignore: cast_nullable_to_non_nullable
           : searchFilter as SearchFilter?,
-      hasError: hasError == const $CopyWithPlaceholder() || hasError == null
+      hasError: hasError == const $CopyWithPlaceholder()
           ? _value.hasError
           // ignore: cast_nullable_to_non_nullable
           : hasError as bool,
@@ -117,11 +119,10 @@ class _$SearchStateCWProxyImpl implements _$SearchStateCWProxy {
           ? _value.keys
           // ignore: cast_nullable_to_non_nullable
           : keys as List<int>?,
-      hasNextPage:
-          hasNextPage == const $CopyWithPlaceholder() || hasNextPage == null
-              ? _value.hasNextPage
-              // ignore: cast_nullable_to_non_nullable
-              : hasNextPage as bool,
+      hasNextPage: hasNextPage == const $CopyWithPlaceholder()
+          ? _value.hasNextPage
+          // ignore: cast_nullable_to_non_nullable
+          : hasNextPage as bool,
       error: error == const $CopyWithPlaceholder()
           ? _value.error
           // ignore: cast_nullable_to_non_nullable
@@ -131,7 +132,8 @@ class _$SearchStateCWProxyImpl implements _$SearchStateCWProxy {
 }
 
 extension $SearchStateCopyWith on SearchState {
-  /// Returns a callable class that can be used as follows: `instanceOfSearchState.copyWith(...)` or like so:`instanceOfSearchState.copyWith.fieldName(...)`.
+  /// Returns a callable class used to build a new instance with modified fields.
+  /// Example: `instanceOfSearchState.copyWith(...)` or `instanceOfSearchState.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$SearchStateCWProxy get copyWith => _$SearchStateCWProxyImpl(this);
 }

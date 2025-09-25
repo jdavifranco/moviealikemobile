@@ -420,7 +420,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                                       isLoading: false,
                                       onTap: (castId) {
                                         GoRouter.of(context).push(
-                                            '/search/$castId/with_people');
+                                            '/filter_details/with_people/$castId');
                                       },
                                     ),
                                   ),
@@ -509,7 +509,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                                                 [],
                                             onTap: (company) {
                                               GoRouter.of(context).push(
-                                                  '/search/${company.id}/with_companies');
+                                                  '/filter_details/with_companies/${company.id}');
                                             }),
                                       ],
                                     ),

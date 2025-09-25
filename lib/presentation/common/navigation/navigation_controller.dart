@@ -8,6 +8,7 @@ import 'package:moviealike/presentation/screens/home/home_entry.dart';
 import 'package:moviealike/presentation/screens/movie_details/movie_details_entry.dart';
 import 'package:moviealike/presentation/screens/search/search_entry.dart';
 import 'package:moviealike/presentation/screens/whatchlist/watch_list_entry.dart';
+import 'package:moviealike/presentation/screens/filter_details/filter_details_entry.dart';
 
 class NavigationController {
   static final NavigationController _instance =
@@ -141,6 +142,36 @@ class NavigationController {
               searchType: SearchType.movie,
               initialQuery: query,
               filter: SearchFilter.getFilterFromName(filter ?? ""),
+            ),
+            state: state,
+          );
+        },
+      ),
+      GoRoute(
+        parentNavigatorKey: parentNavigatorKey,
+        path: '/filter_details/:filterType/:filterId',
+        pageBuilder: (context, state) {
+          final filterTypeName = state.pathParameters['filterType'];
+          final filterId = int.parse(state.pathParameters['filterId'] ?? "0");
+          final filterType =
+              SearchFilter.getFilterFromName(filterTypeName ?? "");
+
+          if (filterType == null) {
+            // Fallback to search screen if filter type is not recognized
+            return getPage(
+              child: SearchEntry(
+                searchType: SearchType.movie,
+                initialQuery: filterId.toString(),
+                filter: SearchFilter.people,
+              ),
+              state: state,
+            );
+          }
+
+          return getPage(
+            child: FilterDetailsEntry(
+              filterType: filterType,
+              filterId: filterId,
             ),
             state: state,
           );
