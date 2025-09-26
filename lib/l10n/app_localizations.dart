@@ -690,6 +690,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Biography'**
   String get biography;
+
+  /// No description provided for @moviesWithPerson.
+  ///
+  /// In en, this message translates to:
+  /// **'Movies with {person}'**
+  String moviesWithPerson(String person);
+
+  /// No description provided for @moviesFromCompany.
+  ///
+  /// In en, this message translates to:
+  /// **'Movies from {company}'**
+  String moviesFromCompany(String company);
+
+  /// No description provided for @thisPerson.
+  ///
+  /// In en, this message translates to:
+  /// **'this person'**
+  String get thisPerson;
+
+  /// No description provided for @thisCompany.
+  ///
+  /// In en, this message translates to:
+  /// **'this company'**
+  String get thisCompany;
+
+  /// No description provided for @details.
+  ///
+  /// In en, this message translates to:
+  /// **'Details'**
+  String get details;
+
+  /// No description provided for @noMoviesFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No movies found'**
+  String get noMoviesFound;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

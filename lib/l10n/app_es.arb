@@ -121,5 +121,27 @@
 "noDescriptionAvailable": "No hay descripción disponible para esta empresa.",
 "websiteAvailable": "Website disponible",
 "seeLess": "Ver menos",
-"biography": "Biografía"
+"biography": "Biografía",
+"moviesWithPerson": "Películas con {person}",
+"@moviesWithPerson": {
+  "placeholders": {
+    "person": {
+      "type": "String",
+      "example": "João da Silva"
+    }
+  }
+},
+"moviesFromCompany": "Películas de {company}",
+"@moviesFromCompany": {
+  "placeholders": {
+    "company": {
+      "type": "String",
+      "example": "Empresa XYZ"
+    }
+  }
+},
+"thisPerson": "esta persona",
+"thisCompany": "esta empresa",
+"details": "Detalhes",
+"noMoviesFound": "No se encontraron películas"
 }

@@ -310,4 +310,26 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get biography => 'Biography';
+
+  @override
+  String moviesWithPerson(String person) {
+    return 'Movies with $person';
+  }
+
+  @override
+  String moviesFromCompany(String company) {
+    return 'Movies from $company';
+  }
+
+  @override
+  String get thisPerson => 'this person';
+
+  @override
+  String get thisCompany => 'this company';
+
+  @override
+  String get details => 'Details';
+
+  @override
+  String get noMoviesFound => 'No movies found';
 }

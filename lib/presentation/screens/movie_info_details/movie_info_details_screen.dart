@@ -71,7 +71,7 @@ class _MovieInfoDetailsScreenState extends State<MovieInfoDetailsScreen> {
               );
             }
             return Text(
-              "Details",
+              context.text.details,
               style: context.typography.heading4.copyWith(
                 color: Colors.white,
                 fontWeight: FontWeight.w600,
@@ -142,7 +142,16 @@ class _MovieInfoDetailsScreenState extends State<MovieInfoDetailsScreen> {
                     top: 24,
                     bottom: 16,
                   ),
-                  child: SectionTitle(title: context.text.movies.capitalized),
+                  child: SectionTitle(
+                      title: state.isPersonFilter
+                          ? context.text.moviesWithPerson(
+                              state.personDetails?.name ??
+                                  context.text.thisPerson)
+                          : state.isCompanyFilter
+                              ? context.text.moviesFromCompany(
+                                  state.companyDetails?.name ??
+                                      context.text.thisCompany)
+                              : context.text.movies.capitalized),
                 ),
               ),
               if (state.hasError && state.pages.isEmpty)
@@ -248,7 +257,7 @@ class _MovieInfoDetailsScreenState extends State<MovieInfoDetailsScreen> {
           ),
           const SizedBox(height: 16),
           Text(
-            "No movies found",
+            context.text.noMoviesFound,
             style: context.typography.heading5.copyWith(
               color: Colors.white.withValues(alpha: (0.6)),
             ),
