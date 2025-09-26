@@ -141,6 +141,24 @@
     }
   }
 },
+"moviesDirectedBy": "Filmes dirigidos por {person}",
+"@moviesDirectedBy": {
+  "placeholders": {
+    "person": {
+      "type": "String",
+      "example": "João da Silva"
+    }
+  }
+},
+"moviesProducedBy": "Filmes produzidos por {company}",
+"@moviesProducedBy": {
+  "placeholders": {
+    "company": {
+      "type": "String",
+      "example": "Empresa XYZ"
+    }
+  }
+},
 "thisPerson": "esta pessoa",
 "thisCompany": "esta empresa",
 "details": "Detalhes",

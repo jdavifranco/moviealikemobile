@@ -322,6 +322,16 @@ class AppLocalizationsPt extends AppLocalizations {
   }
 
   @override
+  String moviesDirectedBy(String person) {
+    return 'Filmes dirigidos por $person';
+  }
+
+  @override
+  String moviesProducedBy(String company) {
+    return 'Filmes produzidos por $company';
+  }
+
+  @override
   String get thisPerson => 'esta pessoa';
 
   @override

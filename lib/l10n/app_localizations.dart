@@ -703,6 +703,18 @@ abstract class AppLocalizations {
   /// **'Movies from {company}'**
   String moviesFromCompany(String company);
 
+  /// No description provided for @moviesDirectedBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Movies directed by {person}'**
+  String moviesDirectedBy(String person);
+
+  /// No description provided for @moviesProducedBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Movies produced by {company}'**
+  String moviesProducedBy(String company);
+
   /// No description provided for @thisPerson.
   ///
   /// In en, this message translates to:

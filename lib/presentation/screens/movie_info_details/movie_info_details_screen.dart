@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
+import 'package:moviealike/domain/search/models/person_details.dart';
 import 'package:moviealike/domain/search/models/search_item.dart';
 import 'package:moviealike/presentation/common/extensions/build_context.dart';
 import 'package:moviealike/presentation/common/extensions/string_extension.dart';
@@ -143,15 +144,14 @@ class _MovieInfoDetailsScreenState extends State<MovieInfoDetailsScreen> {
                     bottom: 16,
                   ),
                   child: SectionTitle(
-                      title: state.isPersonFilter
-                          ? context.text.moviesWithPerson(
-                              state.personDetails?.name ??
-                                  context.text.thisPerson)
-                          : state.isCompanyFilter
-                              ? context.text.moviesFromCompany(
-                                  state.companyDetails?.name ??
-                                      context.text.thisCompany)
-                              : context.text.movies.capitalized),
+                    title: state.isPersonFilter
+                        ? _getPersonSectionTitle(context, state.personDetails)
+                        : state.isCompanyFilter
+                            ? context.text.moviesProducedBy(
+                                state.companyDetails?.name ??
+                                    context.text.thisCompany)
+                            : context.text.movies.capitalized,
+                  ),
                 ),
               ),
               if (state.hasError && state.pages.isEmpty)
@@ -266,5 +266,15 @@ class _MovieInfoDetailsScreenState extends State<MovieInfoDetailsScreen> {
         ],
       ),
     );
+  }
+
+  String _getPersonSectionTitle(BuildContext context, PersonDetails? person) {
+    if (person?.knownForDepartment.equalsIgnoreCase("Directing") == true) {
+      return context.text
+          .moviesDirectedBy(person?.name ?? context.text.thisPerson);
+    } else {
+      return context.text
+          .moviesWithPerson(person?.name ?? context.text.thisPerson);
+    }
   }
 }
