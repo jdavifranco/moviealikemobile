@@ -17,7 +17,6 @@ class ProductionCompanyList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Group companies into rows of 3 items each
     final rows = <Widget>[];
     for (int i = 0; i < companies.length; i += 3) {
       rows.add(
@@ -31,8 +30,7 @@ class ProductionCompanyList extends StatelessWidget {
                 if (companyIndex < companies.length) {
                   final company = companies[companyIndex];
                   return Flexible(
-                    fit: FlexFit
-                        .loose, // Allow the child to take only as much space as needed
+                    fit: FlexFit.loose,
                     child: Padding(
                       padding: const EdgeInsets.all(4.0),
                       child: ContainerWithRippleEffect(
@@ -46,7 +44,6 @@ class ProductionCompanyList extends StatelessWidget {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            // Display the company logo
                             if (company.logoPath != null)
                               RemoteImage(
                                 imageUrl:
@@ -85,7 +82,6 @@ class ProductionCompanyList extends StatelessWidget {
                                 ),
                               ),
                             const SizedBox(height: 8),
-                            // Display the company name
                             Flexible(
                               child: Text(
                                 company.name,
@@ -104,7 +100,6 @@ class ProductionCompanyList extends StatelessWidget {
                     ),
                   );
                 } else {
-                  // Add an empty spacer for alignment if there are fewer than 3 items in the row
                   return const Spacer();
                 }
               },

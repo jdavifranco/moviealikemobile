@@ -298,4 +298,48 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get errorGenericMessage => 'An unexpected error occurred. Please try again later.';
+
+  @override
+  String get noDescriptionAvailable => 'No description available for this company.';
+
+  @override
+  String get websiteAvailable => 'Website available';
+
+  @override
+  String get seeLess => 'See less';
+
+  @override
+  String get biography => 'Biography';
+
+  @override
+  String moviesWithPerson(String person) {
+    return 'Movies with $person';
+  }
+
+  @override
+  String moviesFromCompany(String company) {
+    return 'Movies from $company';
+  }
+
+  @override
+  String moviesDirectedBy(String person) {
+    return 'Movies directed by $person';
+  }
+
+  @override
+  String moviesProducedBy(String company) {
+    return 'Movies produced by $company';
+  }
+
+  @override
+  String get thisPerson => 'this person';
+
+  @override
+  String get thisCompany => 'this company';
+
+  @override
+  String get details => 'Details';
+
+  @override
+  String get noMoviesFound => 'No movies found';
 }

@@ -11,7 +11,6 @@ import 'package:moviealike/presentation/common/navigation/navigation_controller.
 import 'package:moviealike/presentation/common/remote_image/remote_image_cache_manager.dart';
 import 'package:moviealike/presentation/common/style/app_colors.dart';
 import 'package:moviealike/presentation/common/style/font_families.dart';
-import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:quiver/collection.dart';
 import 'firebase_options.dart';
 
@@ -22,7 +21,6 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  FirebaseAnalytics analytics = FirebaseAnalytics.instance;
   await configureDependencies();
 
   SystemChrome.setSystemUIOverlayStyle(

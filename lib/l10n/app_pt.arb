@@ -118,5 +118,50 @@
 "errorUnknown": "Erro Inesperado",
 "errorUnknownMessage": "Algo deu errado. Por favor, tente novamente.",
 "errorGenericTitle": "Ops! Algo deu errado",
-"errorGenericMessage": "Ocorreu um erro inesperado. Por favor, tente mais tarde."
+"errorGenericMessage": "Ocorreu um erro inesperado. Por favor, tente mais tarde.",
+"noDescriptionAvailable": "Nenhuma descrição disponível para esta empresa.",
+"websiteAvailable": "Website disponível",
+"seeLess": "Ver menos",
+"biography": "Biografia",
+"moviesWithPerson": "Filmes com {person}",
+"@moviesWithPerson": {
+  "placeholders": {
+    "person": {
+      "type": "String",
+      "example": "João da Silva"
+    }
+  }
+},
+"moviesFromCompany": "Filmes de {company}",
+"@moviesFromCompany": {
+  "placeholders": {
+    "company": {
+      "type": "String",
+      "example": "Empresa XYZ"
+    }
+  }
+},
+"moviesDirectedBy": "Filmes dirigidos por {person}",
+"@moviesDirectedBy": {
+  "placeholders": {
+    "person": {
+      "type": "String",
+      "example": "João da Silva"
+    }
+  }
+},
+"moviesProducedBy": "Filmes produzidos por {company}",
+"@moviesProducedBy": {
+  "placeholders": {
+    "company": {
+      "type": "String",
+      "example": "Empresa XYZ"
+    }
+  }
+},
+"thisPerson": "esta pessoa",
+"thisCompany": "esta empresa",
+"details": "Detalhes",
+"noMoviesFound": "Nenhum filme encontrado"
+
 }

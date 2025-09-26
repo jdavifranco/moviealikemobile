@@ -16,7 +16,7 @@ const supportedLocales = [Locale('en', ''), Locale('es', ''), Locale('pt', '')];
 @module
 abstract class LanguageModule {
   UserLanguage getUserLanguage() {
-    final locale = window.locale.languageCode;
+    final locale = PlatformDispatcher.instance.locale.languageCode;
     if (locale.contains('pt')) {
       return UserLanguage.portuguese();
     } else {

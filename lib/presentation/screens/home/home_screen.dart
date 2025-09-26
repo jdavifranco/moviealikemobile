@@ -71,9 +71,7 @@ class _HomeScreenContentState extends State<_HomeScreenContent> {
                           child: CustomSearchBar(
                             controller: _searchController,
                             onChanged: (value) {},
-                            onFilterPressed: () {
-                              //print('Filter button pressed');
-                            },
+                            onFilterPressed: () {},
                             onTap: () {
                               GoRouter.of(context).pushReplacement('/search');
                             },

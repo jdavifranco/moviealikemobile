@@ -5,6 +5,8 @@ import 'package:moviealike/data/search/datasource/search_data_source.dart';
 import 'package:moviealike/data/search/models/search_type.dart';
 import 'package:moviealike/domain/search/models/search_filter.dart';
 import 'package:moviealike/domain/search/models/search_item.dart';
+import 'package:moviealike/domain/search/models/person_details.dart';
+import 'package:moviealike/domain/search/models/company_details.dart';
 import 'package:moviealike/domain/search/repository/search_repository.dart';
 import 'package:result_type/result_type.dart';
 
@@ -40,5 +42,21 @@ class SearchRepositoryImpl implements SearchRepository {
 
     return cancelableOperation.then((result) => result.map((movieDtos) =>
         movieDtos.map((movieDto) => movieDto.toDomain()).toList()));
+  }
+
+  @override
+  CancelableOperation<Result<PersonDetails, RequestError>> getPersonDetails(
+      int personId) {
+    final cancelableOperation = searchDataSource.getPersonDetails(personId);
+    return cancelableOperation.then((result) =>
+        result.map((personDetailsDto) => personDetailsDto.toDomain()));
+  }
+
+  @override
+  CancelableOperation<Result<CompanyDetails, RequestError>> getCompanyDetails(
+      int companyId) {
+    final cancelableOperation = searchDataSource.getCompanyDetails(companyId);
+    return cancelableOperation.then((result) =>
+        result.map((companyDetailsDto) => companyDetailsDto.toDomain()));
   }
 }

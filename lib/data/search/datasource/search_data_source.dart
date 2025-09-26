@@ -6,6 +6,8 @@ import 'package:moviealike/data/network_client/request_error.dart';
 import 'package:moviealike/data/search/models/search_item_dto.dart';
 import 'package:moviealike/data/search/models/search_result_dto.dart';
 import 'package:moviealike/data/search/models/search_type.dart';
+import 'package:moviealike/data/search/models/person_details_dto.dart';
+import 'package:moviealike/data/search/models/company_details_dto.dart';
 import 'package:moviealike/di/language_module.dart';
 import 'package:moviealike/domain/search/models/search_filter.dart';
 import 'package:result_type/result_type.dart';
@@ -54,5 +56,29 @@ class SearchDataSource {
             .toList(),
       ),
     );
+  }
+
+  CancelableOperation<Result<PersonDetailsDto, RequestError>> getPersonDetails(
+      int personId) {
+    final cancelableOperation = _networkService.cancellableGet(
+      path: "/person/$personId",
+      queryParameters: {
+        'language': _userLanguage.name,
+      },
+    );
+    return cancelableOperation.then(
+        (result) => result.map((data) => PersonDetailsDto.fromJson(data)));
+  }
+
+  CancelableOperation<Result<CompanyDetailsDto, RequestError>>
+      getCompanyDetails(int companyId) {
+    final cancelableOperation = _networkService.cancellableGet(
+      path: "/company/$companyId",
+      queryParameters: {
+        'language': _userLanguage.name,
+      },
+    );
+    return cancelableOperation.then(
+        (result) => result.map((data) => CompanyDetailsDto.fromJson(data)));
   }
 }

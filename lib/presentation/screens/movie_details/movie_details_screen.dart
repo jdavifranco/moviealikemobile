@@ -191,7 +191,8 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                                       1
                                     ],
                                     colors: [
-                                      AppColors.primary.withOpacity(0.7),
+                                      AppColors.primary
+                                          .withValues(alpha: (0.7)),
                                       AppColors.primary,
                                     ],
                                     begin: Alignment.topCenter,
@@ -420,7 +421,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                                       isLoading: false,
                                       onTap: (castId) {
                                         GoRouter.of(context).push(
-                                            '/search/$castId/with_people');
+                                            '/movie_info_details/with_people/$castId');
                                       },
                                     ),
                                   ),
@@ -509,7 +510,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                                                 [],
                                             onTap: (company) {
                                               GoRouter.of(context).push(
-                                                  '/search/${company.id}/with_companies');
+                                                  '/movie_info_details/with_companies/${company.id}');
                                             }),
                                       ],
                                     ),

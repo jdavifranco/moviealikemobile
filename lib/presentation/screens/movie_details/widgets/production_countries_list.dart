@@ -16,7 +16,6 @@ class ProductionCountriesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Group countries into rows of 3 items each
     final rows = <Widget>[];
     for (int i = 0; i < countries.length; i += 3) {
       rows.add(
@@ -42,13 +41,11 @@ class ProductionCountriesList extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          // Display the flag emoji
                           Text(
                             _getFlagEmoji(country.iso31661),
                             style: const TextStyle(fontSize: 18),
                           ),
                           const SizedBox(width: 4),
-                          // Display the country name
                           Flexible(
                             child: Text(
                               country.name,
@@ -66,7 +63,6 @@ class ProductionCountriesList extends StatelessWidget {
                   ),
                 );
               } else {
-                // Add an empty spacer for alignment if there are fewer than 3 items in the row
                 return const Spacer();
               }
             },
@@ -80,7 +76,6 @@ class ProductionCountriesList extends StatelessWidget {
     );
   }
 
-  /// Converts ISO 3166-1 alpha-2 country code to a flag emoji
   String _getFlagEmoji(String countryCode) {
     const int base = 0x1F1E6; // Unicode for regional indicator 'A'
     return String.fromCharCodes(

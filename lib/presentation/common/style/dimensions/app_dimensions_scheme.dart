@@ -1,5 +1,3 @@
-// coverage:ignore-file
-
 import 'package:copy_with_extension/copy_with_extension.dart';
 part 'app_dimensions_scheme.g.dart';
 

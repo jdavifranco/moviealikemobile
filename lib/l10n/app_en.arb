@@ -118,5 +118,49 @@
 "errorUnknown": "Unexpected Error",
 "errorUnknownMessage": "Something went wrong. Please try again.",
 "errorGenericTitle": "Oops! Something went wrong",
-"errorGenericMessage": "An unexpected error occurred. Please try again later."
+"errorGenericMessage": "An unexpected error occurred. Please try again later.",
+"noDescriptionAvailable": "No description available for this company.",
+"websiteAvailable": "Website available",
+"seeLess": "See less",
+"biography": "Biography",
+"moviesWithPerson": "Movies with {person}",
+"@moviesWithPerson": {
+  "placeholders": {
+    "person": {
+      "type": "String",
+      "example": "João da Silva"
+    }
+  }
+},
+"moviesFromCompany": "Movies from {company}",
+"@moviesFromCompany": {
+  "placeholders": {
+    "company": {
+      "type": "String",
+      "example": "Empresa XYZ"
+    }
+  }
+}, 
+"moviesDirectedBy": "Movies directed by {person}",
+"@moviesDirectedBy": {
+  "placeholders": {
+    "person": {
+      "type": "String",
+      "example": "João da Silva"
+    }
+  }
+},
+"moviesProducedBy": "Movies produced by {company}",
+"@moviesProducedBy": {
+  "placeholders": {
+    "company": {
+      "type": "String",
+      "example": "Empresa XYZ"
+    }
+  }
+},
+"thisPerson": "this person",
+"thisCompany": "this company",
+"details": "Details",
+"noMoviesFound": "No movies found"
 }

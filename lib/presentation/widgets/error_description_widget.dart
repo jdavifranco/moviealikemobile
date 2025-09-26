@@ -27,11 +27,8 @@ class ErrorDescriptionWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // Error Icon
           _buildErrorIcon(context, error),
           const SizedBox(height: 16),
-
-          // Error Title
           Text(
             _getErrorTitle(context, error),
             style: context.typography.heading3.copyWith(
@@ -41,8 +38,6 @@ class ErrorDescriptionWidget extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 8),
-
-          // Error Message
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 32),
             child: Text(
@@ -54,8 +49,6 @@ class ErrorDescriptionWidget extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 24),
-
-          // Try Again Button
           ElevatedButton(
             onPressed: onTryAgain,
             style: ElevatedButton.styleFrom(

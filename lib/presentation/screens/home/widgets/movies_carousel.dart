@@ -14,7 +14,7 @@ class MovieCarousel extends StatefulWidget {
   const MovieCarousel({Key? key, required this.movies}) : super(key: key);
 
   @override
-  _MovieCarouselState createState() => _MovieCarouselState();
+  State<MovieCarousel> createState() => _MovieCarouselState();
 }
 
 class _MovieCarouselState extends State<MovieCarousel> with OnContextReady {
@@ -68,7 +68,7 @@ class _MovieCarouselState extends State<MovieCarousel> with OnContextReady {
                   boxShadow: [
                     if (_currentIndex == index)
                       BoxShadow(
-                        color: AppColors.primary.withOpacity(0.2),
+                        color: AppColors.primary.withValues(alpha: (0.2)),
                         blurRadius: 10,
                         spreadRadius: 2,
                       ),
@@ -152,13 +152,13 @@ class _MovieCarouselState extends State<MovieCarousel> with OnContextReady {
         activeDotDecoration: DotDecoration(
           width: 30,
           height: 10,
-          color: AppColors.accent, // Active bullet color
+          color: AppColors.accent,
           borderRadius: BorderRadius.circular(20),
         ),
         dotDecoration: DotDecoration(
           width: 10,
           height: 10,
-          color: AppColors.accent.withOpacity(0.4),
+          color: AppColors.accent.withValues(alpha: (0.4)),
           borderRadius: BorderRadius.circular(20),
         ),
         spacing: 10.0,
@@ -166,30 +166,3 @@ class _MovieCarouselState extends State<MovieCarousel> with OnContextReady {
     );
   }
 }
-
-/*## Add Supported Image Sizes  
-                                 Min Res      Max Res  
-poster   = Poster ............  500 x 750   2000 x 3000  
-backdrop = Fanart ............ 1280 x 720   3840 x 2160  
-still    = TV Show Episode ... 1280 x 720   3840 x 2160  
-profile  = Actors Actresses ..  300 x 450   2000 x 3000  
-logo     = TMDb Logo  
-
-## API Supported Image Sizes  
-
-|  poster  | backdrop |  still   | profile  |   logo   |
-| :------: | :------: | :------: | :------: | :------: |
-| -------- | -------- | -------- |    w45   |    w45   |
-|    w92   | -------- |    w92   | -------- |    w92   |
-|   w154   | -------- | -------- | -------- |   w154   |
-|   w185   | -------- |   w185   |   w185   |   w185   |
-| -------- |   w300   |   w300   | -------- |   w300   |
-|   w342   | -------- | -------- | -------- | -------- |
-|   w500   | -------- | -------- | -------- |   w500   |
-| -------- | -------- | -------- |   h632   | -------- |
-|   w780   |   w780   | -------- | -------- | -------- |
-| -------- |  w1280   | -------- | -------- | -------- |
-| original | original | original | original | original |  
-
-Original Size is the size of the uploaded image.  
-It can be between Minimum Resolution and Maximum Resolution.  */

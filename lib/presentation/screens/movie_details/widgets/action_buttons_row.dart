@@ -23,7 +23,6 @@ class ActionButtonsRow extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        // Play Button
         ElevatedButton.icon(
           onPressed: onPlay,
           style: ElevatedButton.styleFrom(
@@ -38,51 +37,15 @@ class ActionButtonsRow extends StatelessWidget {
             isPlaying ? AppSvgs.pauseIcon : AppSvgs.playIcon,
             width: 24,
             height: 24,
-            color: Colors.white,
+            colorFilter: const ColorFilter.mode(Colors.white, BlendMode.srcIn),
           ),
           label: Text(
             context.text.trailer,
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
           ),
         ),
-
         const SizedBox(width: 16),
-
-        // Download Button
-        // _buildCircularButton(
-        //   icon: Icons.download,
-        //   onPressed: onDownload,
-        // ),
-
-        // const SizedBox(width: 16),
-
-        // // External Link Button
-        // _buildCircularButton(
-        //   icon: Icons.open_in_new,
-        //   iconColor: Colors.cyanAccent,
-        //   onPressed: onExternalLink,
-        // ),
       ],
     );
   }
-
-  // Widget _buildCircularButton({
-  //   required IconData icon,
-  //   required VoidCallback onPressed,
-  //   Color iconColor = Colors.white54,
-  // }) {
-  //   return InkWell(
-  //     onTap: onPressed,
-  //     borderRadius: BorderRadius.circular(30),
-  //     child: Container(
-  //       width: 50,
-  //       height: 50,
-  //       decoration: BoxDecoration(
-  //         color: Colors.black.withOpacity(0.2), // Slight dark overlay
-  //         shape: BoxShape.circle,
-  //       ),
-  //       child: Icon(icon, color: iconColor, size: 24),
-  //     ),
-  //   );
-  // }
 }

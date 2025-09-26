@@ -43,7 +43,6 @@ class MovieTvCard extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-
           Padding(
             padding: const EdgeInsets.only(top: 8),
             child: SizedBox(
@@ -59,39 +58,6 @@ class MovieTvCard extends StatelessWidget {
               ),
             ),
           ),
-
-          // SizedBox(
-          //   height: 24,
-          //   child: Row(
-          //     children: [
-          //       Text(
-          //         "$releaseDate ",
-          //         textAlign: TextAlign.start,
-          //         style: typography.body1.copyWith(
-          //           fontWeight: FontWeight.bold,
-          //         ),
-          //         maxLines: 1,
-          //         overflow: TextOverflow.ellipsis,
-          //       ),
-          //       // Text(
-          //       //   "- $voteAverage",
-          //       //   textAlign: TextAlign.end,
-          //       //   style: typography.body1.copyWith(
-          //       //     fontWeight: FontWeight.bold,
-          //       //   ),
-          //       //   maxLines: 1,
-          //       //   overflow: TextOverflow.ellipsis,
-          //       // ),
-          //       // const SizedBox(
-          //       //   width: 4,
-          //       // ),
-          //       // const Icon(
-          //       //   Icons.star,
-          //       //   color: Colors.yellow,
-          //       // ),
-          //     ],
-          //   ),
-          // )
         ]);
   }
 }

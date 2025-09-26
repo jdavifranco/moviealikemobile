@@ -20,7 +20,7 @@ class CustomSearchBar extends StatelessWidget {
     return Container(
       height: 48,
       decoration: BoxDecoration(
-        color: AppColors.secondary, // Background color
+        color: AppColors.secondary,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
@@ -45,17 +45,6 @@ class CustomSearchBar extends StatelessWidget {
               ),
             ),
           ),
-          // const VerticalDivider(
-          //   color: Colors.white24,
-          //   width: 1,
-          //   indent: 12,
-          //   endIndent: 12,
-          //   thickness: 1,
-          // ),
-          // IconButton(
-          //   icon: const Icon(Icons.tune, color: Colors.white),
-          //   onPressed: onFilterPressed,
-          // ),
         ],
       ),
     );

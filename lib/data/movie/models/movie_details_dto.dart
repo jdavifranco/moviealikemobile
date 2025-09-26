@@ -1,12 +1,10 @@
 import 'package:json_annotation/json_annotation.dart';
 import 'package:moviealike/data/movie/models/genre_dto.dart';
-import 'package:moviealike/data/movie/models/movie_keyword_dto.dart';
 import 'package:moviealike/data/movie/models/production_company_dto.dart';
 import 'package:moviealike/data/movie/models/production_country_dto.dart';
 import 'package:moviealike/data/movie/models/spoken_language_dto.dart';
 import 'package:moviealike/domain/movies/models/movie_details.dart';
 import 'package:moviealike/domain/movies/models/movie_images.dart';
-import 'package:moviealike/domain/movies/models/movie_keyword.dart';
 import 'package:moviealike/domain/movies/models/watch_providers.dart';
 
 part 'movie_details_dto.g.dart';
