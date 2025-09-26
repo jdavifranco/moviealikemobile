@@ -33,10 +33,14 @@ This project started as a way to explore that problem. I wanted to build a movie
 -   **Contextual Movie Exploration:** Start with a movie you already like and dive into a deep exploration path. From a movie's detail page, you can discover new movies by tapping on any actor, director, genre, or production company to see a filtered list of movies.
 -   **Intelligent Recommendations:** Instead of a black box, the recommendation engine uses a **[Jaccard Similarity](https://en.wikipedia.org/wiki/Jaccard_index)** algorithm. This way we can provide a clear percentage-based "similarity score," showing how similar the recommended movie is to the one selected. Compared to modern recommendation systems that use machine learning models, this project's Jaccard Similarity system, which uses genres and keywords from the TMDB database, shows excellent results in providing similar and sometimes better recommendations. Additionally, it shows how similar a recommended movie is.
 -   **Personal Watchlist & Details:** Keep track of movies you want to watch and dive deep into details with trailers, cast bios, and crew information, all stored locally for a smooth and responsive experience.
-  <img width="322"  alt="Screenshot_1757367428" src="https://github.com/user-attachments/assets/bd553037-c1c3-49b5-8ee7-497982cc0c7b" />
-<img width="322" alt="Screenshot_1757367440" src="https://github.com/user-attachments/assets/99d17ca3-ff39-427e-8a52-396852bc87c7" /> 
-  <img width="322"  alt="Screenshot_1757369041" src="https://github.com/user-attachments/assets/b26edcdb-6cb9-4dda-a69c-deba3caa511e" />
+ <img width="300"  alt="screenshot1" src="https://github.com/user-attachments/assets/4e90474d-0b95-49bd-9d18-5b6b397a6d06" />
+<img width="300"  alt="screenshot2" src="https://github.com/user-attachments/assets/6ac31724-2a31-4ecb-9116-79f7b873d8e3" />
+<img width="300" alt="screenshot3" src="https://github.com/user-attachments/assets/4daee8fb-5299-4d96-b297-64ae2ebd0131" />
+
+<img width="760" alt="screenshot4" src="https://github.com/user-attachments/assets/7ab5436e-e56d-4537-b613-dde430f6b548" />
+
 <br>
+
 
 <table>
   <tr>
