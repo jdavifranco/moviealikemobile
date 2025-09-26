@@ -40,8 +40,6 @@ AppTypographyScheme phoneTypographyScheme = const AppTypographyScheme(
     fontFamily: FontFamilies.montserrat,
     fontSize: 12.0,
   ),
-
-  /// Body
   heading7: TextStyle(
     color: AppColors.textSecondary,
     fontWeight: FontWeight.normal,

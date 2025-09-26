@@ -14,7 +14,7 @@ class MovieRecommendationCard extends StatelessWidget {
   final String title;
   final String genre;
   final double rating;
-  final double distance; // Add distance metric
+  final double distance;
   final String overview;
   final VoidCallback onTap;
   final int id;
@@ -27,7 +27,7 @@ class MovieRecommendationCard extends StatelessWidget {
     required this.title,
     required this.genre,
     required this.rating,
-    required this.distance, // Initialize distance
+    required this.distance,
     required this.onTap,
     required this.overview,
     required this.id,
@@ -35,10 +35,9 @@ class MovieRecommendationCard extends StatelessWidget {
     required this.movieWidth,
     required this.movieHeight,
   }) : super(key: key);
-  final Color highlyRecommendedColor =
-      const Color(0xFF22B07D); // Vibrant Magenta (Your Accent)
-  final Color similarColor = const Color(0xFFFF8700); // Vivid Orange-Red
-  final Color relatedColor = const Color(0xFFFF7256); // Darker Orange
+  final Color highlyRecommendedColor = const Color(0xFF22B07D);
+  final Color similarColor = const Color(0xFFFF8700);
+  final Color relatedColor = const Color(0xFFFF7256);
   String getDistanceLabel(BuildContext context, double distance) {
     if (distance > 0.4) {
       return context.text.highlyRecommended;
@@ -56,12 +55,11 @@ class MovieRecommendationCard extends StatelessWidget {
       onTap: () {
         Navigator.of(context).push(
           PageRouteBuilder(
-            opaque: false, // Make dialog-like
+            opaque: false,
             fullscreenDialog: true,
             barrierDismissible: true,
             pageBuilder: (BuildContext context, _, __) {
               return MovieDetailDialog(
-                // Navigate to MovieDetailDialog
                 imageUrl: imageUrl,
                 title: title,
                 genre: genre,
@@ -72,7 +70,9 @@ class MovieRecommendationCard extends StatelessWidget {
                 rating: rating,
                 onSeeMore: () {
                   Future.delayed(const Duration(milliseconds: 300), () {
-                    GoRouter.of(context).push('/movie_details/$id');
+                    if (context.mounted) {
+                      GoRouter.of(context).push('/movie_details/$id');
+                    }
                   });
                 },
                 movie: movie,
@@ -132,7 +132,7 @@ class MovieRecommendationCard extends StatelessWidget {
             Stack(
               children: [
                 Hero(
-                  tag: 'movie-poster-${title}', // Unique tag for each movie
+                  tag: 'movie-poster-$title',
                   child: ClipRRect(
                     borderRadius:
                         const BorderRadius.vertical(top: Radius.circular(12)),

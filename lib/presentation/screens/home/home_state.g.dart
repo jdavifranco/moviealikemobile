@@ -25,26 +25,28 @@ abstract class _$HomeStateCWProxy {
 
   HomeState error(RequestError? error);
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `HomeState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `HomeState(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// HomeState(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   HomeState call({
-    List<Movie>? populaMovies,
-    bool? isLoading,
+    List<Movie> populaMovies,
+    bool isLoading,
     String? backgroundImage,
-    List<Movie>? upcomingMovies,
-    List<Serie>? popularSeries,
-    List<Serie>? upcomingSeries,
-    SearchType? selectedType,
-    bool? hasError,
+    List<Movie> upcomingMovies,
+    List<Serie> popularSeries,
+    List<Serie> upcomingSeries,
+    SearchType selectedType,
+    bool hasError,
     RequestError? error,
   });
 }
 
-/// Proxy class for `copyWith` functionality. This is a callable class and can be used as follows: `instanceOfHomeState.copyWith(...)`. Additionally contains functions for specific fields e.g. `instanceOfHomeState.copyWith.fieldName(...)`
+/// Callable proxy for `copyWith` functionality.
+/// Use as `instanceOfHomeState.copyWith(...)` or call `instanceOfHomeState.copyWith.fieldName(value)` for a single field.
 class _$HomeStateCWProxyImpl implements _$HomeStateCWProxy {
   const _$HomeStateCWProxyImpl(this._value);
 
@@ -85,12 +87,13 @@ class _$HomeStateCWProxyImpl implements _$HomeStateCWProxy {
 
   @override
 
-  /// This function **does support** nullification of nullable fields. All `null` values passed to `non-nullable` fields will be ignored. You can also use `HomeState(...).copyWith.fieldName(...)` to override fields one at a time with nullification support.
+  /// Creates a new instance with the provided field values.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `HomeState(...).copyWith.fieldName(value)`.
   ///
-  /// Usage
+  /// Example:
   /// ```dart
   /// HomeState(...).copyWith(id: 12, name: "My name")
-  /// ````
+  /// ```
   HomeState call({
     Object? populaMovies = const $CopyWithPlaceholder(),
     Object? isLoading = const $CopyWithPlaceholder(),
@@ -103,12 +106,11 @@ class _$HomeStateCWProxyImpl implements _$HomeStateCWProxy {
     Object? error = const $CopyWithPlaceholder(),
   }) {
     return HomeState(
-      populaMovies:
-          populaMovies == const $CopyWithPlaceholder() || populaMovies == null
-              ? _value.populaMovies
-              // ignore: cast_nullable_to_non_nullable
-              : populaMovies as List<Movie>,
-      isLoading: isLoading == const $CopyWithPlaceholder() || isLoading == null
+      populaMovies: populaMovies == const $CopyWithPlaceholder()
+          ? _value.populaMovies
+          // ignore: cast_nullable_to_non_nullable
+          : populaMovies as List<Movie>,
+      isLoading: isLoading == const $CopyWithPlaceholder()
           ? _value.isLoading
           // ignore: cast_nullable_to_non_nullable
           : isLoading as bool,
@@ -116,27 +118,23 @@ class _$HomeStateCWProxyImpl implements _$HomeStateCWProxy {
           ? _value.backgroundImage
           // ignore: cast_nullable_to_non_nullable
           : backgroundImage as String?,
-      upcomingMovies: upcomingMovies == const $CopyWithPlaceholder() ||
-              upcomingMovies == null
+      upcomingMovies: upcomingMovies == const $CopyWithPlaceholder()
           ? _value.upcomingMovies
           // ignore: cast_nullable_to_non_nullable
           : upcomingMovies as List<Movie>,
-      popularSeries:
-          popularSeries == const $CopyWithPlaceholder() || popularSeries == null
-              ? _value.popularSeries
-              // ignore: cast_nullable_to_non_nullable
-              : popularSeries as List<Serie>,
-      upcomingSeries: upcomingSeries == const $CopyWithPlaceholder() ||
-              upcomingSeries == null
+      popularSeries: popularSeries == const $CopyWithPlaceholder()
+          ? _value.popularSeries
+          // ignore: cast_nullable_to_non_nullable
+          : popularSeries as List<Serie>,
+      upcomingSeries: upcomingSeries == const $CopyWithPlaceholder()
           ? _value.upcomingSeries
           // ignore: cast_nullable_to_non_nullable
           : upcomingSeries as List<Serie>,
-      selectedType:
-          selectedType == const $CopyWithPlaceholder() || selectedType == null
-              ? _value.selectedType
-              // ignore: cast_nullable_to_non_nullable
-              : selectedType as SearchType,
-      hasError: hasError == const $CopyWithPlaceholder() || hasError == null
+      selectedType: selectedType == const $CopyWithPlaceholder()
+          ? _value.selectedType
+          // ignore: cast_nullable_to_non_nullable
+          : selectedType as SearchType,
+      hasError: hasError == const $CopyWithPlaceholder()
           ? _value.hasError
           // ignore: cast_nullable_to_non_nullable
           : hasError as bool,
@@ -149,7 +147,8 @@ class _$HomeStateCWProxyImpl implements _$HomeStateCWProxy {
 }
 
 extension $HomeStateCopyWith on HomeState {
-  /// Returns a callable class that can be used as follows: `instanceOfHomeState.copyWith(...)` or like so:`instanceOfHomeState.copyWith.fieldName(...)`.
+  /// Returns a callable class used to build a new instance with modified fields.
+  /// Example: `instanceOfHomeState.copyWith(...)` or `instanceOfHomeState.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
   _$HomeStateCWProxy get copyWith => _$HomeStateCWProxyImpl(this);
 }

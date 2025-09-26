@@ -44,9 +44,7 @@ class _WatchProvidersListState extends State<WatchProvidersList> {
         ),
         const SizedBox(height: 16),
         SizedBox(
-          height: context.dimensionScheme.movierProviderSize +
-              textSize +
-              10, // Fixed height for the horizontal list
+          height: context.dimensionScheme.movierProviderSize + textSize + 10,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -61,8 +59,7 @@ class _WatchProvidersListState extends State<WatchProvidersList> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ClipRRect(
-                      borderRadius: BorderRadius.circular(
-                          8), // Rounded corners for the logo
+                      borderRadius: BorderRadius.circular(8),
                       child: ContainerWithRippleEffect(
                         onTap: () async {
                           final url = provider.link;
@@ -70,8 +67,6 @@ class _WatchProvidersListState extends State<WatchProvidersList> {
                               await canLaunchUrl(Uri.parse(url))) {
                             await launchUrl(Uri.parse(url),
                                 mode: LaunchMode.externalApplication);
-                          } else {
-                            print("Could not launch $url");
                           }
                         },
                         child: RemoteImage(
@@ -81,15 +76,11 @@ class _WatchProvidersListState extends State<WatchProvidersList> {
                           height: context.dimensionScheme.movierProviderSize,
                           fit: BoxFit.cover,
                           color: AppColors.secondary,
-                          placeholder: Container(
-                            child: Center(
-                              child: Icon(Icons.stream, size: 30),
-                            ),
+                          placeholder: const Center(
+                            child: Icon(Icons.stream, size: 30),
                           ),
-                          errorWidget: (context, url, error) => Container(
-                            child: Center(
-                              child: Icon(Icons.stream, size: 30),
-                            ),
+                          errorWidget: (context, url, error) => const Center(
+                            child: Icon(Icons.stream, size: 30),
                           ),
                         ),
                       ),

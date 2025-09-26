@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:moviealike/presentation/common/extensions/build_context.dart';
-import 'package:moviealike/presentation/common/style/app_colors.dart'; // Assuming this path for AppColors
+import 'package:moviealike/presentation/common/style/app_colors.dart';
 import 'package:moviealike/presentation/constants/app_svgs.dart';
-import 'package:url_launcher/url_launcher.dart'; // For opening URLs
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({Key? key}) : super(key: key);
@@ -50,8 +50,6 @@ class AboutScreen extends StatelessWidget {
           _buildLegalSection(context),
           const SizedBox(height: 24),
           _buildCreditsSection(context),
-          // const SizedBox(height: 24),
-          // _buildAdsDisclosure(context),
         ],
       ),
     );
@@ -71,9 +69,10 @@ class AboutScreen extends StatelessWidget {
         const SizedBox(height: 12),
         Text(
           context.text.appDescription,
-          style: context.typography.body2
-              .copyWith(color: AppColors.white.withOpacity(0.8)),
-        )
+          style: context.typography.body2.copyWith(
+            color: AppColors.white.withValues(alpha: (0.8)),
+          ),
+        ),
       ],
     );
   }
@@ -146,41 +145,19 @@ class AboutScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Flexible(
-                child: Text(
-                  context.text.tmdbAttribution,
-                  style: context.typography.body2
-                      .copyWith(color: AppColors.white.withOpacity(0.8)),
-                ),
+                child: Text(context.text.tmdbAttribution,
+                    style: context.typography.body2.copyWith(
+                      color: AppColors.white.withValues(alpha: (0.8)),
+                    )),
               ),
               Icon(Icons.open_in_new,
-                  size: 16, color: AppColors.white.withOpacity(0.6)),
+                  size: 16, color: AppColors.white.withValues(alpha: (0.6))),
             ],
           ),
         ),
       ],
     );
   }
-
-  // Widget _buildAdsDisclosure(BuildContext context) {
-  //   return Column(
-  //     crossAxisAlignment: CrossAxisAlignment.start,
-  //     children: [
-  //       Text(
-  //         context.text.adsDisclosure,
-  //         style: context.typography.heading4.copyWith(
-  //           color: AppColors.white,
-  //           fontWeight: FontWeight.bold,
-  //         ),
-  //       ),
-  //       const SizedBox(height: 12),
-  //       Text(
-  //         context.text.adsDisclosureDescription,
-  //         style: context.typography.body2
-  //             .copyWith(color: AppColors.white.withOpacity(0.8)),
-  //       ),
-  //     ],
-  //   );
-  //}
 
   Widget _buildPolicyLink(BuildContext context,
       {required String title, String? content, VoidCallback? onTap}) {
@@ -200,8 +177,11 @@ class AboutScreen extends StatelessWidget {
               title,
               style: context.typography.body2.copyWith(color: AppColors.white),
             ),
-            Icon(Icons.arrow_forward_ios,
-                size: 16, color: AppColors.white.withOpacity(0.6)),
+            Icon(
+              Icons.arrow_forward_ios,
+              size: 16,
+              color: AppColors.white.withValues(alpha: (0.6)),
+            ),
           ],
         ),
       ),

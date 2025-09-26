@@ -131,7 +131,6 @@ class _MovieVideosState extends State<MovieVideos> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       final context = _itemKeys[index].currentContext;
       if (context != null) {
-        // Calculate the offset to center the expanded video
         final box = context.findRenderObject() as RenderBox?;
         final listBox = _scrollController.position.context.storageContext
             .findRenderObject() as RenderBox?;

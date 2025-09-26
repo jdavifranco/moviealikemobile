@@ -88,15 +88,11 @@ class MovieSearchCard extends StatelessWidget {
               ),
             ],
           ),
-
           const SizedBox(width: 16),
-
-          // Movie Details
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Premium Badge
                 if (isPremium)
                   Container(
                     padding:
@@ -107,7 +103,7 @@ class MovieSearchCard extends StatelessWidget {
                     ),
                     child: Text(
                       context.text.premium,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
@@ -115,7 +111,6 @@ class MovieSearchCard extends StatelessWidget {
                     ),
                   ),
                 const SizedBox(height: 4),
-                // Movie Title
                 Text(
                   title,
                   maxLines: 1,
@@ -127,8 +122,6 @@ class MovieSearchCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 8),
-
-                // Year and Duration
                 Row(
                   children: [
                     const Icon(Icons.calendar_today,
@@ -142,15 +135,13 @@ class MovieSearchCard extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 8),
-
-                // Rating and Genre
                 Row(
                   children: [
                     Container(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 8, vertical: 4),
                       decoration: BoxDecoration(
-                        color: AppColors.accent.withOpacity(0.3),
+                        color: AppColors.accent.withValues(alpha: (0.3)),
                         borderRadius: BorderRadius.circular(8),
                       ),
                       child: Text(

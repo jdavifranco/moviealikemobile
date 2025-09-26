@@ -38,10 +38,9 @@ class _MovieDetailDialogState extends State<MovieDetailDialog> {
   late double maxWidth = MediaQuery.sizeOf(context).width / 2;
   final double maxHeight = 700;
   final double padding = 20;
-  final Color highlyRecommendedColor =
-      const Color(0xFF22B07D); // Vibrant Magenta (Your Accent)
-  final Color similarColor = const Color(0xFFFF8700); // Vivid Orange-Red
-  final Color relatedColor = const Color(0xFFFF7256); // Darker Orange
+  final Color highlyRecommendedColor = const Color(0xFF22B07D);
+  final Color similarColor = const Color(0xFFFF8700);
+  final Color relatedColor = const Color(0xFFFF7256);
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -61,12 +60,16 @@ class _MovieDetailDialogState extends State<MovieDetailDialog> {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                   colors: [
-                    getRecommendedColor(widget.distance).withOpacity(0.3),
-                    getRecommendedColor(widget.distance).withOpacity(0.3),
-                    getRecommendedColor(widget.distance).withOpacity(0.5),
-                    getRecommendedColor(widget.distance).withOpacity(0.8),
+                    getRecommendedColor(widget.distance)
+                        .withValues(alpha: (0.3)),
+                    getRecommendedColor(widget.distance)
+                        .withValues(alpha: (0.3)),
+                    getRecommendedColor(widget.distance)
+                        .withValues(alpha: (0.5)),
+                    getRecommendedColor(widget.distance)
+                        .withValues(alpha: (0.8)),
                   ],
-                  stops: [
+                  stops: const [
                     0.0,
                     0.5,
                     0.8,
@@ -78,15 +81,15 @@ class _MovieDetailDialogState extends State<MovieDetailDialog> {
                 end: Alignment.bottomCenter,
                 colors: [
                   getRecommendedColor(widget.distance)
-                      .withOpacity(widget.distance * 0.3),
+                      .withValues(alpha: (widget.distance * 0.3)),
                   getRecommendedColor(widget.distance)
-                      .withOpacity(widget.distance * 0.5),
+                      .withValues(alpha: (widget.distance * 0.5)),
                   getRecommendedColor(widget.distance)
-                      .withOpacity(widget.distance * 0.8),
+                      .withValues(alpha: (widget.distance * 0.8)),
                   getRecommendedColor(widget.distance)
-                      .withOpacity(widget.distance),
+                      .withValues(alpha: (widget.distance)),
                 ],
-                stops: [
+                stops: const [
                   0.0,
                   0.5,
                   0.8,
@@ -105,9 +108,8 @@ class _MovieDetailDialogState extends State<MovieDetailDialog> {
                       borderRadius: BorderRadius.circular(12),
                       child: RemoteImage(
                         imageUrl: widget.imageUrl,
-
-                        width: maxWidth, // Reduced image width
-                        height: 300, // Reduced image height
+                        width: maxWidth,
+                        height: 300,
                         fit: BoxFit.cover,
                         imageBuilder: (context, imageProvider) => Container(
                           width: maxWidth,
@@ -122,17 +124,16 @@ class _MovieDetailDialogState extends State<MovieDetailDialog> {
                             ),
                           ),
                         ),
-
                         errorWidget: (context, url, error) => Container(
                           width: maxWidth,
                           height: 300,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: AppColors.secondary,
-                            borderRadius: const BorderRadius.vertical(
+                            borderRadius: BorderRadius.vertical(
                               top: Radius.circular(12),
                             ),
                           ),
-                          child: Center(
+                          child: const Center(
                             child: Icon(
                               Icons.error,
                               color: AppColors.white,
@@ -143,20 +144,20 @@ class _MovieDetailDialogState extends State<MovieDetailDialog> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 15), // Reduced SizedBox height
+                const SizedBox(height: 15),
                 Text(
                   widget.title,
                   style: context.typography.heading4.copyWith(
                       color: AppColors.white, fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(height: 4), // Reduced SizedBox height
+                const SizedBox(height: 4),
                 Text(
                   widget.movie.genres?.join(", ") ?? "",
                   style: context.typography.heading6.copyWith(
-                      color: AppColors.white.withOpacity(0.8),
+                      color: AppColors.white.withValues(alpha: (0.8)),
                       fontWeight: FontWeight.normal),
                 ),
-                const SizedBox(height: 12), // Reduced SizedBox height
+                const SizedBox(height: 12),
                 Row(
                   children: [
                     Container(
@@ -180,7 +181,7 @@ class _MovieDetailDialogState extends State<MovieDetailDialog> {
                         ],
                       ),
                     ),
-                    const SizedBox(width: 12), // Reduced spacing
+                    const SizedBox(width: 12),
                     Container(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 8, vertical: 4),
@@ -204,21 +205,21 @@ class _MovieDetailDialogState extends State<MovieDetailDialog> {
                     ),
                   ],
                 ),
-                const SizedBox(height: 16), // Reduced SizedBox height
+                const SizedBox(height: 16),
                 Text(
                   context.text.overview,
                   style: context.typography.heading5.copyWith(
                       color: AppColors.white, fontWeight: FontWeight.w500),
                 ),
-                const SizedBox(height: 4), // Reduced SizedBox height
+                const SizedBox(height: 4),
                 Text(
                   widget.overview,
-                  maxLines: 3, // Further limited overview lines
+                  maxLines: 3,
                   overflow: TextOverflow.ellipsis,
-                  style: context.typography.heading6
-                      .copyWith(color: AppColors.white.withOpacity(0.8)),
+                  style: context.typography.heading6.copyWith(
+                      color: AppColors.white.withValues(alpha: (0.8))),
                 ),
-                const SizedBox(height: 16), // Reduced SizedBox height
+                const SizedBox(height: 16),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -227,12 +228,10 @@ class _MovieDetailDialogState extends State<MovieDetailDialog> {
                         Navigator.of(context).pop();
                       },
                       child: Text(context.text.close,
-                          style: TextStyle(color: AppColors.white)),
+                          style: const TextStyle(color: AppColors.white)),
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        // TODO: Navigate to movie details page or perform action
-                        print("See More button pressed for ${widget.title}");
                         Navigator.of(context).pop();
                         widget.onSeeMore();
                       },
@@ -240,7 +239,7 @@ class _MovieDetailDialogState extends State<MovieDetailDialog> {
                         surfaceTintColor: AppColors.accent,
                       ),
                       child: Text(context.text.seeMore,
-                          style: TextStyle(color: Colors.black)),
+                          style: const TextStyle(color: Colors.black)),
                     ),
                   ],
                 ),

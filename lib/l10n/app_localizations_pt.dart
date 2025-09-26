@@ -298,4 +298,48 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get errorGenericMessage => 'Ocorreu um erro inesperado. Por favor, tente mais tarde.';
+
+  @override
+  String get noDescriptionAvailable => 'Nenhuma descrição disponível para esta empresa.';
+
+  @override
+  String get websiteAvailable => 'Website disponível';
+
+  @override
+  String get seeLess => 'Ver menos';
+
+  @override
+  String get biography => 'Biografia';
+
+  @override
+  String moviesWithPerson(String person) {
+    return 'Filmes com $person';
+  }
+
+  @override
+  String moviesFromCompany(String company) {
+    return 'Filmes de $company';
+  }
+
+  @override
+  String moviesDirectedBy(String person) {
+    return 'Filmes dirigidos por $person';
+  }
+
+  @override
+  String moviesProducedBy(String company) {
+    return 'Filmes produzidos por $company';
+  }
+
+  @override
+  String get thisPerson => 'esta pessoa';
+
+  @override
+  String get thisCompany => 'esta empresa';
+
+  @override
+  String get details => 'Detalhes';
+
+  @override
+  String get noMoviesFound => 'Nenhum filme encontrado';
 }

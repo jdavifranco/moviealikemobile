@@ -21,11 +21,9 @@ enum Genre {
   war(10752, 'War'),
   western(37, 'Western');
 
-  // Properties
   final int id;
   final String name;
 
-  // Constructor
   const Genre(this.id, this.name);
 
   static Genre? getById(int id) {

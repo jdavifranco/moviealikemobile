@@ -666,6 +666,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'An unexpected error occurred. Please try again later.'**
   String get errorGenericMessage;
+
+  /// No description provided for @noDescriptionAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'No description available for this company.'**
+  String get noDescriptionAvailable;
+
+  /// No description provided for @websiteAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Website available'**
+  String get websiteAvailable;
+
+  /// No description provided for @seeLess.
+  ///
+  /// In en, this message translates to:
+  /// **'See less'**
+  String get seeLess;
+
+  /// No description provided for @biography.
+  ///
+  /// In en, this message translates to:
+  /// **'Biography'**
+  String get biography;
+
+  /// No description provided for @moviesWithPerson.
+  ///
+  /// In en, this message translates to:
+  /// **'Movies with {person}'**
+  String moviesWithPerson(String person);
+
+  /// No description provided for @moviesFromCompany.
+  ///
+  /// In en, this message translates to:
+  /// **'Movies from {company}'**
+  String moviesFromCompany(String company);
+
+  /// No description provided for @moviesDirectedBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Movies directed by {person}'**
+  String moviesDirectedBy(String person);
+
+  /// No description provided for @moviesProducedBy.
+  ///
+  /// In en, this message translates to:
+  /// **'Movies produced by {company}'**
+  String moviesProducedBy(String company);
+
+  /// No description provided for @thisPerson.
+  ///
+  /// In en, this message translates to:
+  /// **'this person'**
+  String get thisPerson;
+
+  /// No description provided for @thisCompany.
+  ///
+  /// In en, this message translates to:
+  /// **'this company'**
+  String get thisCompany;
+
+  /// No description provided for @details.
+  ///
+  /// In en, this message translates to:
+  /// **'Details'**
+  String get details;
+
+  /// No description provided for @noMoviesFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No movies found'**
+  String get noMoviesFound;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

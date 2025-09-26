@@ -276,7 +276,6 @@ class SearchBloc extends Cubit<SearchState> {
     final isNewSearch = query != _currentQuery;
     _currentQuery = query;
 
-    // If there's a filter selected, perform filtered search
     if (state.searchFilter != null) {
       await _performFilteredSearch(
           query, state.searchFilter!, state.selectedType);

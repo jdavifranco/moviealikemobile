@@ -1,4 +1,3 @@
-// coverage:ignore-file
 import 'dart:async';
 
 import 'package:flutter/foundation.dart';
@@ -6,8 +5,6 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_iframe/youtube_player_iframe.dart';
 
-/// A widget the scaffolds the [YoutubePlayer] so that it can be moved around easily in the view
-/// and handles the fullscreen functionality.
 class YoutubePlayerBuilder extends StatefulWidget {
   const YoutubePlayerBuilder({
     super.key,
@@ -22,35 +19,18 @@ class YoutubePlayerBuilder extends StatefulWidget {
     this.userAgent,
   });
 
-  /// Builds the child widget.
   final Widget Function(BuildContext context, Widget player) builder;
 
-  /// The player controller.
   final YoutubePlayerController controller;
 
-  /// The aspect ratio of the player.
-  ///
-  /// The value is ignored on fullscreen mode.
   final double aspectRatio;
 
-  /// Enables switching full screen mode on vertical drag in the player.
-  ///
-  /// Default is true.
   final bool enableFullScreenOnVerticalDrag;
 
-  /// Which gestures should be consumed by the youtube player.
-  ///
-  /// This property is ignored in web.
   final Set<Factory<OneSequenceGestureRecognizer>> gestureRecognizers;
 
-  /// The background color of the WebView.
   final Color? backgroundColor;
 
-  /// The value used for the HTTP User-Agent: request header.
-  ///
-  /// When null the platform's webview default is used for the User-Agent header.
-  ///
-  /// By default `userAgent` is null.
   final String? userAgent;
 
   final bool isVideoLesson;

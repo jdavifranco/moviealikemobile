@@ -21,7 +21,6 @@ class CustomYoutubeVideoFrame extends StatefulWidget {
     this.isPausedByNavigation = false,
   });
 
-  // coverage:ignore-start
   static Widget _defaultYoutubeBuilder(BuildContext context,
           YoutubePlayerController controller, bool isVideoLesson) =>
       YoutubePlayerBuilder(
@@ -41,34 +40,16 @@ class _CustomYoutubeVideoFrameState extends State<CustomYoutubeVideoFrame>
   List<DeviceOrientation>? defaultOrientations;
 
   @override
-  void onContextReady(BuildContext context) {
-    // if (widget.youtubeVisibilityState == YoutubeVisibilityState.fullscreen) {
-    //   SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
-    //   SystemChrome.setPreferredOrientations([
-    //     DeviceOrientation.landscapeRight,
-    //     DeviceOrientation.landscapeLeft,
-    //   ]);
-    // } else {
-    //   SystemChrome.setPreferredOrientations(defaultOrientations!);
-    //   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-    // }
-  }
+  void onContextReady(BuildContext context) {}
 
   @override
   void dispose() {
-    // if (widget.youtubeVisibilityState == YoutubeVisibilityState.fullscreen) {
-    //   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
-    //   SystemChrome.setPreferredOrientations(defaultOrientations!);
-    // }
     super.dispose();
   }
 
-  // coverage:ignore-end
   @override
   Widget build(BuildContext context) {
     final orientation = MediaQuery.of(context).orientation;
-    // final bool isFullScreen =
-    //     widget.youtubeVisibilityState == YoutubeVisibilityState.fullscreen;
     final controller = widget.youtubePlayerController;
     final height = orientation == Orientation.landscape
         ? MediaQuery.sizeOf(context).height * 0.5
