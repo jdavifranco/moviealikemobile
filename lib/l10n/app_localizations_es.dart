@@ -298,4 +298,16 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get errorGenericMessage => 'Ocurrió un error inesperado. Por favor, inténtalo más tarde.';
+
+  @override
+  String get noDescriptionAvailable => 'No hay descripción disponible para esta empresa.';
+
+  @override
+  String get websiteAvailable => 'Website disponible';
+
+  @override
+  String get seeLess => 'Ver menos';
+
+  @override
+  String get biography => 'Biografía';
 }

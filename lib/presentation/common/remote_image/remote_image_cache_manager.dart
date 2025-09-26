@@ -1,4 +1,3 @@
-// coverage:ignore-file
 import 'dart:typed_data';
 
 import 'package:file/file.dart';

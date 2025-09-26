@@ -118,5 +118,9 @@
 "errorUnknown": "Unexpected Error",
 "errorUnknownMessage": "Something went wrong. Please try again.",
 "errorGenericTitle": "Oops! Something went wrong",
-"errorGenericMessage": "An unexpected error occurred. Please try again later."
+"errorGenericMessage": "An unexpected error occurred. Please try again later.",
+"noDescriptionAvailable": "No description available for this company.",
+"websiteAvailable": "Website available",
+"seeLess": "See less",
+"biography": "Biography"
 }

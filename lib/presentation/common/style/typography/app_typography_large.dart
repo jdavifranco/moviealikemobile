@@ -40,14 +40,11 @@ AppTypographyScheme largeTypographyScheme = const AppTypographyScheme(
     fontFamily: FontFamilies.montserrat,
     fontSize: 20.0, // Adjusted from 20.0
   ),
-
-  /// Body
   heading7: TextStyle(
     color: AppColors.textSecondary,
     fontWeight: FontWeight.normal,
     fontSize: 16.0, // Adjusted from 16.0
   ),
-
   body2: TextStyle(
     color: AppColors.textSecondary,
     fontWeight: FontWeight.bold,

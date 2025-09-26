@@ -8,22 +8,22 @@ import 'package:moviealike/domain/search/use_cases/get_person_details.dart';
 import 'package:moviealike/domain/search/use_cases/get_company_details.dart';
 import 'package:moviealike/domain/search/use_cases/search_movie_with_filter.dart';
 import 'package:moviealike/data/search/models/search_type.dart';
-import 'package:moviealike/presentation/screens/filter_details/filter_details_state.dart';
+import 'package:moviealike/presentation/screens/movie_info_details/movie_info_details_state.dart';
 
-class FilterDetailsBloc extends Cubit<FilterDetailsState> {
+class MovieInfoDetailsBloc extends Cubit<MovieInfoDetailsState> {
   final GetPersonDetails _getPersonDetails;
   final GetCompanyDetails _getCompanyDetails;
   final SearchMovieWithFilter _searchMovieWithFilter;
   final SearchFilter filterType;
   final int filterId;
 
-  FilterDetailsBloc(
+  MovieInfoDetailsBloc(
     this._getPersonDetails,
     this._getCompanyDetails,
     this._searchMovieWithFilter,
     this.filterType,
     this.filterId,
-  ) : super(FilterDetailsState(
+  ) : super(MovieInfoDetailsState(
           filterType: filterType,
           filterId: filterId,
         ));

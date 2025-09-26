@@ -118,5 +118,9 @@
 "errorUnknown": "Erro Inesperado",
 "errorUnknownMessage": "Algo deu errado. Por favor, tente novamente.",
 "errorGenericTitle": "Ops! Algo deu errado",
-"errorGenericMessage": "Ocorreu um erro inesperado. Por favor, tente mais tarde."
+"errorGenericMessage": "Ocorreu um erro inesperado. Por favor, tente mais tarde.",
+"noDescriptionAvailable": "Nenhuma descrição disponível para esta empresa.",
+"websiteAvailable": "Website disponível",
+"seeLess": "Ver menos",
+"biography": "Biografia"
 }

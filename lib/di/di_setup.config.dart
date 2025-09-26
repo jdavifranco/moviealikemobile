@@ -22,10 +22,6 @@ import 'package:moviealike/data/movie/repository/movie_repository_impl.dart'
 import 'package:moviealike/data/network_client/authorization_interceptor.dart'
     as _i860;
 import 'package:moviealike/data/network_client/network_service.dart' as _i327;
-import 'package:moviealike/data/recommendations/datasource/recommendations_data_source.dart'
-    as _i393;
-import 'package:moviealike/data/recommendations/repository/recommendations_repository_impl.dart'
-    as _i488;
 import 'package:moviealike/data/search/datasource/search_data_source.dart'
     as _i728;
 import 'package:moviealike/data/search/repository/search_repository_impl.dart'
@@ -46,7 +42,6 @@ import 'package:moviealike/di/drift_module.dart' as _i858;
 import 'package:moviealike/di/language_module.dart' as _i289;
 import 'package:moviealike/di/network_module.dart' as _i543;
 import 'package:moviealike/di/path_module.dart' as _i74;
-import 'package:moviealike/domain/dialog_service/dialog_service.dart' as _i788;
 import 'package:moviealike/domain/movies/repository/movie_repository.dart'
     as _i562;
 import 'package:moviealike/domain/movies/use_cases/get_cast_members.dart'
@@ -61,12 +56,6 @@ import 'package:moviealike/domain/movies/use_cases/get_upcoming_movies.dart'
     as _i911;
 import 'package:moviealike/domain/movies/use_cases/get_youtube_videos.dart'
     as _i773;
-import 'package:moviealike/domain/recommendations/repository/recommendations_repository.dart'
-    as _i659;
-import 'package:moviealike/domain/recommendations/use_cases/get_movie_analysis.dart'
-    as _i986;
-import 'package:moviealike/domain/recommendations/use_cases/get_movie_recommendations.dart'
-    as _i12;
 import 'package:moviealike/domain/search/repository/search_repository.dart'
     as _i1067;
 import 'package:moviealike/domain/search/use_cases/get_company_details.dart'
@@ -120,7 +109,6 @@ Future<_i174.GetIt> $initGetIt(
     () => driftModule.openConnection(),
     preResolve: true,
   );
-  gh.singleton<_i788.DialogService>(() => _i788.DialogService());
   gh.lazySingleton<_i860.AuthorizationInterceptor>(
       () => networkModule.getAuthorizationInterceptor());
   await gh.singletonAsync<_i497.Directory>(
@@ -146,17 +134,12 @@ Future<_i174.GetIt> $initGetIt(
       ));
   gh.factory<_i1067.SearchRepository>(
       () => _i1038.SearchRepositoryImpl(gh<_i728.SearchDataSource>()));
-  gh.factory<_i393.RecommendationsDataSource>(
-      () => _i393.RecommendationsDataSource(gh<_i327.NetworkService>()));
   gh.factory<_i596.SeriesDataSource>(
       () => _i596.SeriesDataSource(gh<_i327.NetworkService>()));
   gh.factory<_i1012.YoutubeDataSource>(
       () => _i1012.YoutubeDataSource(gh<_i327.NetworkService>()));
   gh.factory<_i562.MovieRepository>(
       () => _i835.MovieRepositoryImpl(gh<_i906.MovieDataSource>()));
-  gh.factory<_i659.RecommendationsRepository>(() =>
-      _i488.RecommendationsRepositoryImpl(
-          gh<_i393.RecommendationsDataSource>()));
   gh.factory<_i681.AddToWatchList>(
       () => _i681.AddToWatchList(gh<_i608.WatchListRepository>()));
   gh.factory<_i488.GetWatchList>(
@@ -193,10 +176,6 @@ Future<_i174.GetIt> $initGetIt(
       () => _i27.GetYoutubeVideosByTitle(gh<_i225.YoutubeRepository>()));
   gh.factory<_i243.SeriesRepository>(
       () => _i766.SeriesRepositoryImpl(gh<_i596.SeriesDataSource>()));
-  gh.factory<_i986.GetMovieAnaysis>(
-      () => _i986.GetMovieAnaysis(gh<_i659.RecommendationsRepository>()));
-  gh.factory<_i12.GetMovieRecommendations>(() =>
-      _i12.GetMovieRecommendations(gh<_i659.RecommendationsRepository>()));
   gh.factory<_i143.GetPopularSeries>(
       () => _i143.GetPopularSeries(gh<_i243.SeriesRepository>()));
   gh.factory<_i484.GetUpcomingSeries>(

@@ -11,7 +11,6 @@ class GenresList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Group genres into rows of 3 items each
     final rows = <Widget>[];
     for (int i = 0; i < genres.length; i += 3) {
       rows.add(
@@ -55,7 +54,6 @@ class GenresList extends StatelessWidget {
                   ),
                 );
               } else {
-                // Add an empty spacer for alignment if there are fewer than 3 items in the row
                 return const Spacer();
               }
             },

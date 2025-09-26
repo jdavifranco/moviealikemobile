@@ -1,4 +1,3 @@
-// coverage:ignore-file
 import 'package:flutter/material.dart';
 
 class AppColors {
@@ -31,4 +30,3 @@ class AppColors {
   static const Color textSecondary = Color(0xFF6A6A6A);
   static const Color red = Color(0xFFFF7256);
 }
-// coverage:ignore-file

@@ -23,6 +23,7 @@ class RetryInterceptor extends Interceptor {
 
     err.requestOptions.retryCount = retryCount;
     final delay = _calculateDelay(retryCount);
+    // ignore: avoid_print
     print(
         'Retry attempt: $retryCount, Delay: ${delay.inMilliseconds}ms, Error: ${err.message}');
     if (delay != Duration.zero) {

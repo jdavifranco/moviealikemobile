@@ -8,7 +8,7 @@ import 'package:moviealike/presentation/screens/home/home_entry.dart';
 import 'package:moviealike/presentation/screens/movie_details/movie_details_entry.dart';
 import 'package:moviealike/presentation/screens/search/search_entry.dart';
 import 'package:moviealike/presentation/screens/whatchlist/watch_list_entry.dart';
-import 'package:moviealike/presentation/screens/filter_details/filter_details_entry.dart';
+import 'package:moviealike/presentation/screens/movie_info_details/movie_info_details_entry.dart';
 
 class NavigationController {
   static final NavigationController _instance =
@@ -149,7 +149,7 @@ class NavigationController {
       ),
       GoRoute(
         parentNavigatorKey: parentNavigatorKey,
-        path: '/filter_details/:filterType/:filterId',
+        path: '/movie_info_details/:filterType/:filterId',
         pageBuilder: (context, state) {
           final filterTypeName = state.pathParameters['filterType'];
           final filterId = int.parse(state.pathParameters['filterId'] ?? "0");
@@ -157,7 +157,6 @@ class NavigationController {
               SearchFilter.getFilterFromName(filterTypeName ?? "");
 
           if (filterType == null) {
-            // Fallback to search screen if filter type is not recognized
             return getPage(
               child: SearchEntry(
                 searchType: SearchType.movie,
@@ -169,7 +168,7 @@ class NavigationController {
           }
 
           return getPage(
-            child: FilterDetailsEntry(
+            child: MovieInfoDetailsEntry(
               filterType: filterType,
               filterId: filterId,
             ),

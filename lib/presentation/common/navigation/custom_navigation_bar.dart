@@ -8,7 +8,7 @@ class CustomBottomNavBar extends StatefulWidget {
       : super(key: key);
 
   @override
-  _CustomBottomNavBarState createState() => _CustomBottomNavBarState();
+  State<CustomBottomNavBar> createState() => _CustomBottomNavBarState();
 }
 
 class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
@@ -27,7 +27,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
     return SafeArea(
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 24),
-        color: AppColors.primary, // Background color from the images
+        color: AppColors.primary,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: _navItems.map((item) {

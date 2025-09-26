@@ -70,7 +70,7 @@ class _WatchlistScreenState extends State<WatchlistScreen> {
                     Text(
                       context.text.yourWatchlistIsEmpty,
                       style: TextStyle(
-                        color: AppColors.white.withOpacity(0.7),
+                        color: AppColors.white.withValues(alpha: (0.7)),
                         fontSize: 16,
                       ),
                     ),
@@ -223,11 +223,11 @@ class _WatchlistScreenState extends State<WatchlistScreen> {
                                               style: context.typography.body2
                                                   .copyWith(
                                                 color: AppColors.white
-                                                    .withOpacity(0.8),
+                                                    .withValues(alpha: (0.8)),
                                               ),
                                             ),
                                             const SizedBox(width: 8),
-                                            Icon(
+                                            const Icon(
                                               Icons.star,
                                               color: AppColors.orange,
                                               size: 14,

@@ -29,11 +29,9 @@ class _PersonDetailsSectionState extends State<PersonDetailsSection> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Profile Image and Basic Info
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Profile Image
               ClipRRect(
                 borderRadius: BorderRadius.circular(12),
                 child: RemoteImage(
@@ -47,7 +45,7 @@ class _PersonDetailsSectionState extends State<PersonDetailsSection> {
                     width: 120,
                     height: 180,
                     decoration: BoxDecoration(
-                      color: AppColors.secondary.withOpacity(0.3),
+                      color: AppColors.secondary.withValues(alpha: (0.3)),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: const Center(
@@ -62,7 +60,7 @@ class _PersonDetailsSectionState extends State<PersonDetailsSection> {
                     width: 120,
                     height: 180,
                     decoration: BoxDecoration(
-                      color: AppColors.secondary.withOpacity(0.3),
+                      color: AppColors.secondary.withValues(alpha: (0.3)),
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: const Center(
@@ -76,7 +74,6 @@ class _PersonDetailsSectionState extends State<PersonDetailsSection> {
                 ),
               ),
               const SizedBox(width: 16),
-              // Basic Info
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -107,8 +104,7 @@ class _PersonDetailsSectionState extends State<PersonDetailsSection> {
                     ],
                     if (widget.personDetails.placeOfBirth != null) ...[
                       _buildInfoRow(
-                        AppSvgs
-                            .movieIcon, // Using movie icon as placeholder for location
+                        AppSvgs.movieIcon,
                         widget.personDetails.placeOfBirth!,
                         context,
                       ),
@@ -139,10 +135,9 @@ class _PersonDetailsSectionState extends State<PersonDetailsSection> {
             ],
           ),
           const SizedBox(height: 24),
-          // Biography
           if (widget.personDetails.biography.isNotEmpty) ...[
             Text(
-              "Biography",
+              context.text.biography,
               style: context.typography.heading3.copyWith(
                 color: Colors.white,
                 fontWeight: FontWeight.w600,
@@ -174,7 +169,7 @@ class _PersonDetailsSectionState extends State<PersonDetailsSection> {
           child: Text(
             text,
             style: context.typography.heading5.copyWith(
-              color: Colors.white.withOpacity(0.8),
+              color: Colors.white.withValues(alpha: (0.8)),
               fontWeight: FontWeight.normal,
             ),
             overflow: TextOverflow.ellipsis,
@@ -188,11 +183,10 @@ class _PersonDetailsSectionState extends State<PersonDetailsSection> {
     const int maxLines = 4;
     final biography = widget.personDetails.biography;
 
-    // Check if biography is long enough to need truncation
     final textSpan = TextSpan(
       text: biography,
       style: context.typography.heading5.copyWith(
-        color: Colors.white.withOpacity(0.8),
+        color: Colors.white.withValues(alpha: (0.8)),
         fontWeight: FontWeight.normal,
         height: 1.5,
       ),
@@ -215,7 +209,7 @@ class _PersonDetailsSectionState extends State<PersonDetailsSection> {
         Text(
           biography,
           style: context.typography.heading5.copyWith(
-            color: Colors.white.withOpacity(0.8),
+            color: Colors.white.withValues(alpha: (0.8)),
             fontWeight: FontWeight.normal,
             height: 1.5,
           ),
@@ -231,7 +225,7 @@ class _PersonDetailsSectionState extends State<PersonDetailsSection> {
               });
             },
             child: Text(
-              _isExpanded ? "See Less" : "See More",
+              _isExpanded ? context.text.seeLess : context.text.seeMore,
               style: context.typography.heading5.copyWith(
                 color: AppColors.accent,
                 fontWeight: FontWeight.w600,

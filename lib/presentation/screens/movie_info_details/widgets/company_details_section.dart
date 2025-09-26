@@ -22,19 +22,17 @@ class CompanyDetailsSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Company Logo and Basic Info
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Company Logo
               Container(
                 width: 120,
                 height: 120,
                 decoration: BoxDecoration(
-                  color: AppColors.secondary.withOpacity(0.1),
+                  color: AppColors.secondary.withValues(alpha: (0.1)),
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
-                    color: AppColors.secondary.withOpacity(0.2),
+                    color: AppColors.secondary.withValues(alpha: (0.2)),
                   ),
                 ),
                 child: companyDetails.logoPath != null
@@ -50,7 +48,8 @@ class CompanyDetailsSection extends StatelessWidget {
                             width: 120,
                             height: 120,
                             decoration: BoxDecoration(
-                              color: AppColors.secondary.withOpacity(0.1),
+                              color:
+                                  AppColors.secondary.withValues(alpha: (0.1)),
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: const Center(
@@ -65,7 +64,8 @@ class CompanyDetailsSection extends StatelessWidget {
                             width: 120,
                             height: 120,
                             decoration: BoxDecoration(
-                              color: AppColors.secondary.withOpacity(0.1),
+                              color:
+                                  AppColors.secondary.withValues(alpha: (0.1)),
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: const Center(
@@ -87,7 +87,6 @@ class CompanyDetailsSection extends StatelessWidget {
                       ),
               ),
               const SizedBox(width: 16),
-              // Basic Info
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -102,8 +101,7 @@ class CompanyDetailsSection extends StatelessWidget {
                     const SizedBox(height: 8),
                     if (companyDetails.headquarters.isNotEmpty) ...[
                       _buildInfoRow(
-                        AppSvgs
-                            .movieIcon, // Using movie icon as placeholder for location
+                        AppSvgs.movieIcon,
                         companyDetails.headquarters,
                         context,
                       ),
@@ -111,8 +109,7 @@ class CompanyDetailsSection extends StatelessWidget {
                     ],
                     if (companyDetails.originCountry.isNotEmpty) ...[
                       _buildInfoRow(
-                        AppSvgs
-                            .calendarIcon, // Using calendar icon as placeholder for country
+                        AppSvgs.calendarIcon,
                         companyDetails.originCountry,
                         context,
                       ),
@@ -121,9 +118,8 @@ class CompanyDetailsSection extends StatelessWidget {
                     if (companyDetails.homepage != null &&
                         companyDetails.homepage!.isNotEmpty) ...[
                       _buildInfoRow(
-                        AppSvgs
-                            .personIcon, // Using person icon as placeholder for website
-                        "Website Available",
+                        AppSvgs.personIcon,
+                        context.text.websiteAvailable,
                         context,
                       ),
                     ],
@@ -133,7 +129,6 @@ class CompanyDetailsSection extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 24),
-          // Description
           if (companyDetails.description.isNotEmpty) ...[
             Text(
               context.text.overview,
@@ -146,7 +141,7 @@ class CompanyDetailsSection extends StatelessWidget {
             Text(
               companyDetails.description,
               style: context.typography.heading5.copyWith(
-                color: Colors.white.withOpacity(0.8),
+                color: Colors.white.withValues(alpha: (0.8)),
                 fontWeight: FontWeight.normal,
                 height: 1.5,
               ),
@@ -161,9 +156,9 @@ class CompanyDetailsSection extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             Text(
-              "No description available for this company.",
+              context.text.noDescriptionAvailable,
               style: context.typography.heading5.copyWith(
-                color: Colors.white.withOpacity(0.6),
+                color: Colors.white.withValues(alpha: (0.6)),
                 fontWeight: FontWeight.normal,
                 fontStyle: FontStyle.italic,
               ),
@@ -191,7 +186,7 @@ class CompanyDetailsSection extends StatelessWidget {
           child: Text(
             text,
             style: context.typography.heading5.copyWith(
-              color: Colors.white.withOpacity(0.8),
+              color: Colors.white.withValues(alpha: (0.8)),
               fontWeight: FontWeight.normal,
             ),
             overflow: TextOverflow.ellipsis,

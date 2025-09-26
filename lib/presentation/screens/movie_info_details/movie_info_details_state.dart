@@ -5,10 +5,10 @@ import 'package:moviealike/domain/search/models/company_details.dart';
 import 'package:moviealike/domain/search/models/search_item.dart';
 import 'package:moviealike/domain/search/models/search_filter.dart';
 
-part 'filter_details_state.g.dart';
+part 'movie_info_details_state.g.dart';
 
 @CopyWith()
-class FilterDetailsState {
+class MovieInfoDetailsState {
   final PersonDetails? personDetails;
   final CompanyDetails? companyDetails;
   final List<List<SearchItem>> pages;
@@ -20,7 +20,7 @@ class FilterDetailsState {
   final RequestError? error;
   final bool hasNextPage;
 
-  const FilterDetailsState({
+  const MovieInfoDetailsState({
     this.personDetails,
     this.companyDetails,
     this.pages = const [],

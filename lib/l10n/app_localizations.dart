@@ -666,6 +666,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'An unexpected error occurred. Please try again later.'**
   String get errorGenericMessage;
+
+  /// No description provided for @noDescriptionAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'No description available for this company.'**
+  String get noDescriptionAvailable;
+
+  /// No description provided for @websiteAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'Website available'**
+  String get websiteAvailable;
+
+  /// No description provided for @seeLess.
+  ///
+  /// In en, this message translates to:
+  /// **'See less'**
+  String get seeLess;
+
+  /// No description provided for @biography.
+  ///
+  /// In en, this message translates to:
+  /// **'Biography'**
+  String get biography;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

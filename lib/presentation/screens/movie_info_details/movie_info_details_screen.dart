@@ -8,27 +8,27 @@ import 'package:moviealike/presentation/common/extensions/string_extension.dart'
 import 'package:moviealike/presentation/common/style/app_colors.dart';
 import 'package:moviealike/presentation/constants/app_svgs.dart';
 import 'package:moviealike/presentation/constants/app_webps.dart';
-import 'package:moviealike/presentation/screens/filter_details/filter_details_bloc.dart';
-import 'package:moviealike/presentation/screens/filter_details/filter_details_state.dart';
-import 'package:moviealike/presentation/screens/filter_details/widgets/person_details_section.dart';
-import 'package:moviealike/presentation/screens/filter_details/widgets/company_details_section.dart';
+import 'package:moviealike/presentation/screens/movie_info_details/movie_info_details_bloc.dart';
+import 'package:moviealike/presentation/screens/movie_info_details/movie_info_details_state.dart';
+import 'package:moviealike/presentation/screens/movie_info_details/widgets/person_details_section.dart';
+import 'package:moviealike/presentation/screens/movie_info_details/widgets/company_details_section.dart';
 import 'package:moviealike/presentation/screens/movie_details/widgets/section_title.dart';
 import 'package:moviealike/presentation/screens/search/widgets/movie_search_card.dart';
 import 'package:moviealike/presentation/widgets/error_description_widget.dart';
 import 'package:moviealike/presentation/widgets/genres.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
-class FilterDetailsScreen extends StatefulWidget {
-  const FilterDetailsScreen({
+class MovieInfoDetailsScreen extends StatefulWidget {
+  const MovieInfoDetailsScreen({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<FilterDetailsScreen> createState() => _FilterDetailsScreenState();
+  State<MovieInfoDetailsScreen> createState() => _MovieInfoDetailsScreenState();
 }
 
-class _FilterDetailsScreenState extends State<FilterDetailsScreen> {
-  late final _bloc = BlocProvider.of<FilterDetailsBloc>(context);
+class _MovieInfoDetailsScreenState extends State<MovieInfoDetailsScreen> {
+  late final _bloc = BlocProvider.of<MovieInfoDetailsBloc>(context);
   final _scrollController = ScrollController();
 
   @override
@@ -51,7 +51,7 @@ class _FilterDetailsScreenState extends State<FilterDetailsScreen> {
         scrolledUnderElevation: 0,
         backgroundColor: AppColors.primary,
         centerTitle: true,
-        title: BlocBuilder<FilterDetailsBloc, FilterDetailsState>(
+        title: BlocBuilder<MovieInfoDetailsBloc, MovieInfoDetailsState>(
           builder: (context, state) {
             if (state.isPersonFilter && state.personDetails != null) {
               return Text(
@@ -102,9 +102,8 @@ class _FilterDetailsScreenState extends State<FilterDetailsScreen> {
           ),
         ),
       ),
-      body: BlocBuilder<FilterDetailsBloc, FilterDetailsState>(
+      body: BlocBuilder<MovieInfoDetailsBloc, MovieInfoDetailsState>(
         builder: (context, state) {
-          // Loading state for initial load
           if (state.isLoading) {
             return const Center(
               child: CircularProgressIndicator(
@@ -113,7 +112,6 @@ class _FilterDetailsScreenState extends State<FilterDetailsScreen> {
             );
           }
 
-          // Error state for initial load
           if (state.hasError) {
             return ErrorDescriptionWidget(
               assetPath: AppWebps.folder,
@@ -126,7 +124,6 @@ class _FilterDetailsScreenState extends State<FilterDetailsScreen> {
           return CustomScrollView(
             controller: _scrollController,
             slivers: [
-              // Filter Details Section
               if (state.isPersonFilter && state.personDetails != null)
                 SliverToBoxAdapter(
                   child:
@@ -137,8 +134,6 @@ class _FilterDetailsScreenState extends State<FilterDetailsScreen> {
                   child: CompanyDetailsSection(
                       companyDetails: state.companyDetails!),
                 ),
-
-              // Movies List Section
               SliverToBoxAdapter(
                 child: Padding(
                   padding: EdgeInsets.only(
@@ -150,8 +145,6 @@ class _FilterDetailsScreenState extends State<FilterDetailsScreen> {
                   child: SectionTitle(title: context.text.movies.capitalized),
                 ),
               ),
-
-              // Movies List
               if (state.hasError && state.pages.isEmpty)
                 SliverToBoxAdapter(
                   child: _buildErrorState(context),
@@ -201,7 +194,6 @@ class _FilterDetailsScreenState extends State<FilterDetailsScreen> {
                     ),
                   ),
                 ),
-
               const SliverToBoxAdapter(child: SizedBox(height: 24)),
             ],
           );
@@ -258,7 +250,7 @@ class _FilterDetailsScreenState extends State<FilterDetailsScreen> {
           Text(
             "No movies found",
             style: context.typography.heading5.copyWith(
-              color: Colors.white.withOpacity(0.6),
+              color: Colors.white.withValues(alpha: (0.6)),
             ),
             textAlign: TextAlign.center,
           ),

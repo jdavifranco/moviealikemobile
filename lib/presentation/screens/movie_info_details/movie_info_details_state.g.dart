@@ -1,40 +1,40 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'filter_details_state.dart';
+part of 'movie_info_details_state.dart';
 
 // **************************************************************************
 // CopyWithGenerator
 // **************************************************************************
 
-abstract class _$FilterDetailsStateCWProxy {
-  FilterDetailsState personDetails(PersonDetails? personDetails);
+abstract class _$MovieInfoDetailsStateCWProxy {
+  MovieInfoDetailsState personDetails(PersonDetails? personDetails);
 
-  FilterDetailsState companyDetails(CompanyDetails? companyDetails);
+  MovieInfoDetailsState companyDetails(CompanyDetails? companyDetails);
 
-  FilterDetailsState pages(List<List<SearchItem>> pages);
+  MovieInfoDetailsState pages(List<List<SearchItem>> pages);
 
-  FilterDetailsState keys(List<int> keys);
+  MovieInfoDetailsState keys(List<int> keys);
 
-  FilterDetailsState filterType(SearchFilter? filterType);
+  MovieInfoDetailsState filterType(SearchFilter? filterType);
 
-  FilterDetailsState filterId(int? filterId);
+  MovieInfoDetailsState filterId(int? filterId);
 
-  FilterDetailsState isLoading(bool isLoading);
+  MovieInfoDetailsState isLoading(bool isLoading);
 
-  FilterDetailsState hasError(bool hasError);
+  MovieInfoDetailsState hasError(bool hasError);
 
-  FilterDetailsState error(RequestError? error);
+  MovieInfoDetailsState error(RequestError? error);
 
-  FilterDetailsState hasNextPage(bool hasNextPage);
+  MovieInfoDetailsState hasNextPage(bool hasNextPage);
 
   /// Creates a new instance with the provided field values.
-  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `FilterDetailsState(...).copyWith.fieldName(value)`.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `MovieInfoDetailsState(...).copyWith.fieldName(value)`.
   ///
   /// Example:
   /// ```dart
-  /// FilterDetailsState(...).copyWith(id: 12, name: "My name")
+  /// MovieInfoDetailsState(...).copyWith(id: 12, name: "My name")
   /// ```
-  FilterDetailsState call({
+  MovieInfoDetailsState call({
     PersonDetails? personDetails,
     CompanyDetails? companyDetails,
     List<List<SearchItem>> pages,
@@ -49,56 +49,58 @@ abstract class _$FilterDetailsStateCWProxy {
 }
 
 /// Callable proxy for `copyWith` functionality.
-/// Use as `instanceOfFilterDetailsState.copyWith(...)` or call `instanceOfFilterDetailsState.copyWith.fieldName(value)` for a single field.
-class _$FilterDetailsStateCWProxyImpl implements _$FilterDetailsStateCWProxy {
-  const _$FilterDetailsStateCWProxyImpl(this._value);
+/// Use as `instanceOfMovieInfoDetailsState.copyWith(...)` or call `instanceOfMovieInfoDetailsState.copyWith.fieldName(value)` for a single field.
+class _$MovieInfoDetailsStateCWProxyImpl
+    implements _$MovieInfoDetailsStateCWProxy {
+  const _$MovieInfoDetailsStateCWProxyImpl(this._value);
 
-  final FilterDetailsState _value;
+  final MovieInfoDetailsState _value;
 
   @override
-  FilterDetailsState personDetails(PersonDetails? personDetails) =>
+  MovieInfoDetailsState personDetails(PersonDetails? personDetails) =>
       this(personDetails: personDetails);
 
   @override
-  FilterDetailsState companyDetails(CompanyDetails? companyDetails) =>
+  MovieInfoDetailsState companyDetails(CompanyDetails? companyDetails) =>
       this(companyDetails: companyDetails);
 
   @override
-  FilterDetailsState pages(List<List<SearchItem>> pages) => this(pages: pages);
+  MovieInfoDetailsState pages(List<List<SearchItem>> pages) =>
+      this(pages: pages);
 
   @override
-  FilterDetailsState keys(List<int> keys) => this(keys: keys);
+  MovieInfoDetailsState keys(List<int> keys) => this(keys: keys);
 
   @override
-  FilterDetailsState filterType(SearchFilter? filterType) =>
+  MovieInfoDetailsState filterType(SearchFilter? filterType) =>
       this(filterType: filterType);
 
   @override
-  FilterDetailsState filterId(int? filterId) => this(filterId: filterId);
+  MovieInfoDetailsState filterId(int? filterId) => this(filterId: filterId);
 
   @override
-  FilterDetailsState isLoading(bool isLoading) => this(isLoading: isLoading);
+  MovieInfoDetailsState isLoading(bool isLoading) => this(isLoading: isLoading);
 
   @override
-  FilterDetailsState hasError(bool hasError) => this(hasError: hasError);
+  MovieInfoDetailsState hasError(bool hasError) => this(hasError: hasError);
 
   @override
-  FilterDetailsState error(RequestError? error) => this(error: error);
+  MovieInfoDetailsState error(RequestError? error) => this(error: error);
 
   @override
-  FilterDetailsState hasNextPage(bool hasNextPage) =>
+  MovieInfoDetailsState hasNextPage(bool hasNextPage) =>
       this(hasNextPage: hasNextPage);
 
   @override
 
   /// Creates a new instance with the provided field values.
-  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `FilterDetailsState(...).copyWith.fieldName(value)`.
+  /// Passing `null` to a nullable field nullifies it, while `null` for a non-nullable field is ignored. To update a single field use `MovieInfoDetailsState(...).copyWith.fieldName(value)`.
   ///
   /// Example:
   /// ```dart
-  /// FilterDetailsState(...).copyWith(id: 12, name: "My name")
+  /// MovieInfoDetailsState(...).copyWith(id: 12, name: "My name")
   /// ```
-  FilterDetailsState call({
+  MovieInfoDetailsState call({
     Object? personDetails = const $CopyWithPlaceholder(),
     Object? companyDetails = const $CopyWithPlaceholder(),
     Object? pages = const $CopyWithPlaceholder(),
@@ -110,7 +112,7 @@ class _$FilterDetailsStateCWProxyImpl implements _$FilterDetailsStateCWProxy {
     Object? error = const $CopyWithPlaceholder(),
     Object? hasNextPage = const $CopyWithPlaceholder(),
   }) {
-    return FilterDetailsState(
+    return MovieInfoDetailsState(
       personDetails: personDetails == const $CopyWithPlaceholder()
           ? _value.personDetails
           // ignore: cast_nullable_to_non_nullable
@@ -155,10 +157,10 @@ class _$FilterDetailsStateCWProxyImpl implements _$FilterDetailsStateCWProxy {
   }
 }
 
-extension $FilterDetailsStateCopyWith on FilterDetailsState {
+extension $MovieInfoDetailsStateCopyWith on MovieInfoDetailsState {
   /// Returns a callable class used to build a new instance with modified fields.
-  /// Example: `instanceOfFilterDetailsState.copyWith(...)` or `instanceOfFilterDetailsState.copyWith.fieldName(...)`.
+  /// Example: `instanceOfMovieInfoDetailsState.copyWith(...)` or `instanceOfMovieInfoDetailsState.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
-  _$FilterDetailsStateCWProxy get copyWith =>
-      _$FilterDetailsStateCWProxyImpl(this);
+  _$MovieInfoDetailsStateCWProxy get copyWith =>
+      _$MovieInfoDetailsStateCWProxyImpl(this);
 }

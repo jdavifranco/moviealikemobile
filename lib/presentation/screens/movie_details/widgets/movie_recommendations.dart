@@ -37,7 +37,6 @@ class _MovieListState extends State<MovieRecommendations> {
             .getTextSize(context: context, maxLines: 1, maxWidth: movieWidth)
             .height
             .toInt();
-    print(textSize);
     super.didChangeDependencies();
   }
 

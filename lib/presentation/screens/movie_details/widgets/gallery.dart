@@ -11,12 +11,11 @@ class BackdropGallery extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 150, // Fixed height based on aspect ratio (1.77)
+      height: 150,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: backdropPaths.length,
-        separatorBuilder: (context, index) =>
-            const SizedBox(width: 8), // Space between images
+        separatorBuilder: (context, index) => const SizedBox(width: 8),
         itemBuilder: (context, index) {
           final backdropPath = backdropPaths[index];
           return _buildBackdropImage(backdropPath);
@@ -26,14 +25,14 @@ class BackdropGallery extends StatelessWidget {
   }
 
   Widget _buildBackdropImage(String? backdropPath) {
-    final double width = 266; // Width based on aspect ratio (150 * 1.77)
-    final double height = 150; // Fixed height
+    const double width = 266;
+    const double height = 150;
 
     return ClipRRect(
-      borderRadius: BorderRadius.circular(8), // Rounded corners
+      borderRadius: BorderRadius.circular(8),
       child: backdropPath != null
           ? Image.network(
-              "https://image.tmdb.org/t/p/w780$backdropPath", // Use w780 for backdrops
+              "https://image.tmdb.org/t/p/w780$backdropPath",
               width: width,
               height: height,
               fit: BoxFit.cover,
@@ -48,7 +47,7 @@ class BackdropGallery extends StatelessWidget {
     return Container(
       width: width,
       height: height,
-      color: Colors.grey[300], // Placeholder background color
+      color: Colors.grey[300],
       child: Center(
         child:
             Icon(Icons.image_not_supported, size: 40, color: Colors.grey[500]),

@@ -298,4 +298,16 @@ class AppLocalizationsPt extends AppLocalizations {
 
   @override
   String get errorGenericMessage => 'Ocorreu um erro inesperado. Por favor, tente mais tarde.';
+
+  @override
+  String get noDescriptionAvailable => 'Nenhuma descrição disponível para esta empresa.';
+
+  @override
+  String get websiteAvailable => 'Website disponível';
+
+  @override
+  String get seeLess => 'Ver menos';
+
+  @override
+  String get biography => 'Biografia';
 }
