@@ -66,7 +66,7 @@ class SearchScreenState extends State<SearchScreen> {
                                 child: ErrorDescriptionWidget(
                               assetPath: AppWebps.noResults,
                               errorMessage: context.text.errorMessage,
-                              onTryAgain: () {
+                              onTryAgain: () async {
                                 _bloc.onTryAgain();
                               },
                               requestError: state.error,

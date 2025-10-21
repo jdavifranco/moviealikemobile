@@ -76,8 +76,8 @@ class SearchBloc extends Cubit<SearchState> {
     _queryController.add(query);
   }
 
-  void onTryAgain() {
-    loadNextPage(isNewSearch: true);
+  Future<void> onTryAgain() async {
+    await loadNextPage(isNewSearch: true);
   }
 
   void changeSearchType(SearchType searchType) {
