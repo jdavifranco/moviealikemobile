@@ -92,25 +92,25 @@ class CompanyDetailsSection extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      companyDetails.name,
+                      companyDetails.name ?? "",
                       style: context.typography.heading2.copyWith(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     const SizedBox(height: 8),
-                    if (companyDetails.headquarters.isNotEmpty) ...[
+                    if (companyDetails.headquarters?.isNotEmpty == true) ...[
                       _buildInfoRow(
                         AppSvgs.movieIcon,
-                        companyDetails.headquarters,
+                        companyDetails.headquarters ?? "",
                         context,
                       ),
                       const SizedBox(height: 4),
                     ],
-                    if (companyDetails.originCountry.isNotEmpty) ...[
+                    if (companyDetails.originCountry?.isNotEmpty == true) ...[
                       _buildInfoRow(
                         AppSvgs.calendarIcon,
-                        companyDetails.originCountry,
+                        companyDetails.originCountry ?? "",
                         context,
                       ),
                       const SizedBox(height: 4),
@@ -129,7 +129,7 @@ class CompanyDetailsSection extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 24),
-          if (companyDetails.description.isNotEmpty) ...[
+          if (companyDetails.description?.isNotEmpty == true) ...[
             Text(
               context.text.overview,
               style: context.typography.heading3.copyWith(
@@ -139,7 +139,7 @@ class CompanyDetailsSection extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             Text(
-              companyDetails.description,
+              companyDetails.description ?? "",
               style: context.typography.heading5.copyWith(
                 color: Colors.white.withValues(alpha: (0.8)),
                 fontWeight: FontWeight.normal,
