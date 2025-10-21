@@ -1,0 +1,632 @@
+---
+description: implementing tests for blocs
+alwaysApply: false
+---
+# BLoC Test Guidelines for MovieAlike Project
+
+## Overview
+This document defines the standardized testing patterns for BLoC components in the MovieAlike Flutter application. These guidelines ensure consistent, maintainable, and comprehensive test coverage.
+
+## Test Structure Pattern
+
+### File Organization
+```
+test/presentation/{feature}/
+├── {feature}_bloc_test.dart      # Main BLoC test file
+└── {feature}_widget_test.dart   # Widget tests (if needed)
+
+test/mocks/
+├── fake_{entity}.dart           # Fake data generators
+└── mock_{service}.dart          # Mock implementations
+```
+
+### Test File Structure
+Every BLoC test file must follow this exact structure:
+
+```dart
+import 'package:bloc_test/bloc_test.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
+import 'package:moviealike/data/network_client/request_error.dart';
+import 'package:moviealike/domain/{feature}/models/{entity}.dart';
+import 'package:moviealike/domain/{feature}/use_cases/{use_case}.dart';
+import 'package:moviealike/presentation/screens/{feature}/{feature}_bloc.dart';
+import 'package:moviealike/presentation/screens/{feature}/{feature}_state.dart';
+import 'package:result_type/result_type.dart';
+
+import '../../mocks/fake_{entity}.dart';
+
+class Mock{UseCase} extends Mock implements {UseCase} {
+  static Mock{UseCase} dummy({List<{Entity}>? {entities}}) {
+    final mock = Mock{UseCase}();
+    when(() => mock.call(any())).thenAnswer(
+      (_) async => Success({entities} ?? const []),
+    );
+    return mock;
+  }
+}
+
+void main() {
+  registerFallbackValue(getFake{Entity}());
+  
+  {Feature}Bloc get{Feature}Bloc({
+    {UseCase}? {useCase},
+    // ... other dependencies
+  }) {
+    return {Feature}Bloc(
+      {useCase} ?? Mock{UseCase}.dummy(),
+      // ... other dependencies
+    );
+  }
+
+  group('{Feature}Bloc', () {
+    group('{method_name}', () {
+      group('when requests are successful', () {
+        final {entities} = [
+          getFake{Entity}(
+            id: 1,
+            title: 'Test Entity 1',
+            // ... other properties
+          ),
+          getFake{Entity}(
+            id: 2,
+            title: 'Test Entity 2',
+            // ... other properties
+          ),
+        ];
+        final mock{UseCase} = Mock{UseCase}.dummy({entities}: {entities});
+        final {feature}Bloc = get{Feature}Bloc({useCase}: mock{UseCase});
+
+        blocTest<{Feature}Bloc, {Feature}State>(
+          'emits correct state when use case returns success',
+          build: () => {feature}Bloc,
+          act: (bloc) => bloc.{method_name}(),
+          expect: () => [
+            // Loading state
+            isA<{Feature}State>()
+                .having((state) => state.isLoading, 'isLoading', isTrue)
+                .having((state) => state.hasError, 'hasError', isFalse)
+                .having((state) => state.error, 'error', isNull),
+            // Success state
+            isA<{Feature}State>()
+                .having((state) => state.{entities}.length, '{entities} loaded', 2)
+                .having((state) => state.isLoading, 'isLoading', isFalse)
+                .having((state) => state.hasError, 'hasError', isFalse)
+                .having((state) => state.error, 'error', isNull)
+                .having((state) => state.{entities}.first.title, 'first {entity} title', 'Test Entity 1'),
+          ],
+        );
+      });
+
+      group('when use case fails', () {
+        final mock{UseCase} = Mock{UseCase}();
+        final error = ServerError(statusCode: 500);
+
+        when(() => mock{UseCase}.call(any())).thenAnswer(
+          (_) async => Failure(error),
+        );
+
+        final {feature}Bloc = get{Feature}Bloc({useCase}: mock{UseCase});
+
+        blocTest<{Feature}Bloc, {Feature}State>(
+          'emits error state when use case fails',
+          build: () => {feature}Bloc,
+          act: (bloc) => bloc.{method_name}(),
+          expect: () => [
+            // Loading state
+            isA<{Feature}State>()
+                .having((state) => state.isLoading, 'isLoading', isTrue)
+                .having((state) => state.hasError, 'hasError', isFalse)
+                .having((state) => state.error, 'error', isNull),
+            // Error state
+            isA<{Feature}State>()
+                .having((state) => state.isLoading, 'isLoading', isFalse)
+                .having((state) => state.hasError, 'hasError', isTrue)
+                .having((state) => state.error, 'error', isA<ServerError>()),
+          ],
+        );
+      });
+    });
+  });
+}
+```
+
+## Test Organization Rules
+
+### 1. Group Structure
+- ✅ **MUST** use nested `group()` calls for logical organization
+- ✅ **MUST** have main group for BLoC class name: `group('{Feature}Bloc', () {})`
+- ✅ **MUST** have method groups: `group('{method_name}', () {})`
+- ✅ **MUST** have scenario groups: `group('when requests are successful', () {})`
+- ✅ **MUST** use descriptive group names that explain the test scenario
+
+### 2. Mock and BLoC Setup
+```dart
+group('when requests are successful', () {
+  final {entities} = [
+    getFake{Entity}(id: 1, title: 'Test Entity 1'),
+    getFake{Entity}(id: 2, title: 'Test Entity 2'),
+  ];
+  final mock{UseCase} = Mock{UseCase}.dummy({entities}: {entities});
+  final {feature}Bloc = get{Feature}Bloc({useCase}: mock{UseCase});
+});
+```
+
+**Rules:**
+- ✅ **MUST** create test data first, then mocks, then BLoC
+- ✅ **MUST** use `final` for all declarations
+- ✅ **MUST** use helper functions for BLoC creation
+- ✅ **MUST** use dummy mock methods for default behavior
+- ✅ **MUST** create new instances for each scenario group
+- ❌ **NEVER** share mocks or BLoCs between different scenario groups
+
+### 3. Test Data Setup
+```dart
+group('when requests are successful', () {
+  final {entities} = [
+    getFake{Entity}(
+      id: 1,
+      title: 'Test Entity 1',
+      overview: 'Overview 1',
+    ),
+    getFake{Entity}(
+      id: 2,
+      title: 'Test Entity 2',
+      overview: 'Overview 2',
+    ),
+  ];
+  final mock{UseCase} = Mock{UseCase}.dummy({entities}: {entities});
+  final {feature}Bloc = get{Feature}Bloc({useCase}: mock{UseCase});
+```
+
+**Rules:**
+- ✅ **MUST** define test data first at the group level
+- ✅ **MUST** use `final` for test data variables (not `late`)
+- ✅ **MUST** use `getFake{Entity}()` helper functions
+- ✅ **MUST** provide meaningful test data with specific values
+- ✅ **MUST** use dummy mock methods for default behavior
+- ✅ **MUST** use helper functions for BLoC creation
+- ❌ **NEVER** create test data inside `blocTest` build method
+- ❌ **NEVER** use hardcoded entity creation in tests
+- ❌ **NEVER** use `late` keyword for test data
+
+### 4. BLoC Test Structure
+```dart
+blocTest<{Feature}Bloc, {Feature}State>(
+  'descriptive test name',
+  build: () => {feature}Bloc,
+  act: (bloc) => bloc.{method_name}(),
+  expect: () => [
+    // State expectations
+  ],
+);
+```
+
+**Rules:**
+- ✅ **MUST** use `build: () => {feature}Bloc` (no custom build logic)
+- ✅ **MUST** use descriptive test names
+- ✅ **MUST** test both loading and final states
+- ✅ **MUST** use `isA<{Feature}State>()` for type checking
+- ✅ **MUST** use `.having()` for specific property assertions
+- ❌ **NEVER** put mock setup in `build` method
+
+## State Testing Patterns
+
+### 1. Loading State Pattern
+```dart
+isA<{Feature}State>()
+    .having((state) => state.isLoading, 'isLoading', isTrue)
+    .having((state) => state.hasError, 'hasError', isFalse)
+    .having((state) => state.error, 'error', isNull),
+```
+
+### 2. Success State Pattern
+```dart
+isA<{Feature}State>()
+    .having((state) => state.{entities}.length, '{entities} loaded', expectedCount)
+    .having((state) => state.isLoading, 'isLoading', isFalse)
+    .having((state) => state.hasError, 'hasError', isFalse)
+    .having((state) => state.error, 'error', isNull)
+    .having((state) => state.{entities}.first.title, 'first {entity} title', 'Expected Title'),
+```
+
+### 3. Error State Pattern
+```dart
+isA<{Feature}State>()
+    .having((state) => state.isLoading, 'isLoading', isFalse)
+    .having((state) => state.hasError, 'hasError', isTrue)
+    .having((state) => state.error, 'error', isA<{ErrorType}>()),
+```
+
+## Mock Setup Rules
+
+### 1. Mock Class Definition
+```dart
+class Mock{UseCase} extends Mock implements {UseCase} {
+  static Mock{UseCase} dummy({List<{Entity}>? {entities}}) {
+    final mock = Mock{UseCase}();
+    when(() => mock.call(any())).thenAnswer(
+      (_) async => Success({entities} ?? const []),
+    );
+    return mock;
+  }
+}
+```
+
+**Rules:**
+- ✅ **MUST** use `Mock` from mocktail package
+- ✅ **MUST** implement the actual use case interface
+- ✅ **MUST** place mock classes at the top of the file
+- ✅ **MUST** use descriptive names: `GetPopularMoviesMock`
+- ✅ **MUST** include static `dummy()` method for default behavior
+- ✅ **MUST** use `any()` matcher for parameters
+- ✅ **MUST** provide default empty data for dummy methods
+
+### 2. Mock Configuration
+```dart
+// For success scenarios - use dummy method
+final mock{UseCase} = Mock{UseCase}.dummy({entities}: {entities});
+
+// For error scenarios - override with when()
+final mock{UseCase} = Mock{UseCase}();
+when(() => mock{UseCase}.call(any())).thenAnswer(
+  (_) async => Failure(error),
+);
+```
+
+**Rules:**
+- ✅ **MUST** use dummy methods for success scenarios
+- ✅ **MUST** use `when().thenAnswer()` for error scenarios
+- ✅ **MUST** wrap return values in `Success()` or `Failure()`
+- ✅ **MUST** use meaningful test data
+- ✅ **MUST** setup mocks at the group level
+- ❌ **NEVER** setup mocks inside `blocTest` build method
+
+## Helper Functions and Fallback Values
+
+### 1. Fallback Value Registration
+```dart
+void main() {
+  registerFallbackValue(getFake{Entity}());
+  registerFallbackValue(SearchType.movie);
+  registerFallbackValue(SearchFilter.genres);
+  // ... other fallback values
+}
+```
+
+**Rules:**
+- ✅ **MUST** register fallback values for all complex types used with `any()` matcher
+- ✅ **MUST** use fake data generators for model fallback values
+- ✅ **MUST** register enum values directly
+- ✅ **MUST** place registration at the top of `main()` function
+- ❌ **NEVER** forget to register fallback values for custom types
+
+### 2. BLoC Helper Functions
+```dart
+{Feature}Bloc get{Feature}Bloc({
+  {UseCase}? {useCase},
+  // ... other dependencies
+}) {
+  return {Feature}Bloc(
+    {useCase} ?? Mock{UseCase}.dummy(),
+    // ... other dependencies with defaults
+  );
+}
+```
+
+**Rules:**
+- ✅ **MUST** create helper functions for BLoC instantiation
+- ✅ **MUST** provide default mock instances for all dependencies
+- ✅ **MUST** use dummy methods for default behavior
+- ✅ **MUST** make all parameters optional
+- ✅ **MUST** use descriptive function names: `getMovieDetailsBloc`
+- ❌ **NEVER** create BLoCs directly in tests
+- ❌ **NEVER** forget to provide defaults for all dependencies
+
+## Test Scenarios Coverage
+
+### 1. Success Scenarios
+- ✅ **MUST** test successful data loading
+- ✅ **MUST** verify correct state transitions (loading → success)
+- ✅ **MUST** verify data integrity in final state
+- ✅ **MUST** test with multiple data items
+
+### 2. Error Scenarios
+- ✅ **MUST** test single use case failure
+- ✅ **MUST** test multiple use case failures
+- ✅ **MUST** test different error types (ServerError, ConnectionError, etc.)
+- ✅ **MUST** verify error state properties
+
+### 3. Edge Cases
+- ✅ **MUST** test empty data scenarios
+- ✅ **MUST** test null/undefined scenarios
+- ✅ **MUST** test timeout scenarios (if applicable)
+
+## Fake Data Rules
+
+### 1. Fake Data Generator Pattern
+```dart
+// File: test/mocks/fake_{entity}.dart
+import 'dart:math';
+import 'package:faker/faker.dart';
+import 'package:moviealike/domain/{feature}/models/{entity}.dart';
+
+{Entity} getFake{Entity}({
+  int? id,
+  String? title,
+  String? overview,
+  // ... other properties
+}) =>
+    {Entity}(
+      id: id ?? faker.randomGenerator.integer(1000000),
+      title: title ?? faker.lorem.sentence(),
+      overview: overview ?? faker.lorem.sentence(),
+      // ... other properties with faker defaults
+    );
+```
+
+**Rules:**
+- ✅ **MUST** use `faker` package for random data generation
+- ✅ **MUST** provide optional parameters for specific test data
+- ✅ **MUST** use meaningful default values
+- ✅ **MUST** follow naming convention: `getFake{Entity}`
+- ✅ **MUST** place in `test/mocks/` directory
+- ❌ **NEVER** hardcode all values in fake generators
+
+### 2. Fake Data Usage in Tests
+```dart
+final {entities} = [
+  getFake{Entity}(
+    id: 1,
+    title: 'Specific Test Title',
+    overview: 'Specific Test Overview',
+  ),
+  getFake{Entity}(
+    id: 2,
+    title: 'Another Test Title',
+    overview: 'Another Test Overview',
+  ),
+];
+```
+
+**Rules:**
+- ✅ **MUST** override specific properties for test scenarios
+- ✅ **MUST** use meaningful test values
+- ✅ **MUST** create multiple items for list testing
+- ✅ **MUST** use consistent naming patterns
+
+## Error Testing Patterns
+
+### 1. Error Type Testing
+```dart
+// Server errors
+final error = ServerError(statusCode: 500);
+expect: () => [
+  // ... loading state
+  isA<{Feature}State>()
+      .having((state) => state.error, 'error', isA<ServerError>()),
+];
+
+// Connection errors
+final error = ConnectionError();
+expect: () => [
+  // ... loading state
+  isA<{Feature}State>()
+      .having((state) => state.error, 'error', isA<ConnectionError>()),
+];
+```
+
+### 2. Multiple Error Scenarios
+```dart
+blocTest<{Feature}Bloc, {Feature}State>(
+  'emits error state when both use cases fail',
+  build: () {
+    final firstError = ServerError(statusCode: 500);
+    final secondError = ConnectionError();
+
+    when(() => mockFirstUseCase()).thenAnswer(
+      (_) async => Failure(firstError),
+    );
+    when(() => mockSecondUseCase()).thenAnswer(
+      (_) async => Failure(secondError),
+    );
+
+    return {feature}Bloc;
+  },
+  // ... rest of test
+);
+```
+
+## Test Naming Conventions
+
+### 1. Group Names
+- Main BLoC: `group('{Feature}Bloc', () {})`
+- Methods: `group('{method_name}', () {})`
+- Scenarios: `group('when requests are successful', () {})`
+- Error scenarios: `group('when requests fail', () {})`
+
+### 2. Test Names
+- Success: `'emits correct state when use case returns success'`
+- Error: `'emits error state when use case fails'`
+- Specific: `'emits error state when getPopularMovies fails'`
+- Multiple: `'emits error state when both use cases fail'`
+
+### 3. Property Names in Assertions
+- Use descriptive names: `'isLoading'`, `'hasError'`, `'error'`
+- Use data-specific names: `'populaMovies loaded'`, `'upcomingMovies loaded'`
+- Use specific item names: `'first popular movie title'`
+
+## File Organization Rules
+
+### 1. Import Order
+```dart
+// 1. Flutter test framework
+import 'package:bloc_test/bloc_test.dart';
+import 'package:flutter_test/flutter_test.dart';
+
+// 2. Mocking framework
+import 'package:mocktail/mocktail.dart';
+
+// 3. Project imports (domain, data, presentation)
+import 'package:moviealike/data/network_client/request_error.dart';
+import 'package:moviealike/domain/{feature}/models/{entity}.dart';
+import 'package:moviealike/domain/{feature}/use_cases/{use_case}.dart';
+import 'package:moviealike/presentation/screens/{feature}/{feature}_bloc.dart';
+import 'package:moviealike/presentation/screens/{feature}/{feature}_state.dart';
+
+// 4. Result type
+import 'package:result_type/result_type.dart';
+
+// 5. Test utilities (relative imports)
+import '../../mocks/fake_{entity}.dart';
+```
+
+### 2. Directory Structure
+```
+test/
+├── mocks/
+│   ├── fake_movie.dart
+│   ├── fake_cast_member.dart
+│   └── fake_user.dart
+└── presentation/
+    ├── home/
+    │   ├── home_bloc_test.dart
+    │   └── home_screen_test.dart
+    ├── movie_details/
+    │   ├── movie_details_bloc_test.dart
+    │   └── movie_details_scree_test.dart
+    └── watchlist/
+        ├── watchlist_bloc_test.dart
+        └── watchlist_screen_test.dart
+```
+
+## Quality Assurance Rules
+
+### 1. Test Coverage Requirements
+- ✅ **MUST** test all public BLoC methods
+- ✅ **MUST** test success and error scenarios
+- ✅ **MUST** test loading states
+- ✅ **MUST** test state transitions
+- ✅ **MUST** test data integrity
+
+### 2. Code Quality Rules
+- ✅ **MUST** use descriptive test names
+- ✅ **MUST** group related tests logically
+- ✅ **MUST** use consistent formatting
+- ✅ **MUST** follow naming conventions
+- ✅ **MUST** include proper imports
+
+### 3. Performance Rules
+- ✅ **MUST** close BLoCs in tearDown
+- ✅ **MUST** use efficient mock setup
+- ✅ **MUST** avoid unnecessary test data creation
+- ✅ **MUST** use const constructors where possible
+
+## Common Patterns
+
+### 1. Multiple Use Cases Pattern
+```dart
+group('init', () {
+  group('when requests are successful', () {
+    final popularMovies = [
+      getFakeMovie(id: 1, title: 'Popular 1'),
+    ];
+    final upcomingMovies = [
+      getFakeMovie(id: 2, title: 'Upcoming 1'),
+    ];
+    
+    final mockGetPopularMovies = MockGetPopularMovies.dummy(movies: popularMovies);
+    final mockGetUpcomingMovies = MockGetUpcomingMovies.dummy(movies: upcomingMovies);
+    final homeBloc = getHomeBloc(
+      getPopularMovies: mockGetPopularMovies,
+      getUpcomingMovies: mockGetUpcomingMovies,
+    );
+
+    blocTest<HomeBloc, HomeState>(
+      'emits correct state when both use cases return success',
+      build: () => homeBloc,
+      act: (bloc) => bloc.init(),
+      expect: () => [
+        isA<HomeState>()
+            .having((state) => state.isLoading, 'isLoading', isTrue),
+        isA<HomeState>()
+            .having((state) => state.populaMovies.length, 'populaMovies loaded', 1)
+            .having((state) => state.upcomingMovies.length, 'upcomingMovies loaded', 1)
+            .having((state) => state.isLoading, 'isLoading', isFalse),
+      ],
+    );
+  });
+});
+```
+
+### 2. Error Priority Pattern
+```dart
+group('when both use cases fail', () {
+  final mockGetPopularMovies = MockGetPopularMovies();
+  final mockGetUpcomingMovies = MockGetUpcomingMovies();
+  final popularMoviesError = ServerError(statusCode: 500);
+  final upcomingMoviesError = ConnectionError();
+
+  when(() => mockGetPopularMovies.call()).thenAnswer(
+    (_) async => Failure(popularMoviesError),
+  );
+  when(() => mockGetUpcomingMovies.call()).thenAnswer(
+    (_) async => Failure(upcomingMoviesError),
+  );
+
+  final homeBloc = getHomeBloc(
+    getPopularMovies: mockGetPopularMovies,
+    getUpcomingMovies: mockGetUpcomingMovies,
+  );
+
+  blocTest<HomeBloc, HomeState>(
+    'emits error state when both use cases fail',
+    build: () => homeBloc,
+    act: (bloc) => bloc.init(),
+    expect: () => [
+      // Loading state
+      isA<HomeState>().having((state) => state.isLoading, 'isLoading', isTrue),
+      // Error state (should use first error as it's checked first)
+      isA<HomeState>()
+          .having((state) => state.error, 'error', isA<ServerError>()),
+    ],
+  );
+});
+```
+
+## Enforcement Guidelines
+
+### 1. Code Review Checklist
+- [ ] Test follows group structure pattern
+- [ ] Creates test data first, then mocks, then BLoCs
+- [ ] Uses `final` for all declarations (no `late` keyword)
+- [ ] Uses helper functions for BLoC creation
+- [ ] Uses dummy mock methods for success scenarios
+- [ ] Uses `when().thenAnswer()` for error scenarios
+- [ ] Registers fallback values for complex types
+- [ ] Tests both success and error scenarios
+- [ ] Uses fake data generators
+- [ ] Follows naming conventions
+- [ ] Includes proper state assertions
+
+### 2. Linting Rules
+- Enable Flutter test analyzer rules
+- Check for unused imports
+- Validate test structure
+- Ensure proper mock usage
+
+### 3. Test Execution
+```bash
+# Run specific BLoC tests
+flutter test test/presentation/home/home_bloc_test.dart
+
+# Run all BLoC tests
+flutter test test/presentation/
+
+# Run with coverage
+flutter test --coverage
+```
+
+---
+
+These guidelines ensure consistent, maintainable, and comprehensive BLoC testing throughout the MovieAlike project. Follow these patterns for all new BLoC tests and refactor existing tests to match these standards.

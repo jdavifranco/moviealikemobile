@@ -56,7 +56,7 @@ class _MovieInfoDetailsScreenState extends State<MovieInfoDetailsScreen> {
           builder: (context, state) {
             if (state.isPersonFilter && state.personDetails != null) {
               return Text(
-                state.personDetails!.name,
+                state.personDetails!.name ?? "",
                 style: context.typography.heading4.copyWith(
                   color: Colors.white,
                   fontWeight: FontWeight.w600,
@@ -64,7 +64,7 @@ class _MovieInfoDetailsScreenState extends State<MovieInfoDetailsScreen> {
               );
             } else if (state.isCompanyFilter && state.companyDetails != null) {
               return Text(
-                state.companyDetails!.name,
+                state.companyDetails!.name ?? "",
                 style: context.typography.heading4.copyWith(
                   color: Colors.white,
                   fontWeight: FontWeight.w600,
@@ -269,7 +269,7 @@ class _MovieInfoDetailsScreenState extends State<MovieInfoDetailsScreen> {
   }
 
   String _getPersonSectionTitle(BuildContext context, PersonDetails? person) {
-    if (person?.knownForDepartment.equalsIgnoreCase("Directing") == true) {
+    if (person?.knownForDepartment?.equalsIgnoreCase("Directing") == true) {
       return context.text
           .moviesDirectedBy(person?.name ?? context.text.thisPerson);
     } else {

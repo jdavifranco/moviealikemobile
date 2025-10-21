@@ -48,14 +48,11 @@ class MovieDetailsBloc extends Cubit<MovieDetailsState> {
     emit(state.copyWith(isLoading: true, hasError: false, error: null));
 
     final movieDetailsResult = await _getMovieDetails(selectedMovieId);
+    favoriteSubscription =
+        _isMovieInWatchList(selectedMovieId).listen(_updateIsWatchListMovie);
 
     movieDetailsResult.when(
       success: (selectedMovieDetails) async {
-        favoriteSubscription =
-            _isMovieInWatchList(selectedMovieDetails.id).listen((isIn) {
-          emit(state.copyWith(isFavorite: isIn));
-        });
-
         emit(state.copyWith(
           selectedMovieDetails: selectedMovieDetails,
           isLoading: false,
@@ -74,6 +71,12 @@ class MovieDetailsBloc extends Cubit<MovieDetailsState> {
     );
   }
 
+  void _updateIsWatchListMovie(bool isInWatchList) {
+    if (isInWatchList != state.isFavorite) {
+      emit(state.copyWith(isFavorite: isInWatchList));
+    }
+  }
+
   Future<void> _loadGenreRecommendations(
       MovieDetails selectedMovieDetails) async {
     final genreRecommendations = (await _getMoviesWithGenres(
@@ -90,10 +93,12 @@ class MovieDetailsBloc extends Cubit<MovieDetailsState> {
             !element.similarity.isNaN &&
             element.similarity > 0)
         .toList();
-    emit(state.copyWith(
-      isLoading: false,
-      modelRecommendations: validRecommendations,
-    ));
+    if (validRecommendations.isNotEmpty) {
+      emit(state.copyWith(
+        isLoading: false,
+        modelRecommendations: validRecommendations,
+      ));
+    }
   }
 
   Future<void> _loadAdditionalData(MovieDetails selectedMovieDetails) async {
@@ -116,13 +121,16 @@ class MovieDetailsBloc extends Cubit<MovieDetailsState> {
     final youtubeVideos = youtubeVideosResult.unwrapOr(<MovieVideo>[]);
 
     final castMembers = castMembersResult.unwrapOr(<CastMember>[]);
-
-    emit(state.copyWith(
-      isLoading: false,
-      castMembers: castMembers,
-      videos: youtubeVideos,
-      youtubeVideos: youtubeVideosByTitle,
-    ));
+    if (castMembers.isNotEmpty ||
+        youtubeVideos.isNotEmpty ||
+        youtubeVideosByTitle.isNotEmpty) {
+      emit(state.copyWith(
+        isLoading: false,
+        castMembers: castMembers,
+        videos: youtubeVideos,
+        youtubeVideos: youtubeVideosByTitle,
+      ));
+    }
   }
 
   Future<void> addToWatchList() async {
