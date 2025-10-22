@@ -47,8 +47,8 @@ jobs:
          part of 'env.dart';
          
          class _Env {
-           static const String tmdbBearerToken = 'ci-stub-token';
-           static const String youtubeApiKey = 'ci-stub-key';
+           static const tmdbBearerToken = 'ci-stub-token';
+           static const youtubeApiKey = 'ci-stub-key';
          }
          EOF
     
