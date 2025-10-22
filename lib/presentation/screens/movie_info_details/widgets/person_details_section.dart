@@ -79,14 +79,15 @@ class _PersonDetailsSectionState extends State<PersonDetailsSection> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      widget.personDetails.name ?? "",
+                      widget.personDetails.name,
                       style: context.typography.heading2.copyWith(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     const SizedBox(height: 8),
-                    if (widget.personDetails.knownForDepartment?.isNotEmpty == true) ...[
+                    if (widget.personDetails.knownForDepartment?.isNotEmpty ==
+                        true) ...[
                       _buildInfoRow(
                         AppSvgs.personIcon,
                         widget.personDetails.knownForDepartment!,
@@ -110,7 +111,8 @@ class _PersonDetailsSectionState extends State<PersonDetailsSection> {
                       ),
                       const SizedBox(height: 4),
                     ],
-                    if (widget.personDetails.popularity != null && widget.personDetails.popularity! > 0) ...[
+                    if (widget.personDetails.popularity != null &&
+                        widget.personDetails.popularity! > 0) ...[
                       Row(
                         children: [
                           const Icon(
@@ -120,7 +122,9 @@ class _PersonDetailsSectionState extends State<PersonDetailsSection> {
                           ),
                           const SizedBox(width: 4),
                           Text(
-                            widget.personDetails.popularity?.toStringAsFixed(1) ?? "",
+                            widget.personDetails.popularity
+                                    ?.toStringAsFixed(1) ??
+                                "",
                             style: context.typography.heading5.copyWith(
                               color: AppColors.orange,
                               fontWeight: FontWeight.w600,
@@ -198,7 +202,9 @@ class _PersonDetailsSectionState extends State<PersonDetailsSection> {
       textDirection: TextDirection.ltr,
     );
 
-    textPainter.layout(maxWidth: MediaQuery.of(context).size.width - (context.dimensionScheme.screenMargin * 2));
+    textPainter.layout(
+        maxWidth: MediaQuery.of(context).size.width -
+            (context.dimensionScheme.screenMargin * 2));
     final isLongText = textPainter.didExceedMaxLines;
 
     return Column(

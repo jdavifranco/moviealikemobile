@@ -56,7 +56,7 @@ class _MovieInfoDetailsScreenState extends State<MovieInfoDetailsScreen> {
           builder: (context, state) {
             if (state.isPersonFilter && state.personDetails != null) {
               return Text(
-                state.personDetails!.name ?? "",
+                state.personDetails!.name,
                 style: context.typography.heading4.copyWith(
                   color: Colors.white,
                   fontWeight: FontWeight.w600,
@@ -64,7 +64,7 @@ class _MovieInfoDetailsScreenState extends State<MovieInfoDetailsScreen> {
               );
             } else if (state.isCompanyFilter && state.companyDetails != null) {
               return Text(
-                state.companyDetails!.name ?? "",
+                state.companyDetails!.name,
                 style: context.typography.heading4.copyWith(
                   color: Colors.white,
                   fontWeight: FontWeight.w600,
@@ -127,11 +127,13 @@ class _MovieInfoDetailsScreenState extends State<MovieInfoDetailsScreen> {
             slivers: [
               if (state.isPersonFilter && state.personDetails != null)
                 SliverToBoxAdapter(
-                  child: PersonDetailsSection(personDetails: state.personDetails!),
+                  child:
+                      PersonDetailsSection(personDetails: state.personDetails!),
                 )
               else if (state.isCompanyFilter && state.companyDetails != null)
                 SliverToBoxAdapter(
-                  child: CompanyDetailsSection(companyDetails: state.companyDetails!),
+                  child: CompanyDetailsSection(
+                      companyDetails: state.companyDetails!),
                 ),
               SliverToBoxAdapter(
                 child: Padding(
@@ -145,7 +147,9 @@ class _MovieInfoDetailsScreenState extends State<MovieInfoDetailsScreen> {
                     title: state.isPersonFilter
                         ? _getPersonSectionTitle(context, state.personDetails)
                         : state.isCompanyFilter
-                            ? context.text.moviesProducedBy(state.companyDetails?.name ?? context.text.thisCompany)
+                            ? context.text.moviesProducedBy(
+                                state.companyDetails?.name ??
+                                    context.text.thisCompany)
                             : context.text.movies.capitalized,
                   ),
                 ),
@@ -177,14 +181,19 @@ class _MovieInfoDetailsScreenState extends State<MovieInfoDetailsScreen> {
                           padding: const EdgeInsets.only(bottom: 12),
                           child: MovieSearchCard(
                             onTap: () {
-                              GoRouter.of(context).push('/movie_details/${searchItem.id}');
+                              GoRouter.of(context)
+                                  .push('/movie_details/${searchItem.id}');
                             },
                             title: searchItem.title ?? searchItem.name ?? "",
                             genre: searchItem.genreIds?.isNotEmpty == true
-                                ? searchItem.genreIds!.map((e) => Genre.getById(e)?.name ?? "").toList().first
+                                ? searchItem.genreIds!
+                                    .map((e) => Genre.getById(e)?.name ?? "")
+                                    .toList()
+                                    .first
                                 : "",
                             rating: searchItem.voteAverage.toString(),
-                            imageUrl: "https://image.tmdb.org/t/p/w780/${searchItem.posterPath}",
+                            imageUrl:
+                                "https://image.tmdb.org/t/p/w780/${searchItem.posterPath}",
                             year: searchItem.firstAirDate ?? "",
                             duration: searchItem.mediaType ?? "",
                             type: searchItem.mediaType ?? "",
@@ -261,9 +270,11 @@ class _MovieInfoDetailsScreenState extends State<MovieInfoDetailsScreen> {
 
   String _getPersonSectionTitle(BuildContext context, PersonDetails? person) {
     if (person?.knownForDepartment?.equalsIgnoreCase("Directing") == true) {
-      return context.text.moviesDirectedBy(person?.name ?? context.text.thisPerson);
+      return context.text
+          .moviesDirectedBy(person?.name ?? context.text.thisPerson);
     } else {
-      return context.text.moviesWithPerson(person?.name ?? context.text.thisPerson);
+      return context.text
+          .moviesWithPerson(person?.name ?? context.text.thisPerson);
     }
   }
 }

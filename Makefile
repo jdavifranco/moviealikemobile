@@ -8,3 +8,6 @@ intl_gen:
 format:
 	dart format --line-length=120 lib test
 
+analyze:
+	flutter analyze --no-pub .
+
