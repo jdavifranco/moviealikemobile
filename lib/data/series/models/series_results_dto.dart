@@ -8,6 +8,5 @@ class SeriesResultsDto {
 
   SeriesResultsDto({required this.results});
 
-  factory SeriesResultsDto.fromJson(Map<String, dynamic> json) =>
-      _$SeriesResultsDtoFromJson(json);
+  factory SeriesResultsDto.fromJson(Map<String, dynamic> json) => _$SeriesResultsDtoFromJson(json);
 }

@@ -28,8 +28,7 @@ class _MovieListState extends State<MovieList> {
     movieHeight = movieWidth / 0.66;
     textSize = (context.typography.heading5
                 .copyWith(fontWeight: FontWeight.w500)
-                .getTextSize(
-                    context: context, maxLines: 1, maxWidth: movieWidth)
+                .getTextSize(context: context, maxLines: 1, maxWidth: movieWidth)
                 .height +
             context.typography.heading7
                 .copyWith(fontWeight: FontWeight.normal)
@@ -57,9 +56,8 @@ class _MovieListState extends State<MovieList> {
                 itemBuilder: (context, index) {
                   final movie = widget.items[index];
                   return Padding(
-                    padding: EdgeInsets.only(
-                        left: index == 0 ? 12 : 6,
-                        right: index == widget.items.length - 1 ? 12 : 6),
+                    padding:
+                        EdgeInsets.only(left: index == 0 ? 12 : 6, right: index == widget.items.length - 1 ? 12 : 6),
                     child: MovieCard(
                       movieWidth: movieWidth,
                       movieHeight: movieHeight,
@@ -67,13 +65,9 @@ class _MovieListState extends State<MovieList> {
                         GoRouter.of(context).push('/movie_details/${movie.id}');
                       },
                       title: movie.title ?? "",
-                      genre: movie.genreIds
-                              ?.map((e) => Genre.getById(e)?.name ?? "")
-                              .join(", ") ??
-                          "",
+                      genre: movie.genreIds?.map((e) => Genre.getById(e)?.name ?? "").join(", ") ?? "",
                       rating: movie.voteAverage ?? 5.0,
-                      imageUrl:
-                          "https://image.tmdb.org/t/p/w342/${movie.posterPath}",
+                      imageUrl: "https://image.tmdb.org/t/p/w342/${movie.posterPath}",
                     ),
                   );
                 }),

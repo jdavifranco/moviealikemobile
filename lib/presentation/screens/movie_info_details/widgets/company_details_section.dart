@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:moviealike/domain/search/models/company_details.dart';
 import 'package:moviealike/presentation/common/extensions/build_context.dart';
 import 'package:moviealike/presentation/common/remote_image/remote_image.dart';
 import 'package:moviealike/presentation/common/style/app_colors.dart';
 import 'package:moviealike/presentation/constants/app_svgs.dart';
-import 'package:flutter_svg/svg.dart';
 
 class CompanyDetailsSection extends StatelessWidget {
   final CompanyDetails companyDetails;
@@ -39,8 +39,7 @@ class CompanyDetailsSection extends StatelessWidget {
                     ? ClipRRect(
                         borderRadius: BorderRadius.circular(12),
                         child: RemoteImage(
-                          imageUrl:
-                              "https://image.tmdb.org/t/p/w500/${companyDetails.logoPath}",
+                          imageUrl: "https://image.tmdb.org/t/p/w500/${companyDetails.logoPath}",
                           width: 120,
                           height: 120,
                           fit: BoxFit.contain,
@@ -48,8 +47,7 @@ class CompanyDetailsSection extends StatelessWidget {
                             width: 120,
                             height: 120,
                             decoration: BoxDecoration(
-                              color:
-                                  AppColors.secondary.withValues(alpha: (0.1)),
+                              color: AppColors.secondary.withValues(alpha: (0.1)),
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: const Center(
@@ -64,8 +62,7 @@ class CompanyDetailsSection extends StatelessWidget {
                             width: 120,
                             height: 120,
                             decoration: BoxDecoration(
-                              color:
-                                  AppColors.secondary.withValues(alpha: (0.1)),
+                              color: AppColors.secondary.withValues(alpha: (0.1)),
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: const Center(
@@ -115,8 +112,7 @@ class CompanyDetailsSection extends StatelessWidget {
                       ),
                       const SizedBox(height: 4),
                     ],
-                    if (companyDetails.homepage != null &&
-                        companyDetails.homepage!.isNotEmpty) ...[
+                    if (companyDetails.homepage != null && companyDetails.homepage!.isNotEmpty) ...[
                       _buildInfoRow(
                         AppSvgs.personIcon,
                         context.text.websiteAvailable,

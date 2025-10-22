@@ -32,6 +32,5 @@ class SeasonDto {
     required this.voteAverage,
   });
 
-  factory SeasonDto.fromJson(Map<String, dynamic> json) =>
-      _$SeasonDtoFromJson(json);
+  factory SeasonDto.fromJson(Map<String, dynamic> json) => _$SeasonDtoFromJson(json);
 }

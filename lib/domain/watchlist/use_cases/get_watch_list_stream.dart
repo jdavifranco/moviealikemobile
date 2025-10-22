@@ -11,6 +11,5 @@ class GetWatchListStream {
     this._watchListRepository,
   );
 
-  Stream<List<WatchlistMovie>> call() =>
-      _watchListRepository.getAllMoviesStream();
+  Stream<List<WatchlistMovie>> call() => _watchListRepository.getAllMoviesStream();
 }

@@ -127,8 +127,7 @@ class MovieInfoDetailsBloc extends Cubit<MovieInfoDetailsState> {
     _loadMovies(isNewSearch: true);
   }
 
-  List<List<SearchItem>> _getNewPages(
-      bool isNewSearch, List<SearchItem> movies) {
+  List<List<SearchItem>> _getNewPages(bool isNewSearch, List<SearchItem> movies) {
     if (isNewSearch) return [movies];
     return [...state.pages, movies];
   }

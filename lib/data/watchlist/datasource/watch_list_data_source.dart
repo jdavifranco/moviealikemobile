@@ -26,8 +26,7 @@ class WatchlistDataSource {
           );
       return Success(null);
     } catch (e) {
-      return Failure(
-          ServerError(statusCode: 500, data: {'message': e.toString()}));
+      return Failure(ServerError(statusCode: 500, data: {'message': e.toString()}));
     }
   }
 
@@ -36,8 +35,7 @@ class WatchlistDataSource {
       final result = await _database.watchlistMoviesTable.select().get();
       return Success(result);
     } catch (e) {
-      return Failure(
-          ServerError(statusCode: 500, data: {'message': e.toString()}));
+      return Failure(ServerError(statusCode: 500, data: {'message': e.toString()}));
     }
   }
 
@@ -46,8 +44,7 @@ class WatchlistDataSource {
   }
 
   Future<WatchlistMovieDto?> getMovieById(int movieId) async {
-    final query = _database.select(_database.watchlistMoviesTable)
-      ..where((tbl) => tbl.movieId.equals(movieId));
+    final query = _database.select(_database.watchlistMoviesTable)..where((tbl) => tbl.movieId.equals(movieId));
     final result = await query.getSingleOrNull();
     return result != null
         ? WatchlistMovieDto(
@@ -63,9 +60,7 @@ class WatchlistDataSource {
 
   Future<void> updateMovie(WatchlistMovieDto movie) async {
     await _database.transaction(() async {
-      await _database
-          .into(_database.watchlistMoviesTable)
-          .insertOnConflictUpdate(
+      await _database.into(_database.watchlistMoviesTable).insertOnConflictUpdate(
             WatchlistMoviesTableCompanion.insert(
                 movieId: movie.movieId,
                 title: movie.title,
@@ -79,9 +74,7 @@ class WatchlistDataSource {
 
   Future<void> deleteMovie(int movieId) async {
     return _database.transaction(() async {
-      await (_database.delete(_database.watchlistMoviesTable)
-            ..where((tbl) => tbl.movieId.equals(movieId)))
-          .go();
+      await (_database.delete(_database.watchlistMoviesTable)..where((tbl) => tbl.movieId.equals(movieId))).go();
     });
   }
 

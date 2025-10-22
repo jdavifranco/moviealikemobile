@@ -25,6 +25,5 @@ class YoutubeSnippetDto {
     this.publishTime,
   });
 
-  factory YoutubeSnippetDto.fromJson(Map<String, dynamic> json) =>
-      _$YoutubeSnippetDtoFromJson(json);
+  factory YoutubeSnippetDto.fromJson(Map<String, dynamic> json) => _$YoutubeSnippetDtoFromJson(json);
 }

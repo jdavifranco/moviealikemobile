@@ -14,8 +14,7 @@ class ImagesDto {
   final List<ImageDto>? posters;
   ImagesDto({this.logos, this.backdrops, this.posters});
 
-  factory ImagesDto.fromJson(Map<String, dynamic> json) =>
-      _$ImagesDtoFromJson(json);
+  factory ImagesDto.fromJson(Map<String, dynamic> json) => _$ImagesDtoFromJson(json);
 
   MovieImages toDomain() => MovieImages(
         logos: logos?.map((e) => e.toDomain()).toList(),

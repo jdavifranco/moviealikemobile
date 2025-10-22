@@ -6,8 +6,7 @@ part of 'cast_member_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-CastMemberDto _$CastMemberDtoFromJson(Map<String, dynamic> json) =>
-    CastMemberDto(
+CastMemberDto _$CastMemberDtoFromJson(Map<String, dynamic> json) => CastMemberDto(
       adult: json['adult'] as bool? ?? false,
       gender: (json['gender'] as num?)?.toInt() ?? 0,
       id: (json['id'] as num?)?.toInt() ?? 0,

@@ -21,9 +21,7 @@ class _WatchProvidersListState extends State<WatchProvidersList> {
 
   @override
   void didChangeDependencies() {
-    textSize = context.typography.body2
-        .getTextSize(context: context, maxLines: 1, maxWidth: 70)
-        .height;
+    textSize = context.typography.body2.getTextSize(context: context, maxLines: 1, maxWidth: 70).height;
     super.didChangeDependencies();
   }
 
@@ -53,8 +51,7 @@ class _WatchProvidersListState extends State<WatchProvidersList> {
             itemBuilder: (context, index) {
               final provider = widget.watchProviders[index];
               return SizedBox(
-                width:
-                    context.dimensionScheme.movierProviderSize + textSize + 4,
+                width: context.dimensionScheme.movierProviderSize + textSize + 4,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -63,15 +60,12 @@ class _WatchProvidersListState extends State<WatchProvidersList> {
                       child: ContainerWithRippleEffect(
                         onTap: () async {
                           final url = provider.link;
-                          if (url != null &&
-                              await canLaunchUrl(Uri.parse(url))) {
-                            await launchUrl(Uri.parse(url),
-                                mode: LaunchMode.externalApplication);
+                          if (url != null && await canLaunchUrl(Uri.parse(url))) {
+                            await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
                           }
                         },
                         child: RemoteImage(
-                          imageUrl:
-                              "https://image.tmdb.org/t/p/original/${provider.logoPath}",
+                          imageUrl: "https://image.tmdb.org/t/p/original/${provider.logoPath}",
                           width: context.dimensionScheme.movierProviderSize,
                           height: context.dimensionScheme.movierProviderSize,
                           fit: BoxFit.cover,

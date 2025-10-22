@@ -14,7 +14,6 @@ extension IgnorePaddings on MediaQueryData {
 
 extension ScreenCenterRect on MediaQueryData {
   Rect get centerRect {
-    return Rect.fromCenter(
-        center: Offset(size.width / 2, size.height / 2), width: 0, height: 0);
+    return Rect.fromCenter(center: Offset(size.width / 2, size.height / 2), width: 0, height: 0);
   }
 }

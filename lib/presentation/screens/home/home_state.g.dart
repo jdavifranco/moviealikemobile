@@ -53,31 +53,25 @@ class _$HomeStateCWProxyImpl implements _$HomeStateCWProxy {
   final HomeState _value;
 
   @override
-  HomeState populaMovies(List<Movie> populaMovies) =>
-      this(populaMovies: populaMovies);
+  HomeState populaMovies(List<Movie> populaMovies) => this(populaMovies: populaMovies);
 
   @override
   HomeState isLoading(bool isLoading) => this(isLoading: isLoading);
 
   @override
-  HomeState backgroundImage(String? backgroundImage) =>
-      this(backgroundImage: backgroundImage);
+  HomeState backgroundImage(String? backgroundImage) => this(backgroundImage: backgroundImage);
 
   @override
-  HomeState upcomingMovies(List<Movie> upcomingMovies) =>
-      this(upcomingMovies: upcomingMovies);
+  HomeState upcomingMovies(List<Movie> upcomingMovies) => this(upcomingMovies: upcomingMovies);
 
   @override
-  HomeState popularSeries(List<Serie> popularSeries) =>
-      this(popularSeries: popularSeries);
+  HomeState popularSeries(List<Serie> popularSeries) => this(popularSeries: popularSeries);
 
   @override
-  HomeState upcomingSeries(List<Serie> upcomingSeries) =>
-      this(upcomingSeries: upcomingSeries);
+  HomeState upcomingSeries(List<Serie> upcomingSeries) => this(upcomingSeries: upcomingSeries);
 
   @override
-  HomeState selectedType(SearchType selectedType) =>
-      this(selectedType: selectedType);
+  HomeState selectedType(SearchType selectedType) => this(selectedType: selectedType);
 
   @override
   HomeState hasError(bool hasError) => this(hasError: hasError);

@@ -10,6 +10,5 @@ class YoutubeThumbnailDto {
 
   YoutubeThumbnailDto({this.url, this.width, this.height});
 
-  factory YoutubeThumbnailDto.fromJson(Map<String, dynamic> json) =>
-      _$YoutubeThumbnailDtoFromJson(json);
+  factory YoutubeThumbnailDto.fromJson(Map<String, dynamic> json) => _$YoutubeThumbnailDtoFromJson(json);
 }

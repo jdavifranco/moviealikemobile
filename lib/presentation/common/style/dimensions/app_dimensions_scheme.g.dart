@@ -38,20 +38,17 @@ class _$AppDimensionSchemeCWProxyImpl implements _$AppDimensionSchemeCWProxy {
   final AppDimensionScheme _value;
 
   @override
-  AppDimensionScheme screenMargin(double screenMargin) =>
-      this(screenMargin: screenMargin);
+  AppDimensionScheme screenMargin(double screenMargin) => this(screenMargin: screenMargin);
 
   @override
   AppDimensionScheme movieDetailsTopPadding(double movieDetailsTopPadding) =>
       this(movieDetailsTopPadding: movieDetailsTopPadding);
 
   @override
-  AppDimensionScheme heightRation(double heightRation) =>
-      this(heightRation: heightRation);
+  AppDimensionScheme heightRation(double heightRation) => this(heightRation: heightRation);
 
   @override
-  AppDimensionScheme movierProviderSize(double movierProviderSize) =>
-      this(movierProviderSize: movierProviderSize);
+  AppDimensionScheme movierProviderSize(double movierProviderSize) => this(movierProviderSize: movierProviderSize);
 
   @override
 
@@ -73,11 +70,10 @@ class _$AppDimensionSchemeCWProxyImpl implements _$AppDimensionSchemeCWProxy {
           ? _value.screenMargin
           // ignore: cast_nullable_to_non_nullable
           : screenMargin as double,
-      movieDetailsTopPadding:
-          movieDetailsTopPadding == const $CopyWithPlaceholder()
-              ? _value.movieDetailsTopPadding
-              // ignore: cast_nullable_to_non_nullable
-              : movieDetailsTopPadding as double,
+      movieDetailsTopPadding: movieDetailsTopPadding == const $CopyWithPlaceholder()
+          ? _value.movieDetailsTopPadding
+          // ignore: cast_nullable_to_non_nullable
+          : movieDetailsTopPadding as double,
       heightRation: heightRation == const $CopyWithPlaceholder()
           ? _value.heightRation
           // ignore: cast_nullable_to_non_nullable
@@ -94,6 +90,5 @@ extension $AppDimensionSchemeCopyWith on AppDimensionScheme {
   /// Returns a callable class used to build a new instance with modified fields.
   /// Example: `instanceOfAppDimensionScheme.copyWith(...)` or `instanceOfAppDimensionScheme.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
-  _$AppDimensionSchemeCWProxy get copyWith =>
-      _$AppDimensionSchemeCWProxyImpl(this);
+  _$AppDimensionSchemeCWProxy get copyWith => _$AppDimensionSchemeCWProxyImpl(this);
 }

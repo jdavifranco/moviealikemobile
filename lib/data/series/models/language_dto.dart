@@ -17,6 +17,5 @@ class LanguageDto {
     required this.name,
   });
 
-  factory LanguageDto.fromJson(Map<String, dynamic> json) =>
-      _$LanguageDtoFromJson(json);
+  factory LanguageDto.fromJson(Map<String, dynamic> json) => _$LanguageDtoFromJson(json);
 }

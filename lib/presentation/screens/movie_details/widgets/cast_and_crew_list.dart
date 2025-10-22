@@ -9,11 +9,7 @@ class CastAndCrewList extends StatelessWidget {
   final List<CastMember> members;
   final bool isLoading;
   final Function(String) onTap;
-  const CastAndCrewList(
-      {Key? key,
-      required this.members,
-      required this.onTap,
-      required this.isLoading})
+  const CastAndCrewList({Key? key, required this.members, required this.onTap, required this.isLoading})
       : super(key: key);
 
   @override
@@ -22,8 +18,7 @@ class CastAndCrewList extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: EdgeInsets.symmetric(
-              horizontal: context.dimensionScheme.screenMargin),
+          padding: EdgeInsets.symmetric(horizontal: context.dimensionScheme.screenMargin),
           child: Text(
             context.text.castAndCrew,
             style: context.typography.heading3.copyWith(
@@ -37,8 +32,7 @@ class CastAndCrewList extends StatelessWidget {
           height: 125,
           child: ListView.separated(
             scrollDirection: Axis.horizontal,
-            padding: EdgeInsets.symmetric(
-                horizontal: context.dimensionScheme.screenMargin),
+            padding: EdgeInsets.symmetric(horizontal: context.dimensionScheme.screenMargin),
             itemCount: members.length,
             separatorBuilder: (_, __) => const SizedBox(width: 20),
             itemBuilder: (context, index) {
@@ -51,10 +45,8 @@ class CastAndCrewList extends StatelessWidget {
                 child: Column(
                   children: [
                     RemoteImage(
-                      imageUrl:
-                          "https://image.tmdb.org/t/p/w185/${member.profilePath}",
-                      imageBuilder: (context, imageProvider) =>
-                          ContainerWithRippleEffect(
+                      imageUrl: "https://image.tmdb.org/t/p/w185/${member.profilePath}",
+                      imageBuilder: (context, imageProvider) => ContainerWithRippleEffect(
                         decoration: const BoxDecoration(
                           shape: BoxShape.circle,
                         ),
@@ -69,15 +61,13 @@ class CastAndCrewList extends StatelessWidget {
                       placeholder: const CircleAvatar(
                         radius: 40,
                         child: Center(
-                          child:
-                              Icon(Icons.person, color: Colors.white, size: 40),
+                          child: Icon(Icons.person, color: Colors.white, size: 40),
                         ),
                       ),
                       errorWidget: (context, url, error) => const CircleAvatar(
                         radius: 40,
                         child: Center(
-                          child:
-                              Icon(Icons.person, color: Colors.white, size: 40),
+                          child: Icon(Icons.person, color: Colors.white, size: 40),
                         ),
                       ),
                     ),

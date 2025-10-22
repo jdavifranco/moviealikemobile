@@ -25,8 +25,7 @@ class _SeriesListState extends State<SeriesList> {
           itemBuilder: (context, index) {
             final serie = widget.items[index];
             return Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: context.dimensionScheme.screenMargin),
+              padding: EdgeInsets.symmetric(horizontal: context.dimensionScheme.screenMargin),
               child: MovieTvCard(
                 height: 420,
                 width: 280,
@@ -34,8 +33,7 @@ class _SeriesListState extends State<SeriesList> {
                 name: serie.name ?? "",
                 releaseDate: serie.firstAirDate ?? "",
                 voteAverage: serie.voteAverage.toString(),
-                posterPath:
-                    "https://image.tmdb.org/t/p/w780/${serie.posterPath}",
+                posterPath: "https://image.tmdb.org/t/p/w780/${serie.posterPath}",
               ),
             );
           }),

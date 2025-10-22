@@ -48,8 +48,7 @@ class CastMemberDto {
     this.job,
   });
 
-  factory CastMemberDto.fromJson(Map<String, dynamic> json) =>
-      _$CastMemberDtoFromJson(json);
+  factory CastMemberDto.fromJson(Map<String, dynamic> json) => _$CastMemberDtoFromJson(json);
 
   CastMember toDomain() => CastMember(
         adult: adult,

@@ -19,8 +19,8 @@ class SearchDataSource {
 
   SearchDataSource(this._networkService, this._userLanguage);
 
-  CancelableOperation<Result<List<SearchItemDto>, RequestError>>
-      getSearchMoviesAndTvShows(String query, SearchType searchType, int page) {
+  CancelableOperation<Result<List<SearchItemDto>, RequestError>> getSearchMoviesAndTvShows(
+      String query, SearchType searchType, int page) {
     final cancelableOperation = _networkService.cancellableGet(
       path: "/search/${searchType.apiType}",
       queryParameters: {
@@ -30,12 +30,11 @@ class SearchDataSource {
         'page': page.toString(),
       },
     );
-    return cancelableOperation.then((result) =>
-        result.map((data) => SearchResultsDto.fromJson(data).results));
+    return cancelableOperation.then((result) => result.map((data) => SearchResultsDto.fromJson(data).results));
   }
 
-  CancelableOperation<Result<List<SearchItemDto>, RequestError>>
-      getMoviesWithFilter(SearchFilter filter, String query, int page) {
+  CancelableOperation<Result<List<SearchItemDto>, RequestError>> getMoviesWithFilter(
+      SearchFilter filter, String query, int page) {
     final cancelableOperation = _networkService.cancellableGet(
       path: "/discover/movie",
       queryParameters: {
@@ -50,35 +49,28 @@ class SearchDataSource {
 
     return cancelableOperation.then(
       (result) => result.map(
-        (data) => MovieResultsDto.fromJson(data)
-            .results
-            .map((e) => e.toSearchItem())
-            .toList(),
+        (data) => MovieResultsDto.fromJson(data).results.map((e) => e.toSearchItem()).toList(),
       ),
     );
   }
 
-  CancelableOperation<Result<PersonDetailsDto, RequestError>> getPersonDetails(
-      int personId) {
+  CancelableOperation<Result<PersonDetailsDto, RequestError>> getPersonDetails(int personId) {
     final cancelableOperation = _networkService.cancellableGet(
       path: "/person/$personId",
       queryParameters: {
         'language': _userLanguage.name,
       },
     );
-    return cancelableOperation.then(
-        (result) => result.map((data) => PersonDetailsDto.fromJson(data)));
+    return cancelableOperation.then((result) => result.map((data) => PersonDetailsDto.fromJson(data)));
   }
 
-  CancelableOperation<Result<CompanyDetailsDto, RequestError>>
-      getCompanyDetails(int companyId) {
+  CancelableOperation<Result<CompanyDetailsDto, RequestError>> getCompanyDetails(int companyId) {
     final cancelableOperation = _networkService.cancellableGet(
       path: "/company/$companyId",
       queryParameters: {
         'language': _userLanguage.name,
       },
     );
-    return cancelableOperation.then(
-        (result) => result.map((data) => CompanyDetailsDto.fromJson(data)));
+    return cancelableOperation.then((result) => result.map((data) => CompanyDetailsDto.fromJson(data)));
   }
 }

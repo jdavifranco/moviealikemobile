@@ -18,8 +18,7 @@ Movie getFakeMovie(
       overview: overview ?? faker.lorem.sentence(),
       posterPath: posterPath ?? faker.image.loremPicsum(),
       backdropPath: backdropPath ?? faker.image.loremPicsum(),
-      releaseDate:
-          releaseDate ?? faker.date.dateTime().toString().split(' ')[0],
+      releaseDate: releaseDate ?? faker.date.dateTime().toString().split(' ')[0],
       voteAverage: voteAverage ?? Random().nextDouble() * 10.0,
       voteCount: voteCount ?? Random().nextInt(1000),
     );

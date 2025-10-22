@@ -6,9 +6,7 @@ part of 'production_company_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ProductionCompanyDto _$ProductionCompanyDtoFromJson(
-        Map<String, dynamic> json) =>
-    ProductionCompanyDto(
+ProductionCompanyDto _$ProductionCompanyDtoFromJson(Map<String, dynamic> json) => ProductionCompanyDto(
       id: (json['id'] as num).toInt(),
       logoPath: json['logo_path'] as String?,
       name: json['name'] as String,

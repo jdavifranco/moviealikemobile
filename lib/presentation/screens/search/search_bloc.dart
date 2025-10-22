@@ -24,8 +24,7 @@ class SearchBloc extends Cubit<SearchState> {
   String _currentQuery = "";
   final _queryController = StreamController<String>();
   late final StreamSubscription<String> _querySubscription;
-  CancelableOperation<Result<List<SearchItem>, RequestError>>?
-      _currentOperation;
+  CancelableOperation<Result<List<SearchItem>, RequestError>>? _currentOperation;
 
   static const Duration _debounceTime = Duration(milliseconds: 300);
 
@@ -108,9 +107,7 @@ class SearchBloc extends Cubit<SearchState> {
   }
 
   void _initializeQuerySubscription() {
-    _querySubscription = _queryController.stream
-        .debounceTime(_debounceTime)
-        .listen(_onSearchQueryChanged);
+    _querySubscription = _queryController.stream.debounceTime(_debounceTime).listen(_onSearchQueryChanged);
   }
 
   void _emitLoadingState() {
@@ -250,8 +247,7 @@ class SearchBloc extends Cubit<SearchState> {
     );
   }
 
-  List<List<SearchItem>> getNewPages(
-      bool isNewSearch, List<SearchItem> movies) {
+  List<List<SearchItem>> getNewPages(bool isNewSearch, List<SearchItem> movies) {
     if (isNewSearch) return [movies];
     return [...?state.pages, movies];
   }
@@ -277,8 +273,7 @@ class SearchBloc extends Cubit<SearchState> {
     _currentQuery = query;
 
     if (state.searchFilter != null) {
-      await _performFilteredSearch(
-          query, state.searchFilter!, state.selectedType);
+      await _performFilteredSearch(query, state.searchFilter!, state.selectedType);
     } else {
       loadNextPage(isNewSearch: isNewSearch);
     }

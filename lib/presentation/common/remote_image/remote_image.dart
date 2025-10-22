@@ -6,8 +6,7 @@ class RemoteImage extends StatelessWidget {
   final String? imageUrl;
   final Widget Function(BuildContext, ImageProvider<Object>)? imageBuilder;
   final Widget? placeholder;
-  final Widget Function(BuildContext, String, DownloadProgress)?
-      progressIndicatorBuilder;
+  final Widget Function(BuildContext, String, DownloadProgress)? progressIndicatorBuilder;
   final Widget Function(BuildContext, String, dynamic)? errorWidget;
   final EdgeInsetsGeometry padding;
   final Duration? fadeOutDuration;
@@ -47,13 +46,9 @@ class RemoteImage extends StatelessWidget {
         imageUrl: imageUrl ?? "",
         imageBuilder: imageBuilder,
         cacheManager: RemoteImageCacheManager.maybeOf(context)?.cacheManager,
-        placeholder:
-            placeholder != null ? (context, string) => placeholder! : null,
+        placeholder: placeholder != null ? (context, string) => placeholder! : null,
         progressIndicatorBuilder: progressIndicatorBuilder,
-        errorWidget: errorWidget ??
-            (placeholder != null
-                ? (context, url, error) => placeholder!
-                : null),
+        errorWidget: errorWidget ?? (placeholder != null ? (context, url, error) => placeholder! : null),
         fadeOutDuration: fadeOutDuration,
         fadeOutCurve: fadeOutCurve,
         fadeInDuration: fadeInDuration,

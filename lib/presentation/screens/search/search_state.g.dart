@@ -53,12 +53,10 @@ class _$SearchStateCWProxyImpl implements _$SearchStateCWProxy {
   SearchState isLoading(bool isLoading) => this(isLoading: isLoading);
 
   @override
-  SearchState selectedType(SearchType selectedType) =>
-      this(selectedType: selectedType);
+  SearchState selectedType(SearchType selectedType) => this(selectedType: selectedType);
 
   @override
-  SearchState searchFilter(SearchFilter? searchFilter) =>
-      this(searchFilter: searchFilter);
+  SearchState searchFilter(SearchFilter? searchFilter) => this(searchFilter: searchFilter);
 
   @override
   SearchState hasError(bool hasError) => this(hasError: hasError);

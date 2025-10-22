@@ -14,6 +14,5 @@ class AddToWatchList {
     this._watchListRepository,
   );
 
-  Future<Result<void, RequestError>> call(WatchlistMovie movie) =>
-      _watchListRepository.addMovie(movie);
+  Future<Result<void, RequestError>> call(WatchlistMovie movie) => _watchListRepository.addMovie(movie);
 }

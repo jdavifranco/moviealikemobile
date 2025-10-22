@@ -13,6 +13,5 @@ class GetUpcomingSeries {
     this._seriesRepository,
   );
 
-  Future<Result<List<Serie>, RequestError>> call() =>
-      _seriesRepository.getUpcomingSeries();
+  Future<Result<List<Serie>, RequestError>> call() => _seriesRepository.getUpcomingSeries();
 }

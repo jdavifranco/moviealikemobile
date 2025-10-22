@@ -56,45 +56,29 @@ class _MovieDetailDialogState extends State<MovieDetailDialog> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             border: GradientBoxBorder(
-              gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    getRecommendedColor(widget.distance)
-                        .withValues(alpha: (0.3)),
-                    getRecommendedColor(widget.distance)
-                        .withValues(alpha: (0.3)),
-                    getRecommendedColor(widget.distance)
-                        .withValues(alpha: (0.5)),
-                    getRecommendedColor(widget.distance)
-                        .withValues(alpha: (0.8)),
-                  ],
-                  stops: const [
-                    0.0,
-                    0.5,
-                    0.8,
-                    1
-                  ]),
+              gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [
+                getRecommendedColor(widget.distance).withValues(alpha: (0.3)),
+                getRecommendedColor(widget.distance).withValues(alpha: (0.3)),
+                getRecommendedColor(widget.distance).withValues(alpha: (0.5)),
+                getRecommendedColor(widget.distance).withValues(alpha: (0.8)),
+              ], stops: const [
+                0.0,
+                0.5,
+                0.8,
+                1
+              ]),
             ),
-            gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [
-                  getRecommendedColor(widget.distance)
-                      .withValues(alpha: (widget.distance * 0.3)),
-                  getRecommendedColor(widget.distance)
-                      .withValues(alpha: (widget.distance * 0.5)),
-                  getRecommendedColor(widget.distance)
-                      .withValues(alpha: (widget.distance * 0.8)),
-                  getRecommendedColor(widget.distance)
-                      .withValues(alpha: (widget.distance)),
-                ],
-                stops: const [
-                  0.0,
-                  0.5,
-                  0.8,
-                  1
-                ]),
+            gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [
+              getRecommendedColor(widget.distance).withValues(alpha: (widget.distance * 0.3)),
+              getRecommendedColor(widget.distance).withValues(alpha: (widget.distance * 0.5)),
+              getRecommendedColor(widget.distance).withValues(alpha: (widget.distance * 0.8)),
+              getRecommendedColor(widget.distance).withValues(alpha: (widget.distance)),
+            ], stops: const [
+              0.0,
+              0.5,
+              0.8,
+              1
+            ]),
           ),
           child: SingleChildScrollView(
             child: Column(
@@ -147,58 +131,50 @@ class _MovieDetailDialogState extends State<MovieDetailDialog> {
                 const SizedBox(height: 15),
                 Text(
                   widget.title,
-                  style: context.typography.heading4.copyWith(
-                      color: AppColors.white, fontWeight: FontWeight.bold),
+                  style: context.typography.heading4.copyWith(color: AppColors.white, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 4),
                 Text(
                   widget.movie.genres?.join(", ") ?? "",
-                  style: context.typography.heading6.copyWith(
-                      color: AppColors.white.withValues(alpha: (0.8)),
-                      fontWeight: FontWeight.normal),
+                  style: context.typography.heading6
+                      .copyWith(color: AppColors.white.withValues(alpha: (0.8)), fontWeight: FontWeight.normal),
                 ),
                 const SizedBox(height: 12),
                 Row(
                   children: [
                     Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 4),
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                       decoration: BoxDecoration(
                         color: AppColors.secondary,
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Row(
                         children: [
-                          const Icon(Icons.star,
-                              color: Colors.orange, size: 16),
+                          const Icon(Icons.star, color: Colors.orange, size: 16),
                           const SizedBox(width: 4),
                           Text(
                             widget.rating.toString(),
-                            style: context.typography.heading6.copyWith(
-                                color: AppColors.white,
-                                fontWeight: FontWeight.w500),
+                            style: context.typography.heading6
+                                .copyWith(color: AppColors.white, fontWeight: FontWeight.w500),
                           ),
                         ],
                       ),
                     ),
                     const SizedBox(width: 12),
                     Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 4),
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                       decoration: BoxDecoration(
                         color: AppColors.secondary,
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Row(
                         children: [
-                          const Icon(Icons.compare,
-                              color: Colors.orange, size: 16),
+                          const Icon(Icons.compare, color: Colors.orange, size: 16),
                           const SizedBox(width: 4),
                           Text(
                             '${(widget.distance * 100).toStringAsFixed(0)}% similar',
-                            style: context.typography.heading6.copyWith(
-                                color: AppColors.white,
-                                fontWeight: FontWeight.w500),
+                            style: context.typography.heading6
+                                .copyWith(color: AppColors.white, fontWeight: FontWeight.w500),
                           ),
                         ],
                       ),
@@ -208,16 +184,14 @@ class _MovieDetailDialogState extends State<MovieDetailDialog> {
                 const SizedBox(height: 16),
                 Text(
                   context.text.overview,
-                  style: context.typography.heading5.copyWith(
-                      color: AppColors.white, fontWeight: FontWeight.w500),
+                  style: context.typography.heading5.copyWith(color: AppColors.white, fontWeight: FontWeight.w500),
                 ),
                 const SizedBox(height: 4),
                 Text(
                   widget.overview,
                   maxLines: 3,
                   overflow: TextOverflow.ellipsis,
-                  style: context.typography.heading6.copyWith(
-                      color: AppColors.white.withValues(alpha: (0.8))),
+                  style: context.typography.heading6.copyWith(color: AppColors.white.withValues(alpha: (0.8))),
                 ),
                 const SizedBox(height: 16),
                 Row(
@@ -227,8 +201,7 @@ class _MovieDetailDialogState extends State<MovieDetailDialog> {
                       onPressed: () {
                         Navigator.of(context).pop();
                       },
-                      child: Text(context.text.close,
-                          style: const TextStyle(color: AppColors.white)),
+                      child: Text(context.text.close, style: const TextStyle(color: AppColors.white)),
                     ),
                     ElevatedButton(
                       onPressed: () {
@@ -238,8 +211,7 @@ class _MovieDetailDialogState extends State<MovieDetailDialog> {
                       style: ElevatedButton.styleFrom(
                         surfaceTintColor: AppColors.accent,
                       ),
-                      child: Text(context.text.seeMore,
-                          style: const TextStyle(color: Colors.black)),
+                      child: Text(context.text.seeMore, style: const TextStyle(color: Colors.black)),
                     ),
                   ],
                 ),

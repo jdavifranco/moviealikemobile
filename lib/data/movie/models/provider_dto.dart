@@ -24,12 +24,8 @@ class ProviderDto {
     this.displayPriority,
   });
 
-  factory ProviderDto.fromJson(Map<String, dynamic> json) =>
-      _$ProviderDtoFromJson(json);
+  factory ProviderDto.fromJson(Map<String, dynamic> json) => _$ProviderDtoFromJson(json);
 
-  MovieProvider toDomain(String? link) => MovieProvider(
-      logoPath: logoPath,
-      providerId: providerId,
-      providerName: providerName,
-      link: link);
+  MovieProvider toDomain(String? link) =>
+      MovieProvider(logoPath: logoPath, providerId: providerId, providerName: providerName, link: link);
 }

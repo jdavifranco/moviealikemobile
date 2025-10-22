@@ -9,9 +9,7 @@ part of 'serie_dto.dart';
 SerieDto _$SerieDtoFromJson(Map<String, dynamic> json) => SerieDto(
       adult: json['adult'] as bool?,
       backdropPath: json['backdrop_path'] as String?,
-      genreIds: (json['genre_ids'] as List<dynamic>?)
-          ?.map((e) => (e as num).toInt())
-          .toList(),
+      genreIds: (json['genre_ids'] as List<dynamic>?)?.map((e) => (e as num).toInt()).toList(),
       id: (json['id'] as num).toInt(),
       originalLanguage: json['original_language'] as String?,
       originalName: json['original_name'] as String?,

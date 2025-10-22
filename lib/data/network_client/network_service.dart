@@ -26,8 +26,7 @@ class NetworkService {
         path,
         data: data,
         queryParameters: queryParameters,
-        options: options?.copyWith(method: method, headers: headers) ??
-            Options(method: method, headers: headers),
+        options: options?.copyWith(method: method, headers: headers) ?? Options(method: method, headers: headers),
         cancelToken: cancelToken,
         onSendProgress: onSendProgress,
         onReceiveProgress: onReceiveProgress,
@@ -86,8 +85,7 @@ class NetworkService {
     );
   }
 
-  CancelableOperation<Result<Map<String, dynamic>, RequestError>>
-      cancellableGet<T>({
+  CancelableOperation<Result<Map<String, dynamic>, RequestError>> cancellableGet<T>({
     required String path,
     Map<String, dynamic>? queryParameters,
     Map<String, dynamic>? headers,
@@ -95,16 +93,12 @@ class NetworkService {
   }) {
     final token = cancelToken ?? CancelToken();
     return CancelableOperation.fromFuture(
-      get(path,
-          queryParameters: queryParameters,
-          headers: headers,
-          cancelToken: token),
+      get(path, queryParameters: queryParameters, headers: headers, cancelToken: token),
       onCancel: token.cancel,
     );
   }
 
-  CancelableOperation<Result<Map<String, dynamic>, RequestError>>
-      cancellablePost<T>({
+  CancelableOperation<Result<Map<String, dynamic>, RequestError>> cancellablePost<T>({
     required String path,
     dynamic data,
     Map<String, dynamic>? queryParameters,
@@ -113,11 +107,7 @@ class NetworkService {
   }) {
     final token = cancelToken ?? CancelToken();
     return CancelableOperation.fromFuture(
-      post(path,
-          data: data,
-          queryParameters: queryParameters,
-          headers: headers,
-          cancelToken: token),
+      post(path, data: data, queryParameters: queryParameters, headers: headers, cancelToken: token),
       onCancel: token.cancel,
     );
   }

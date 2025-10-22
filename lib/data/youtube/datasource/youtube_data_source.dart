@@ -11,8 +11,7 @@ class YoutubeDataSource {
 
   YoutubeDataSource(this._networkService);
 
-  Future<Result<YoutubeSearchResponseDto, RequestError>>
-      getYoutubeVideosByTitle(String title) async {
+  Future<Result<YoutubeSearchResponseDto, RequestError>> getYoutubeVideosByTitle(String title) async {
     final result = await _networkService.get(
       "${ApiUrls.youtubeBaseUrl}/search",
       queryParameters: {

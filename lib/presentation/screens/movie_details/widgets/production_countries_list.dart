@@ -32,8 +32,7 @@ class ProductionCountriesList extends StatelessWidget {
                     padding: const EdgeInsets.all(4.0),
                     child: ContainerWithRippleEffect(
                       onTap: () => onTap(country),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 4),
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                       decoration: BoxDecoration(
                         color: AppColors.secondary,
                         borderRadius: BorderRadius.circular(12),

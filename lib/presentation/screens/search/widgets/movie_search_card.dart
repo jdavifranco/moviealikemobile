@@ -81,8 +81,7 @@ class MovieSearchCard extends StatelessWidget {
                     AppSvgs.movieIcon,
                     height: 48,
                     width: 48,
-                    colorFilter: const ColorFilter.mode(
-                        AppColors.accent, BlendMode.srcIn),
+                    colorFilter: const ColorFilter.mode(AppColors.accent, BlendMode.srcIn),
                   )),
                 ),
               ),
@@ -95,8 +94,7 @@ class MovieSearchCard extends StatelessWidget {
               children: [
                 if (isPremium)
                   Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
                       color: Colors.orange,
                       borderRadius: BorderRadius.circular(12),
@@ -124,13 +122,11 @@ class MovieSearchCard extends StatelessWidget {
                 const SizedBox(height: 8),
                 Row(
                   children: [
-                    const Icon(Icons.calendar_today,
-                        size: 16, color: AppColors.grey),
+                    const Icon(Icons.calendar_today, size: 16, color: AppColors.grey),
                     const SizedBox(width: 4),
                     Text(
                       year,
-                      style:
-                          const TextStyle(color: AppColors.grey, fontSize: 14),
+                      style: const TextStyle(color: AppColors.grey, fontSize: 14),
                     ),
                   ],
                 ),
@@ -138,8 +134,7 @@ class MovieSearchCard extends StatelessWidget {
                 Row(
                   children: [
                     Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 4),
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                       decoration: BoxDecoration(
                         color: AppColors.accent.withValues(alpha: (0.3)),
                         borderRadius: BorderRadius.circular(8),
@@ -156,8 +151,7 @@ class MovieSearchCard extends StatelessWidget {
                     const SizedBox(width: 16),
                     Text(
                       genre,
-                      style:
-                          const TextStyle(color: AppColors.white, fontSize: 14),
+                      style: const TextStyle(color: AppColors.white, fontSize: 14),
                     ),
                   ],
                 ),

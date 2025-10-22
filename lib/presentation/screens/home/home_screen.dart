@@ -66,8 +66,7 @@ class _HomeScreenContentState extends State<_HomeScreenContent> {
                       mainAxisSize: MainAxisSize.max,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(
-                              bottom: 16, top: 40, right: 16, left: 16),
+                          padding: const EdgeInsets.only(bottom: 16, top: 40, right: 16, left: 16),
                           child: CustomSearchBar(
                             controller: _searchController,
                             onChanged: (value) {},
@@ -77,27 +76,23 @@ class _HomeScreenContentState extends State<_HomeScreenContent> {
                             },
                           ),
                         ),
-                        MovieCarousel(
-                            movies: state.upcomingMovies.take(5).toList()),
+                        MovieCarousel(movies: state.upcomingMovies.take(5).toList()),
                         SizedBox(
                           height: context.dimensionScheme.screenMargin,
                         ),
                         Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: context.dimensionScheme.screenMargin),
+                          padding: EdgeInsets.symmetric(horizontal: context.dimensionScheme.screenMargin),
                           child: Row(
                             children: [
                               Text(
                                 context.text.mostPopular,
-                                style: styles.heading4.copyWith(
-                                    fontWeight: FontWeight.w600,
-                                    color: AppColors.textPrimary),
+                                style:
+                                    styles.heading4.copyWith(fontWeight: FontWeight.w600, color: AppColors.textPrimary),
                               ),
                             ],
                           ),
                         ),
-                        if (state.selectedType == SearchType.movie)
-                          MovieList(items: state.populaMovies),
+                        if (state.selectedType == SearchType.movie) MovieList(items: state.populaMovies),
                         Padding(
                           padding: EdgeInsets.symmetric(
                             horizontal: context.dimensionScheme.screenMargin,
@@ -113,8 +108,7 @@ class _HomeScreenContentState extends State<_HomeScreenContent> {
                             ),
                           ),
                         ),
-                        if (state.selectedType == SearchType.movie)
-                          MovieList(items: state.upcomingMovies),
+                        if (state.selectedType == SearchType.movie) MovieList(items: state.upcomingMovies),
                       ],
                     ),
                   );

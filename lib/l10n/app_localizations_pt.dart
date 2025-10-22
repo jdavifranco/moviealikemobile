@@ -171,10 +171,12 @@ class AppLocalizationsPt extends AppLocalizations {
   String get noRecommendationsAvailable => 'Nenhuma recomendação disponível.';
 
   @override
-  String get appDescription => 'Bem-vindo ao Movie Alike! Este aplicativo foi criado para ajudar você a descobrir filmes semelhantes aos seus favoritos. Usamos algoritmos avançados para sugerir recomendações personalizadas com base no filme selecionado. Navegue por uma vasta coleção de filmes e séries, encontre novos favoritos e compartilhe suas descobertas com amigos. Aproveite sua experiência cinematográfica!';
+  String get appDescription =>
+      'Bem-vindo ao Movie Alike! Este aplicativo foi criado para ajudar você a descobrir filmes semelhantes aos seus favoritos. Usamos algoritmos avançados para sugerir recomendações personalizadas com base no filme selecionado. Navegue por uma vasta coleção de filmes e séries, encontre novos favoritos e compartilhe suas descobertas com amigos. Aproveite sua experiência cinematográfica!';
 
   @override
-  String get adsDisclosureDescription => 'Este aplicativo exibe anúncios para apoiar seu desenvolvimento. Ao usar este aplicativo, você concorda com a exibição de anúncios.';
+  String get adsDisclosureDescription =>
+      'Este aplicativo exibe anúncios para apoiar seu desenvolvimento. Ao usar este aplicativo, você concorda com a exibição de anúncios.';
 
   @override
   String get seeMore => 'Ver mais';
@@ -195,7 +197,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get noResults => 'Nenhum resultado encontrado.';
 
   @override
-  String get noResultsDescription => 'Não encontramos nenhum resultado para sua pesquisa. Por favor, tente novamente com uma palavra-chave diferente.';
+  String get noResultsDescription =>
+      'Não encontramos nenhum resultado para sua pesquisa. Por favor, tente novamente com uma palavra-chave diferente.';
 
   @override
   String get availableOn => 'Disponível em';
@@ -261,7 +264,8 @@ class AppLocalizationsPt extends AppLocalizations {
   String get errorServer => 'Erro do Servidor';
 
   @override
-  String get errorServerMessage => 'Nossos servidores estão temporariamente indisponíveis. Por favor, tente mais tarde.';
+  String get errorServerMessage =>
+      'Nossos servidores estão temporariamente indisponíveis. Por favor, tente mais tarde.';
 
   @override
   String get errorNotFound => 'Não Encontrado';

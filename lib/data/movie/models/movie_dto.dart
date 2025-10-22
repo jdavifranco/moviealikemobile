@@ -2,7 +2,6 @@ import 'package:json_annotation/json_annotation.dart';
 import 'package:moviealike/data/search/models/search_item_dto.dart';
 import 'package:moviealike/domain/movies/models/movie.dart';
 
-
 part 'movie_dto.g.dart';
 
 @JsonSerializable(createToJson: false)
@@ -66,8 +65,7 @@ class MovieDto {
     this.voteCount,
   });
 
-  factory MovieDto.fromJson(Map<String, dynamic> json) =>
-      _$MovieDtoFromJson(json);
+  factory MovieDto.fromJson(Map<String, dynamic> json) => _$MovieDtoFromJson(json);
 
   Movie toDomain() => Movie(
         adult: adult,
@@ -86,7 +84,7 @@ class MovieDto {
         voteCount: voteCount,
       );
 
-  SearchItemDto toSearchItem()=> SearchItemDto(
+  SearchItemDto toSearchItem() => SearchItemDto(
         adult: adult,
         backdropPath: backdropPath,
         id: id,
@@ -102,9 +100,8 @@ class MovieDto {
         voteAverage: voteAverage?.roundToDouble(),
         voteCount: voteCount,
         originCountry: [],
-    title: title,
-    originalTitle: originalTitle,
-    releaseDate: releaseDate,
+        title: title,
+        originalTitle: originalTitle,
+        releaseDate: releaseDate,
       );
-
 }

@@ -13,6 +13,5 @@ class GetMovieDetails {
     this._movieRepository,
   );
 
-  Future<Result<MovieDetails, RequestError>> call(int movieId) =>
-      _movieRepository.getMovieDetails(movieId);
+  Future<Result<MovieDetails, RequestError>> call(int movieId) => _movieRepository.getMovieDetails(movieId);
 }

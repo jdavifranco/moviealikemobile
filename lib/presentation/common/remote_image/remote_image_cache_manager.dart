@@ -18,8 +18,7 @@ class RemoteImageCacheManager extends InheritedWidget {
   });
 
   static RemoteImageCacheManager? maybeOf(BuildContext context) {
-    return context
-        .dependOnInheritedWidgetOfExactType<RemoteImageCacheManager>();
+    return context.dependOnInheritedWidgetOfExactType<RemoteImageCacheManager>();
   }
 
   Uint8List? getCachedImage(Uri uri) {

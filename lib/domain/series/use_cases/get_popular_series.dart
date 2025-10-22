@@ -13,6 +13,5 @@ class GetPopularSeries {
     this._seriesRepository,
   );
 
-  Future<Result<List<Serie>, RequestError>> call() =>
-      _seriesRepository.getPopularSeries();
+  Future<Result<List<Serie>, RequestError>> call() => _seriesRepository.getPopularSeries();
 }

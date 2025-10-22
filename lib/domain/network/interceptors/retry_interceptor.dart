@@ -16,16 +16,14 @@ class RetryInterceptor extends Interceptor {
   @override
   Future onError(DioException err, ErrorInterceptorHandler handler) async {
     final retryCount = err.requestOptions.retryCount + 1;
-    if (!err.requestOptions.isRetryEnabled(retryEnabledKey) ||
-        !_shouldRetry(err, retryCount, retryConfig)) {
+    if (!err.requestOptions.isRetryEnabled(retryEnabledKey) || !_shouldRetry(err, retryCount, retryConfig)) {
       return handler.next(err);
     }
 
     err.requestOptions.retryCount = retryCount;
     final delay = _calculateDelay(retryCount);
     // ignore: avoid_print
-    print(
-        'Retry attempt: $retryCount, Delay: ${delay.inMilliseconds}ms, Error: ${err.message}');
+    print('Retry attempt: $retryCount, Delay: ${delay.inMilliseconds}ms, Error: ${err.message}');
     if (delay != Duration.zero) {
       await Future.delayed(delay);
     }
@@ -57,16 +55,13 @@ class RetryInterceptor extends Interceptor {
     return Duration(milliseconds: (delay + jitter).toInt());
   }
 
-  bool _shouldRetry(
-      DioException error, int retryCount, RetryConfig retryConfig) {
+  bool _shouldRetry(DioException error, int retryCount, RetryConfig retryConfig) {
     if (retryCount > retryConfig.maxRetries) {
       return false;
     }
 
-    final retryErrorStatusCodes =
-        error.requestOptions.getRetryErrorStatusCodes(retryErrorConditionsKey);
-    final isRetryableError = error.response != null &&
-        retryErrorStatusCodes.contains(error.response?.statusCode);
+    final retryErrorStatusCodes = error.requestOptions.getRetryErrorStatusCodes(retryErrorConditionsKey);
+    final isRetryableError = error.response != null && retryErrorStatusCodes.contains(error.response?.statusCode);
 
     return error.type == DioExceptionType.connectionTimeout ||
         error.type == DioExceptionType.receiveTimeout ||

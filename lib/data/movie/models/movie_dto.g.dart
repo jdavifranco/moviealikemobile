@@ -9,9 +9,7 @@ part of 'movie_dto.dart';
 MovieDto _$MovieDtoFromJson(Map<String, dynamic> json) => MovieDto(
       adult: json['adult'] as bool?,
       backdropPath: json['backdrop_path'] as String?,
-      genreIds: (json['genre_ids'] as List<dynamic>?)
-          ?.map((e) => (e as num).toInt())
-          .toList(),
+      genreIds: (json['genre_ids'] as List<dynamic>?)?.map((e) => (e as num).toInt()).toList(),
       id: (json['id'] as num).toInt(),
       originalLanguage: json['original_language'] as String?,
       originalTitle: json['original_title'] as String?,

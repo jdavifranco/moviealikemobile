@@ -14,8 +14,7 @@ class MovieVideoResponseDto {
     required this.results,
   });
 
-  factory MovieVideoResponseDto.fromJson(Map<String, dynamic> json) =>
-      _$MovieVideoResponseDtoFromJson(json);
+  factory MovieVideoResponseDto.fromJson(Map<String, dynamic> json) => _$MovieVideoResponseDtoFromJson(json);
 
   List<MovieVideo> toDomain() {
     return results.map((e) => e.toDomain()).toList();

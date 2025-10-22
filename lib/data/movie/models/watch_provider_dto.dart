@@ -14,17 +14,13 @@ class WatchProviderDto {
     this.results,
   });
 
-  factory WatchProviderDto.fromJson(Map<String, dynamic> json) =>
-      _$WatchProviderDtoFromJson(json);
+  factory WatchProviderDto.fromJson(Map<String, dynamic> json) => _$WatchProviderDtoFromJson(json);
 
   //TODO: use the user language here
   WatchProviders toDomain() {
     final regionProvider = results?["BR"];
 
     return WatchProviders(
-        watchProviders: regionProvider?.flatrate
-                ?.map((e) => e.toDomain(regionProvider.link))
-                .toList() ??
-            []);
+        watchProviders: regionProvider?.flatrate?.map((e) => e.toDomain(regionProvider.link)).toList() ?? []);
   }
 }

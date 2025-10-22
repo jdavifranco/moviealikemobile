@@ -60,8 +60,7 @@ class SerieDto {
     this.voteCount,
   });
 
-  factory SerieDto.fromJson(Map<String, dynamic> json) =>
-      _$SerieDtoFromJson(json);
+  factory SerieDto.fromJson(Map<String, dynamic> json) => _$SerieDtoFromJson(json);
 
   Serie toDomain() => Serie(
         adult: adult,

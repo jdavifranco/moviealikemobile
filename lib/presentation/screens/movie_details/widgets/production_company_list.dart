@@ -35,8 +35,7 @@ class ProductionCompanyList extends StatelessWidget {
                       padding: const EdgeInsets.all(4.0),
                       child: ContainerWithRippleEffect(
                         onTap: () => onTap(company),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 8, vertical: 4),
+                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                         decoration: BoxDecoration(
                           color: AppColors.secondary,
                           borderRadius: BorderRadius.circular(12),
@@ -46,8 +45,7 @@ class ProductionCompanyList extends StatelessWidget {
                           children: [
                             if (company.logoPath != null)
                               RemoteImage(
-                                imageUrl:
-                                    "https://image.tmdb.org/t/p/w200${company.logoPath}",
+                                imageUrl: "https://image.tmdb.org/t/p/w200${company.logoPath}",
                                 placeholder: Container(
                                   width: 50,
                                   height: 50,

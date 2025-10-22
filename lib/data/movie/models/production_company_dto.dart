@@ -19,6 +19,5 @@ class ProductionCompanyDto {
     required this.originCountry,
   });
 
-  factory ProductionCompanyDto.fromJson(Map<String, dynamic> json) =>
-      _$ProductionCompanyDtoFromJson(json);
+  factory ProductionCompanyDto.fromJson(Map<String, dynamic> json) => _$ProductionCompanyDtoFromJson(json);
 }

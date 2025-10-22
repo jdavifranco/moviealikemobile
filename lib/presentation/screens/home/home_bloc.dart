@@ -11,8 +11,7 @@ class HomeBloc extends Cubit<HomeState> {
   final GetPopularMovies _getPopularMovies;
   final GetUpcomingMovies _getUpcomingMovies;
 
-  HomeBloc(this._getPopularMovies, this._getUpcomingMovies)
-      : super(const HomeState());
+  HomeBloc(this._getPopularMovies, this._getUpcomingMovies) : super(const HomeState());
 
   void _emitLoadingState() {
     emit(state.copyWith(
@@ -49,11 +48,9 @@ class HomeBloc extends Cubit<HomeState> {
     _emitLoadingState();
     final popularMoviesResult = await _getPopularMovies();
     final upcomingMoviesResult = await _getUpcomingMovies();
-    final hasFailed =
-        popularMoviesResult.isFailure || upcomingMoviesResult.isFailure;
+    final hasFailed = popularMoviesResult.isFailure || upcomingMoviesResult.isFailure;
     if (hasFailed) {
-      _emitErrorState(
-          popularMoviesResult.failureOrNull ?? upcomingMoviesResult.failure);
+      _emitErrorState(popularMoviesResult.failureOrNull ?? upcomingMoviesResult.failure);
       return;
     }
 

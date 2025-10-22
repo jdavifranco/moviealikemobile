@@ -29,8 +29,7 @@ class MovieVideoDto {
     required this.id,
   });
 
-  factory MovieVideoDto.fromJson(Map<String, dynamic> json) =>
-      _$MovieVideoDtoFromJson(json);
+  factory MovieVideoDto.fromJson(Map<String, dynamic> json) => _$MovieVideoDtoFromJson(json);
 
   MovieVideo toDomain() {
     return MovieVideo(

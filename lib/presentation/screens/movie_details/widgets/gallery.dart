@@ -36,8 +36,7 @@ class BackdropGallery extends StatelessWidget {
               width: width,
               height: height,
               fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) =>
-                  _buildPlaceholder(width, height),
+              errorBuilder: (context, error, stackTrace) => _buildPlaceholder(width, height),
             )
           : _buildPlaceholder(width, height),
     );
@@ -49,8 +48,7 @@ class BackdropGallery extends StatelessWidget {
       height: height,
       color: Colors.grey[300],
       child: Center(
-        child:
-            Icon(Icons.image_not_supported, size: 40, color: Colors.grey[500]),
+        child: Icon(Icons.image_not_supported, size: 40, color: Colors.grey[500]),
       ),
     );
   }

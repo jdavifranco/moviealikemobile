@@ -20,6 +20,5 @@ class NetworkDto {
     required this.originCountry,
   });
 
-  factory NetworkDto.fromJson(Map<String, dynamic> json) =>
-      _$NetworkDtoFromJson(json);
+  factory NetworkDto.fromJson(Map<String, dynamic> json) => _$NetworkDtoFromJson(json);
 }

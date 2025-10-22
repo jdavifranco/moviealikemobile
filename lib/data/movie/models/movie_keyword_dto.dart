@@ -11,8 +11,7 @@ class MovieKeywordDto {
 
   MovieKeywordDto({required this.id, required this.name});
 
-  factory MovieKeywordDto.fromJson(Map<String, dynamic> json) =>
-      _$MovieKeywordDtoFromJson(json);
+  factory MovieKeywordDto.fromJson(Map<String, dynamic> json) => _$MovieKeywordDtoFromJson(json);
 
   MovieKeyword toDomain() => MovieKeyword(id: id, name: name);
 }

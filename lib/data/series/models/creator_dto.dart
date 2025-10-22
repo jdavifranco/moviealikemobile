@@ -23,6 +23,5 @@ class CreatorDto {
     this.profilePath,
   });
 
-  factory CreatorDto.fromJson(Map<String, dynamic> json) =>
-      _$CreatorDtoFromJson(json);
+  factory CreatorDto.fromJson(Map<String, dynamic> json) => _$CreatorDtoFromJson(json);
 }

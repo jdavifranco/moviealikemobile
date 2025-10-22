@@ -37,8 +37,7 @@ class MovieCard extends StatelessWidget {
           Stack(
             children: [
               ClipRRect(
-                borderRadius:
-                    const BorderRadius.vertical(top: Radius.circular(12)),
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(12)),
                 child: Image.network(
                   imageUrl,
                   width: movieWidth,
@@ -51,8 +50,7 @@ class MovieCard extends StatelessWidget {
                   top: 8,
                   right: 8,
                   child: Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
                       color: AppColors.secondary,
                       borderRadius: BorderRadius.circular(12),
@@ -63,9 +61,8 @@ class MovieCard extends StatelessWidget {
                         const SizedBox(width: 4),
                         Text(
                           rating.toString(),
-                          style: context.typography.heading6.copyWith(
-                              color: AppColors.white,
-                              fontWeight: FontWeight.w500),
+                          style:
+                              context.typography.heading6.copyWith(color: AppColors.white, fontWeight: FontWeight.w500),
                         ),
                       ],
                     ),
@@ -79,16 +76,14 @@ class MovieCard extends StatelessWidget {
               title,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: context.typography.heading5.copyWith(
-                  color: AppColors.white, fontWeight: FontWeight.w500),
+              style: context.typography.heading5.copyWith(color: AppColors.white, fontWeight: FontWeight.w500),
             ),
           ),
           Padding(
             padding: const EdgeInsets.only(left: 8, top: 4, right: 8),
             child: Text(genre,
                 overflow: TextOverflow.ellipsis,
-                style: context.typography.heading7.copyWith(
-                    color: AppColors.white, fontWeight: FontWeight.normal)),
+                style: context.typography.heading7.copyWith(color: AppColors.white, fontWeight: FontWeight.normal)),
           ),
         ],
       ),

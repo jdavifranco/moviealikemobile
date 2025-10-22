@@ -141,8 +141,7 @@ class _WatchlistScreenState extends State<WatchlistScreen> {
                                       8,
                                     ),
                                     child: RemoteImage(
-                                      imageUrl:
-                                          "https://image.tmdb.org/t/p/original/${movie.posterUrl}",
+                                      imageUrl: "https://image.tmdb.org/t/p/original/${movie.posterUrl}",
                                       width: imageWidth,
                                       height: imageHeight,
                                       fit: BoxFit.cover,
@@ -153,8 +152,7 @@ class _WatchlistScreenState extends State<WatchlistScreen> {
                                             3,
                                         decoration: BoxDecoration(
                                           color: AppColors.secondary,
-                                          borderRadius:
-                                              BorderRadius.circular(8),
+                                          borderRadius: BorderRadius.circular(8),
                                         ),
                                       ),
                                       errorWidget: (
@@ -203,27 +201,22 @@ class _WatchlistScreenState extends State<WatchlistScreen> {
                                     const SizedBox(height: 4),
                                     Text(
                                       movie.title,
-                                      style:
-                                          context.typography.heading4.copyWith(
+                                      style: context.typography.heading4.copyWith(
                                         color: AppColors.white,
                                         fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                     Row(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.center,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Row(
                                           children: [
                                             Text(
                                               context.text.movie,
-                                              style: context.typography.body2
-                                                  .copyWith(
-                                                color: AppColors.white
-                                                    .withValues(alpha: (0.8)),
+                                              style: context.typography.body2.copyWith(
+                                                color: AppColors.white.withValues(alpha: (0.8)),
                                               ),
                                             ),
                                             const SizedBox(width: 8),
@@ -235,8 +228,7 @@ class _WatchlistScreenState extends State<WatchlistScreen> {
                                             const SizedBox(width: 2),
                                             Text(
                                               movie.rating.toStringAsFixed(2),
-                                              style: context.typography.body2
-                                                  .copyWith(
+                                              style: context.typography.body2.copyWith(
                                                 color: AppColors.orange,
                                               ),
                                             ),

@@ -5,3 +5,6 @@ clean:
 intl_gen:
 	flutter gen-l10n
 
+format:
+	dart format --line-length=120 lib test
+

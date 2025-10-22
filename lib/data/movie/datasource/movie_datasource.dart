@@ -32,8 +32,7 @@ class MovieDataSource {
     return result.map((data) => MovieResultsDto.fromJson(data).results);
   }
 
-  Future<Result<List<MovieDto>, RequestError>> getMoviesWithGenres(
-      List<int> genreIds) async {
+  Future<Result<List<MovieDto>, RequestError>> getMoviesWithGenres(List<int> genreIds) async {
     final result = await _networkService.get(
       "/discover/movie",
       queryParameters: {
@@ -49,8 +48,7 @@ class MovieDataSource {
     return result.map((data) => MovieResultsDto.fromJson(data).results);
   }
 
-  Future<Result<List<MovieDto>, RequestError>> getPopularMovies(
-      int limit) async {
+  Future<Result<List<MovieDto>, RequestError>> getPopularMovies(int limit) async {
     final result = await _networkService.get(
       "/movie/popular",
       queryParameters: {
@@ -62,8 +60,7 @@ class MovieDataSource {
     return result.map((data) => MovieResultsDto.fromJson(data).results);
   }
 
-  Future<Result<MovieDetailsDto, RequestError>> getMovieDetails(
-      int movieId) async {
+  Future<Result<MovieDetailsDto, RequestError>> getMovieDetails(int movieId) async {
     var result = await _networkService.get(
       "/movie/$movieId",
       queryParameters: {
@@ -95,8 +92,7 @@ class MovieDataSource {
     return result.map((data) => ImagesDto.fromJson(data));
   }
 
-  Future<Result<WatchProviderDto, RequestError>> getMovieProviders(
-      int movieId) async {
+  Future<Result<WatchProviderDto, RequestError>> getMovieProviders(int movieId) async {
     final result = await _networkService.get(
       "/movie/$movieId/watch/providers",
     );
@@ -104,8 +100,7 @@ class MovieDataSource {
     return result.map((data) => WatchProviderDto.fromJson(data));
   }
 
-  Future<Result<CastCrewMembersDto, RequestError>> getCastCrewMembers(
-      int movieId) async {
+  Future<Result<CastCrewMembersDto, RequestError>> getCastCrewMembers(int movieId) async {
     final result = await _networkService.get(
       "/movie/$movieId/credits",
       queryParameters: {
@@ -116,8 +111,7 @@ class MovieDataSource {
     return result.map((data) => CastCrewMembersDto.fromJson(data));
   }
 
-  Future<Result<MovieVideoResponseDto, RequestError>> getMovieYoutubeVideos(
-      int movieId) async {
+  Future<Result<MovieVideoResponseDto, RequestError>> getMovieYoutubeVideos(int movieId) async {
     final result = await _networkService.get(
       "/movie/$movieId/videos",
     );
@@ -125,8 +119,7 @@ class MovieDataSource {
     return result.map((data) => MovieVideoResponseDto.fromJson(data));
   }
 
-  Future<Result<List<MovieKeywordDto>, RequestError>> getMovieKeywords(
-      int movieId) async {
+  Future<Result<List<MovieKeywordDto>, RequestError>> getMovieKeywords(int movieId) async {
     final result = await _networkService.get(
       "/movie/$movieId/keywords",
     );
@@ -134,8 +127,7 @@ class MovieDataSource {
     return result.map((data) => MovieKeywordsDto.fromJson(data).keywords);
   }
 
-  Future<Result<List<MovieDto>, RequestError>> getMoviesWithKeywords(
-      List<int> keywords, List<int> genreIds) async {
+  Future<Result<List<MovieDto>, RequestError>> getMoviesWithKeywords(List<int> keywords, List<int> genreIds) async {
     final result = await _networkService.get(
       "/discover/movie",
       queryParameters: {
@@ -153,11 +145,7 @@ class MovieDataSource {
   }
 
   String _formatKeywordsForQuery(List<int> keywords) {
-    return keywords
-        .toString()
-        .replaceAll("[", "")
-        .replaceAll("]", "")
-        .replaceAll(",", "|");
+    return keywords.toString().replaceAll("[", "").replaceAll("]", "").replaceAll(",", "|");
   }
 
   String _formatGenresForQuery(List<int> genres) {

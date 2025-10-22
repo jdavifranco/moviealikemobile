@@ -13,6 +13,5 @@ class GetYoutubeVideos {
     this._movieRepository,
   );
 
-  Future<Result<List<MovieVideo>, RequestError>> call(int movieId) =>
-      _movieRepository.getMovieYoutubeVideos(movieId);
+  Future<Result<List<MovieVideo>, RequestError>> call(int movieId) => _movieRepository.getMovieYoutubeVideos(movieId);
 }

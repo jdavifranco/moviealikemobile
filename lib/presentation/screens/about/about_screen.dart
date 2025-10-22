@@ -17,8 +17,7 @@ class AboutScreen extends StatelessWidget {
         centerTitle: true,
         title: Text(
           context.text.about,
-          style: context.typography.heading4
-              .copyWith(color: Colors.white, fontWeight: FontWeight.w600),
+          style: context.typography.heading4.copyWith(color: Colors.white, fontWeight: FontWeight.w600),
         ),
         leading: IconButton(
           onPressed: () {
@@ -33,8 +32,7 @@ class AboutScreen extends StatelessWidget {
             ),
             child: SvgPicture.asset(
               AppSvgs.arrowBackIcon,
-              colorFilter:
-                  const ColorFilter.mode(AppColors.white, BlendMode.srcIn),
+              colorFilter: const ColorFilter.mode(AppColors.white, BlendMode.srcIn),
               height: 24,
               width: 24,
             ),
@@ -150,8 +148,7 @@ class AboutScreen extends StatelessWidget {
                       color: AppColors.white.withValues(alpha: (0.8)),
                     )),
               ),
-              Icon(Icons.open_in_new,
-                  size: 16, color: AppColors.white.withValues(alpha: (0.6))),
+              Icon(Icons.open_in_new, size: 16, color: AppColors.white.withValues(alpha: (0.6))),
             ],
           ),
         ),
@@ -159,8 +156,7 @@ class AboutScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildPolicyLink(BuildContext context,
-      {required String title, String? content, VoidCallback? onTap}) {
+  Widget _buildPolicyLink(BuildContext context, {required String title, String? content, VoidCallback? onTap}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: InkWell(
@@ -188,8 +184,7 @@ class AboutScreen extends StatelessWidget {
     );
   }
 
-  void _showPolicyDialog(BuildContext context,
-      {required String title, required String content}) {
+  void _showPolicyDialog(BuildContext context, {required String title, required String content}) {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(

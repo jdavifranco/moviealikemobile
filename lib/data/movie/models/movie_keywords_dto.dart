@@ -8,6 +8,5 @@ class MovieKeywordsDto {
 
   MovieKeywordsDto({required this.keywords});
 
-  factory MovieKeywordsDto.fromJson(Map<String, dynamic> json) =>
-      _$MovieKeywordsDtoFromJson(json);
+  factory MovieKeywordsDto.fromJson(Map<String, dynamic> json) => _$MovieKeywordsDtoFromJson(json);
 }

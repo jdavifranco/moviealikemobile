@@ -37,8 +37,7 @@ class _MovieCarouselState extends State<MovieCarousel> with OnContextReady {
 
   @override
   void onContextReady(BuildContext context) {
-    _pageController = PageController(
-        viewportFraction: context.isLargeScreen ? 0.8 : 0.8, initialPage: 2);
+    _pageController = PageController(viewportFraction: context.isLargeScreen ? 0.8 : 0.8, initialPage: 2);
   }
 
   @override
@@ -60,8 +59,7 @@ class _MovieCarouselState extends State<MovieCarousel> with OnContextReady {
               return AnimatedContainer(
                 duration: const Duration(milliseconds: 500),
                 curve: Curves.easeInOut,
-                margin: EdgeInsets.symmetric(
-                    horizontal: _currentIndex == index ? 0 : 10),
+                margin: EdgeInsets.symmetric(horizontal: _currentIndex == index ? 0 : 10),
                 height: movieHeight,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
@@ -82,8 +80,7 @@ class _MovieCarouselState extends State<MovieCarousel> with OnContextReady {
                       ContainerWithRippleEffect(
                         width: movieWidth,
                         onTap: () {
-                          GoRouter.of(context)
-                              .push('/movie_details/${movie.id}');
+                          GoRouter.of(context).push('/movie_details/${movie.id}');
                         },
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
@@ -122,9 +119,8 @@ class _MovieCarouselState extends State<MovieCarousel> with OnContextReady {
                             const SizedBox(height: 5),
                             Text(
                               'On ${movie.releaseDate}',
-                              style: context.typography.heading6.copyWith(
-                                  color: AppColors.whiteGrey,
-                                  fontWeight: FontWeight.normal),
+                              style: context.typography.heading6
+                                  .copyWith(color: AppColors.whiteGrey, fontWeight: FontWeight.normal),
                             ),
                           ],
                         ),

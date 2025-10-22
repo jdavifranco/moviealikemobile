@@ -29,14 +29,9 @@ class _MovieListState extends State<MovieRecommendations> {
     movieWidth = min(MediaQuery.of(context).size.width / 3, 200).toDouble();
     movieHeight = movieWidth / 0.66;
 
-    textSize = context.typography.heading5
-            .getTextSize(context: context, maxLines: 1, maxWidth: movieWidth)
-            .height
-            .toInt() +
-        context.typography.heading7
-            .getTextSize(context: context, maxLines: 1, maxWidth: movieWidth)
-            .height
-            .toInt();
+    textSize =
+        context.typography.heading5.getTextSize(context: context, maxLines: 1, maxWidth: movieWidth).height.toInt() +
+            context.typography.heading7.getTextSize(context: context, maxLines: 1, maxWidth: movieWidth).height.toInt();
     super.didChangeDependencies();
   }
 
@@ -59,9 +54,8 @@ class _MovieListState extends State<MovieRecommendations> {
                 itemBuilder: (context, index) {
                   final movie = widget.items[index];
                   return Padding(
-                    padding: EdgeInsets.only(
-                        left: index == 0 ? 12 : 6,
-                        right: index == widget.items.length - 1 ? 12 : 6),
+                    padding:
+                        EdgeInsets.only(left: index == 0 ? 12 : 6, right: index == widget.items.length - 1 ? 12 : 6),
                     child: MovieRecommendationCard(
                       onTap: () {
                         GoRouter.of(context).push('/movie_details/${movie.id}');
@@ -69,8 +63,7 @@ class _MovieListState extends State<MovieRecommendations> {
                       title: movie.title ?? "",
                       genre: "Action",
                       rating: movie.voteAverage ?? 5.0,
-                      imageUrl:
-                          "https://image.tmdb.org/t/p/w342/${movie.posterPath}",
+                      imageUrl: "https://image.tmdb.org/t/p/w342/${movie.posterPath}",
                       distance: movie.similarity,
                       overview: movie.overview ?? "",
                       id: movie.id,

@@ -26,8 +26,7 @@ class WatchlistMovieDto {
         posterUrl: posterUrl,
       );
 
-  static WatchlistMovieDto fromDomain(WatchlistMovie movie) =>
-      WatchlistMovieDto(
+  static WatchlistMovieDto fromDomain(WatchlistMovie movie) => WatchlistMovieDto(
         movieId: movie.movieId,
         title: movie.title,
         genre: movie.genre,

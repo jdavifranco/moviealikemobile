@@ -7,15 +7,13 @@ part of 'movie_details_state.dart';
 // **************************************************************************
 
 abstract class _$MovieDetailsStateCWProxy {
-  MovieDetailsState selectedMovieAnalaysis(
-      MovieAnalysis? selectedMovieAnalaysis);
+  MovieDetailsState selectedMovieAnalaysis(MovieAnalysis? selectedMovieAnalaysis);
 
   MovieDetailsState selectedMovieDetails(MovieDetails? selectedMovieDetails);
 
   MovieDetailsState isLoading(bool isLoading);
 
-  MovieDetailsState modelRecommendations(
-      List<MovieRecommendation> modelRecommendations);
+  MovieDetailsState modelRecommendations(List<MovieRecommendation> modelRecommendations);
 
   MovieDetailsState castMembers(List<CastMember> castMembers);
 
@@ -27,8 +25,7 @@ abstract class _$MovieDetailsStateCWProxy {
 
   MovieDetailsState hasError(bool hasError);
 
-  MovieDetailsState genreRecommendations(
-      List<MovieRecommendation> genreRecommendations);
+  MovieDetailsState genreRecommendations(List<MovieRecommendation> genreRecommendations);
 
   MovieDetailsState isLoadingCast(bool isLoadingCast);
 
@@ -68,8 +65,7 @@ class _$MovieDetailsStateCWProxyImpl implements _$MovieDetailsStateCWProxy {
   final MovieDetailsState _value;
 
   @override
-  MovieDetailsState selectedMovieAnalaysis(
-          MovieAnalysis? selectedMovieAnalaysis) =>
+  MovieDetailsState selectedMovieAnalaysis(MovieAnalysis? selectedMovieAnalaysis) =>
       this(selectedMovieAnalaysis: selectedMovieAnalaysis);
 
   @override
@@ -80,13 +76,11 @@ class _$MovieDetailsStateCWProxyImpl implements _$MovieDetailsStateCWProxy {
   MovieDetailsState isLoading(bool isLoading) => this(isLoading: isLoading);
 
   @override
-  MovieDetailsState modelRecommendations(
-          List<MovieRecommendation> modelRecommendations) =>
+  MovieDetailsState modelRecommendations(List<MovieRecommendation> modelRecommendations) =>
       this(modelRecommendations: modelRecommendations);
 
   @override
-  MovieDetailsState castMembers(List<CastMember> castMembers) =>
-      this(castMembers: castMembers);
+  MovieDetailsState castMembers(List<CastMember> castMembers) => this(castMembers: castMembers);
 
   @override
   MovieDetailsState youtubeId(String youtubeId) => this(youtubeId: youtubeId);
@@ -101,17 +95,14 @@ class _$MovieDetailsStateCWProxyImpl implements _$MovieDetailsStateCWProxy {
   MovieDetailsState hasError(bool hasError) => this(hasError: hasError);
 
   @override
-  MovieDetailsState genreRecommendations(
-          List<MovieRecommendation> genreRecommendations) =>
+  MovieDetailsState genreRecommendations(List<MovieRecommendation> genreRecommendations) =>
       this(genreRecommendations: genreRecommendations);
 
   @override
-  MovieDetailsState isLoadingCast(bool isLoadingCast) =>
-      this(isLoadingCast: isLoadingCast);
+  MovieDetailsState isLoadingCast(bool isLoadingCast) => this(isLoadingCast: isLoadingCast);
 
   @override
-  MovieDetailsState youtubeVideos(List<YoutubeVideo> youtubeVideos) =>
-      this(youtubeVideos: youtubeVideos);
+  MovieDetailsState youtubeVideos(List<YoutubeVideo> youtubeVideos) => this(youtubeVideos: youtubeVideos);
 
   @override
   MovieDetailsState error(RequestError? error) => this(error: error);
@@ -141,11 +132,10 @@ class _$MovieDetailsStateCWProxyImpl implements _$MovieDetailsStateCWProxy {
     Object? error = const $CopyWithPlaceholder(),
   }) {
     return MovieDetailsState(
-      selectedMovieAnalaysis:
-          selectedMovieAnalaysis == const $CopyWithPlaceholder()
-              ? _value.selectedMovieAnalaysis
-              // ignore: cast_nullable_to_non_nullable
-              : selectedMovieAnalaysis as MovieAnalysis?,
+      selectedMovieAnalaysis: selectedMovieAnalaysis == const $CopyWithPlaceholder()
+          ? _value.selectedMovieAnalaysis
+          // ignore: cast_nullable_to_non_nullable
+          : selectedMovieAnalaysis as MovieAnalysis?,
       selectedMovieDetails: selectedMovieDetails == const $CopyWithPlaceholder()
           ? _value.selectedMovieDetails
           // ignore: cast_nullable_to_non_nullable
@@ -202,6 +192,5 @@ extension $MovieDetailsStateCopyWith on MovieDetailsState {
   /// Returns a callable class used to build a new instance with modified fields.
   /// Example: `instanceOfMovieDetailsState.copyWith(...)` or `instanceOfMovieDetailsState.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
-  _$MovieDetailsStateCWProxy get copyWith =>
-      _$MovieDetailsStateCWProxyImpl(this);
+  _$MovieDetailsStateCWProxy get copyWith => _$MovieDetailsStateCWProxyImpl(this);
 }

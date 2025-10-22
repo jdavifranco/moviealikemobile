@@ -19,15 +19,10 @@ class CastCrewMembersDto {
     required this.crew,
   });
 
-  factory CastCrewMembersDto.fromJson(Map<String, dynamic> json) =>
-      _$CastCrewMembersDtoFromJson(json);
+  factory CastCrewMembersDto.fromJson(Map<String, dynamic> json) => _$CastCrewMembersDtoFromJson(json);
 
   List<CastMember> toDomain() {
-    final director = crew
-        .where((element) => element.job == 'Director')
-        .toList()
-        .map((e) => e.toDomain())
-        .toList();
+    final director = crew.where((element) => element.job == 'Director').toList().map((e) => e.toDomain()).toList();
 
     return [...director, ...(cast.map((e) => e.toDomain()).toList())];
   }
