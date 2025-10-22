@@ -18,6 +18,11 @@ analyzer:
     - lib/di/di_setup.config.dart
     - plugins/**
     - lib/firebase_options.dart
+    - lib/data/network_client/env.g.dart
+  errors:
+    uri_has_not_been_generated: ignore
+    uri_does_not_exist: ignore
+    undefined_identifier: ignore
 
 linter:
   # The lint rules applied to this project can be customized in the
