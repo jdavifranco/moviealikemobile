@@ -12,6 +12,7 @@ import 'package:moviealike/presentation/common/remote_image/remote_image_cache_m
 import 'package:moviealike/presentation/common/style/app_colors.dart';
 import 'package:moviealike/presentation/common/style/font_families.dart';
 import 'package:quiver/collection.dart';
+// ignore: always_use_package_imports
 import 'firebase_options.dart';
 
 void main() async {
