@@ -18,8 +18,9 @@ analyzer:
     - lib/di/di_setup.config.dart
     - plugins/**
     - lib/firebase_options.dart
+    - lib/data/network_client/env.dart
     - lib/data/network_client/env.g.dart
- 
+    
 
 linter:
   # The lint rules applied to this project can be customized in the
@@ -33,6 +34,5 @@ linter:
   # `// ignore_for_file: name_of_lint` syntax on the line or in the file
   # producing the lint.
   rules:
-    
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options

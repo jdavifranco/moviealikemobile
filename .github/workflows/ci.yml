@@ -17,40 +17,12 @@ jobs:
     - name: Setup Flutter
       uses: subosito/flutter-action@v2
       with:
-        flutter-version: '3.35.4'
-        channel: 'stable'
+        channel: stable
+        flutter-version-file: pubspec.yaml
         cache: true
   
     - name: Get dependencies
       run: flutter pub get
-       
-    - name: Create stub files for CI testing
-      run: |
-         cat > lib/firebase_options.dart << 'EOF'
-         import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
-         import 'package:flutter/foundation.dart' show defaultTargetPlatform, kIsWeb, TargetPlatform;
-         
-         class DefaultFirebaseOptions {
-           static FirebaseOptions get currentPlatform {
-             return const FirebaseOptions(
-               apiKey: 'ci-stub-key',
-               appId: 'ci-stub-app',
-               messagingSenderId: 'ci-stub-sender',
-               projectId: 'ci-stub-project',
-             );
-           }
-         }
-         EOF
-         
-         # Create minimal env.g.dart stub
-         cat > lib/data/network_client/env.g.dart << 'EOF'
-         part of 'env.dart';
-         
-         class _Env {
-           static const tmdbBearerToken = 'ci-stub-token';
-           static const youtubeApiKey = 'ci-stub-key';
-         }
-         EOF
     
     - name: Verify formatting
       run: dart format --line-length=120 lib test
