@@ -26,8 +26,7 @@ class GenresList extends StatelessWidget {
                     padding: const EdgeInsets.all(4.0),
                     child: ContainerWithRippleEffect(
                       onTap: () => onTap(genres[genreIndex]),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 4),
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                       decoration: BoxDecoration(
                         color: AppColors.secondary,
                         borderRadius: BorderRadius.circular(12),
@@ -35,15 +34,13 @@ class GenresList extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Icon(Icons.compare,
-                              color: Colors.orange, size: 16),
+                          const Icon(Icons.compare, color: Colors.orange, size: 16),
                           const SizedBox(width: 4),
                           Flexible(
                             child: Text(
                               genres[genreIndex].name,
-                              style: context.typography.heading6.copyWith(
-                                  color: AppColors.white,
-                                  fontWeight: FontWeight.w500),
+                              style: context.typography.heading6
+                                  .copyWith(color: AppColors.white, fontWeight: FontWeight.w500),
                               overflow: TextOverflow.ellipsis,
                               maxLines: 1,
                             ),

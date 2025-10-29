@@ -90,11 +90,9 @@ class MovieDetailsDto {
     this.voteCount,
   });
 
-  factory MovieDetailsDto.fromJson(Map<String, dynamic> json) =>
-      _$MovieDetailsDtoFromJson(json);
+  factory MovieDetailsDto.fromJson(Map<String, dynamic> json) => _$MovieDetailsDtoFromJson(json);
 
-  MovieDetails toDomain(MovieImages? movieImages, WatchProviders? providers) =>
-      MovieDetails(
+  MovieDetails toDomain(MovieImages? movieImages, WatchProviders? providers) => MovieDetails(
         adult: adult,
         backdropPath: backdropPath,
         budget: budget,

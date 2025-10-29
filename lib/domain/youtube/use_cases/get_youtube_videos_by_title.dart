@@ -10,6 +10,5 @@ class GetYoutubeVideosByTitle {
 
   GetYoutubeVideosByTitle(this.repository);
 
-  Future<Result<List<YoutubeVideo>, RequestError>> call(String title) =>
-      repository.getYoutubeVideosByTitle(title);
+  Future<Result<List<YoutubeVideo>, RequestError>> call(String title) => repository.getYoutubeVideosByTitle(title);
 }

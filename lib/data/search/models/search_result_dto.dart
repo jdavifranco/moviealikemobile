@@ -8,6 +8,5 @@ class SearchResultsDto {
 
   SearchResultsDto({required this.results});
 
-  factory SearchResultsDto.fromJson(Map<String, dynamic> json) =>
-      _$SearchResultsDtoFromJson(json);
+  factory SearchResultsDto.fromJson(Map<String, dynamic> json) => _$SearchResultsDtoFromJson(json);
 }

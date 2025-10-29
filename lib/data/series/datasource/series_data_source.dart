@@ -28,8 +28,7 @@ class SeriesDataSource {
     return result.map((data) => SeriesResultsDto.fromJson(data).results);
   }
 
-  Future<Result<MovieDetailsDto, RequestError>> getSeriesDetails(
-      int movieId) async {
+  Future<Result<MovieDetailsDto, RequestError>> getSeriesDetails(int movieId) async {
     final response = await _networkService.get(
       "/movie/$movieId",
     );

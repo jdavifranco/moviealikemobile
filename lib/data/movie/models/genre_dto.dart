@@ -10,8 +10,5 @@ class GenreDto {
 
   GenreDto({required this.id, required this.name});
 
-  factory GenreDto.fromJson(Map<String, dynamic> json) =>
-      _$GenreDtoFromJson(json);
-
-
+  factory GenreDto.fromJson(Map<String, dynamic> json) => _$GenreDtoFromJson(json);
 }

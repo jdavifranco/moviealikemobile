@@ -34,9 +34,7 @@ class MovieInfoDetailsState {
   });
 
   bool get isPersonFilter =>
-      filterType == SearchFilter.people ||
-      filterType == SearchFilter.cast ||
-      filterType == SearchFilter.crew;
+      filterType == SearchFilter.people || filterType == SearchFilter.cast || filterType == SearchFilter.crew;
 
   bool get isCompanyFilter => filterType == SearchFilter.companies;
 }

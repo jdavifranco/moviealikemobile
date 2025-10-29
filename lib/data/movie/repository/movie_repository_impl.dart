@@ -21,17 +21,14 @@ class MovieRepositoryImpl implements MovieRepository {
   Future<Result<List<Movie>, RequestError>> getPopularMovies(int limit) async {
     final result = await movieDataSource.getPopularMovies(limit);
 
-    return result.map((movieDtos) =>
-        movieDtos.map((movieDto) => movieDto.toDomain()).toList());
+    return result.map((movieDtos) => movieDtos.map((movieDto) => movieDto.toDomain()).toList());
   }
 
   @override
-  Future<Result<List<Movie>, RequestError>> getMoviesWithGenres(
-      List<int> genreIds) async {
+  Future<Result<List<Movie>, RequestError>> getMoviesWithGenres(List<int> genreIds) async {
     final result = await movieDataSource.getMoviesWithGenres(genreIds);
 
-    return result.map((movieDtos) =>
-        movieDtos.map((movieDto) => movieDto.toDomain()).toList());
+    return result.map((movieDtos) => movieDtos.map((movieDto) => movieDto.toDomain()).toList());
   }
 
   @override
@@ -39,24 +36,20 @@ class MovieRepositoryImpl implements MovieRepository {
     List<int> keywords,
     List<int> genreIds,
   ) async {
-    final result =
-        await movieDataSource.getMoviesWithKeywords(keywords, genreIds);
+    final result = await movieDataSource.getMoviesWithKeywords(keywords, genreIds);
 
-    return result.map((movieDtos) =>
-        movieDtos.map((movieDto) => movieDto.toDomain()).toList());
+    return result.map((movieDtos) => movieDtos.map((movieDto) => movieDto.toDomain()).toList());
   }
 
   @override
   Future<Result<List<Movie>, RequestError>> getUpcomingMovies() async {
     final result = await movieDataSource.getUpcomingMovies();
 
-    return result.map((movieDtos) =>
-        movieDtos.map((movieDto) => movieDto.toDomain()).toList());
+    return result.map((movieDtos) => movieDtos.map((movieDto) => movieDto.toDomain()).toList());
   }
 
   @override
-  Future<Result<MovieDetails, RequestError>> getMovieDetails(
-      int movieId) async {
+  Future<Result<MovieDetails, RequestError>> getMovieDetails(int movieId) async {
     final movieDetailsResult = await movieDataSource.getMovieDetails(movieId);
 
     Result<MovieImages, RequestError>? movieImagesResult;
@@ -89,36 +82,30 @@ class MovieRepositoryImpl implements MovieRepository {
   }
 
   @override
-  Future<Result<WatchProviders, RequestError>> getMovieProviders(
-      int movieId) async {
+  Future<Result<WatchProviders, RequestError>> getMovieProviders(int movieId) async {
     final result = await movieDataSource.getMovieProviders(movieId);
 
     return result.map((watchProviderDto) => watchProviderDto.toDomain());
   }
 
   @override
-  Future<Result<List<CastMember>, RequestError>> getCastCrewMembers(
-      int movieId) async {
+  Future<Result<List<CastMember>, RequestError>> getCastCrewMembers(int movieId) async {
     final result = await movieDataSource.getCastCrewMembers(movieId);
 
     return result.map((castCrewMembersDto) => castCrewMembersDto.toDomain());
   }
 
   @override
-  Future<Result<List<MovieVideo>, RequestError>> getMovieYoutubeVideos(
-      int movieId) async {
+  Future<Result<List<MovieVideo>, RequestError>> getMovieYoutubeVideos(int movieId) async {
     final result = await movieDataSource.getMovieYoutubeVideos(movieId);
 
-    return result
-        .map((movieVideoResponseDto) => movieVideoResponseDto.toDomain());
+    return result.map((movieVideoResponseDto) => movieVideoResponseDto.toDomain());
   }
 
   @override
-  Future<Result<List<MovieKeyword>, RequestError>> getMovieKeywords(
-      int movieId) async {
+  Future<Result<List<MovieKeyword>, RequestError>> getMovieKeywords(int movieId) async {
     final result = await movieDataSource.getMovieKeywords(movieId);
 
-    return result.map((movieKeywordDtos) =>
-        movieKeywordDtos.map((e) => e.toDomain()).toList());
+    return result.map((movieKeywordDtos) => movieKeywordDtos.map((e) => e.toDomain()).toList());
   }
 }

@@ -37,12 +37,9 @@ class GetMovieDetailsMock extends Mock implements GetMovieDetails {
 }
 
 class GetMoviesWithGenresMock extends Mock implements GetMoviesWithGenres {
-  static GetMoviesWithGenresMock dummy(
-      {List<MovieRecommendation>? recommendations = const []}) {
+  static GetMoviesWithGenresMock dummy({List<MovieRecommendation>? recommendations = const []}) {
     final mock = GetMoviesWithGenresMock();
-    when(() => mock.call(
-        genreIds: any(named: 'genreIds'),
-        originalMovieId: any(named: 'originalMovieId'))).thenAnswer(
+    when(() => mock.call(genreIds: any(named: 'genreIds'), originalMovieId: any(named: 'originalMovieId'))).thenAnswer(
       (_) async => Success(recommendations ?? const []),
     );
     return mock;
@@ -89,10 +86,8 @@ class GetYoutubeVideosMock extends Mock implements GetYoutubeVideos {
   }
 }
 
-class GetYoutubeVideosByTitleMock extends Mock
-    implements GetYoutubeVideosByTitle {
-  static GetYoutubeVideosByTitleMock dummy(
-      {List<YoutubeVideo> videos = const []}) {
+class GetYoutubeVideosByTitleMock extends Mock implements GetYoutubeVideosByTitle {
+  static GetYoutubeVideosByTitleMock dummy({List<YoutubeVideo> videos = const []}) {
     final mock = GetYoutubeVideosByTitleMock();
     when(() => mock.call(any())).thenAnswer(
       (_) async => Success(videos),
@@ -157,21 +152,14 @@ void main() {
           title: 'Test Movie',
           overview: 'Test Overview',
         );
-        final getMovieDetailsMock =
-            GetMovieDetailsMock.dummy(movieDetails: movieDetails);
+        final getMovieDetailsMock = GetMovieDetailsMock.dummy(movieDetails: movieDetails);
         final getMoviesWithGenresMock = GetMoviesWithGenresMock.dummy(
-            recommendations: [
-              getFakeMovieRecommendation(),
-              getFakeMovieRecommendation()
-            ]);
-        final mockGetCastMembers = GetCastMembersMock.dummy(
-            castMembers: [getFakeCastMember(), getFakeCastMember()]);
-        final mockGetYoutubeVideos = GetYoutubeVideosMock.dummy(
-            videos: [getFakeMovieVideo(), getFakeMovieVideo()]);
-        final mockGetYoutubeVideosByTitle = GetYoutubeVideosByTitleMock.dummy(
-            videos: [getFakeYoutubeVideo(), getFakeYoutubeVideo()]);
-        final mockIsMovieInWatchList =
-            IsMovieInWatchListMock.dummy(isInWatchList: false);
+            recommendations: [getFakeMovieRecommendation(), getFakeMovieRecommendation()]);
+        final mockGetCastMembers = GetCastMembersMock.dummy(castMembers: [getFakeCastMember(), getFakeCastMember()]);
+        final mockGetYoutubeVideos = GetYoutubeVideosMock.dummy(videos: [getFakeMovieVideo(), getFakeMovieVideo()]);
+        final mockGetYoutubeVideosByTitle =
+            GetYoutubeVideosByTitleMock.dummy(videos: [getFakeYoutubeVideo(), getFakeYoutubeVideo()]);
+        final mockIsMovieInWatchList = IsMovieInWatchListMock.dummy(isInWatchList: false);
 
         final movieDetailsBloc = getMovieDetailsBloc(
           getMovieDetails: getMovieDetailsMock,
@@ -188,19 +176,15 @@ void main() {
           build: () => movieDetailsBloc,
           act: (bloc) => bloc.init(),
           expect: () => [
-            isA<MovieDetailsState>()
-                .having((state) => state.isLoading, 'isLoading', isTrue),
+            isA<MovieDetailsState>().having((state) => state.isLoading, 'isLoading', isTrue),
             isA<MovieDetailsState>()
                 .having((state) => state.isLoading, 'isLoading', isFalse)
-                .having((state) => state.selectedMovieDetails,
-                    'selectedMovieDetails', isNotNull)
-                .having((state) => state.selectedMovieDetails?.title,
-                    'movie title', 'Test Movie'),
+                .having((state) => state.selectedMovieDetails, 'selectedMovieDetails', isNotNull)
+                .having((state) => state.selectedMovieDetails?.title, 'movie title', 'Test Movie'),
             isA<MovieDetailsState>()
                 .having((state) => state.castMembers.length, 'castMembers', 2)
                 .having((state) => state.videos.length, 'videos', 2)
-                .having(
-                    (state) => state.youtubeVideos.length, 'youtubeVideos', 2)
+                .having((state) => state.youtubeVideos.length, 'youtubeVideos', 2)
           ],
         );
       });
@@ -226,8 +210,7 @@ void main() {
             verify(() => getMovieDetailsMock(123)).called(1);
           },
           expect: () => [
-            isA<MovieDetailsState>()
-                .having((state) => state.isLoading, 'isLoading', isTrue),
+            isA<MovieDetailsState>().having((state) => state.isLoading, 'isLoading', isTrue),
             isA<MovieDetailsState>()
                 .having((state) => state.isLoading, 'isLoading', isFalse)
                 .having((state) => state.error, 'error', isA<ServerError>()),
@@ -244,8 +227,7 @@ void main() {
         build: () => movieDetailsBloc,
         act: (bloc) => bloc.setYoutubeId('test-youtube-id'),
         expect: () => [
-          isA<MovieDetailsState>().having(
-              (state) => state.youtubeId, 'youtubeId', 'test-youtube-id'),
+          isA<MovieDetailsState>().having((state) => state.youtubeId, 'youtubeId', 'test-youtube-id'),
         ],
       );
     });

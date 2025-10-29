@@ -47,6 +47,5 @@ class EpisodeDto {
     this.stillPath,
   });
 
-  factory EpisodeDto.fromJson(Map<String, dynamic> json) =>
-      _$EpisodeDtoFromJson(json);
+  factory EpisodeDto.fromJson(Map<String, dynamic> json) => _$EpisodeDtoFromJson(json);
 }

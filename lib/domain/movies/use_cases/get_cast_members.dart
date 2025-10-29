@@ -13,6 +13,5 @@ class GetCastMembers {
     this._movieRepository,
   );
 
-  Future<Result<List<CastMember>, RequestError>> call(int movieId) =>
-      _movieRepository.getCastCrewMembers(movieId);
+  Future<Result<List<CastMember>, RequestError>> call(int movieId) => _movieRepository.getCastCrewMembers(movieId);
 }

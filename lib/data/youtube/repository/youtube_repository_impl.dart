@@ -12,8 +12,7 @@ class YoutubeRepositoryImpl implements YoutubeRepository {
   YoutubeRepositoryImpl(this.youtubeDataSource);
 
   @override
-  Future<Result<List<YoutubeVideo>, RequestError>> getYoutubeVideosByTitle(
-      String title) async {
+  Future<Result<List<YoutubeVideo>, RequestError>> getYoutubeVideosByTitle(String title) async {
     final result = await youtubeDataSource.getYoutubeVideosByTitle(title);
     return result.map((data) => data.toDomain());
   }

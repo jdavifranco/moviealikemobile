@@ -16,8 +16,7 @@ import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 class SearchScreen extends StatefulWidget {
   final SearchType initialSearchType;
-  const SearchScreen({Key? key, required this.initialSearchType})
-      : super(key: key);
+  const SearchScreen({Key? key, required this.initialSearchType}) : super(key: key);
 
   @override
   SearchScreenState createState() => SearchScreenState();
@@ -79,27 +78,18 @@ class SearchScreenState extends State<SearchScreen> {
                               hasNextPage: state.hasNextPage,
                             ),
                             fetchNextPage: _bloc.loadNextPage,
-                            builderDelegate:
-                                PagedChildBuilderDelegate<SearchItem>(
-                                    itemBuilder: (context, item, index) {
+                            builderDelegate: PagedChildBuilderDelegate<SearchItem>(itemBuilder: (context, item, index) {
                               final searchItem = item;
                               return MovieSearchCard(
                                 onTap: () {
-                                  GoRouter.of(context)
-                                      .push('/movie_details/${searchItem.id}');
+                                  GoRouter.of(context).push('/movie_details/${searchItem.id}');
                                 },
-                                title:
-                                    searchItem.title ?? searchItem.name ?? "",
+                                title: searchItem.title ?? searchItem.name ?? "",
                                 genre: searchItem.genreIds?.isNotEmpty == true
-                                    ? searchItem.genreIds!
-                                        .map(
-                                            (e) => Genre.getById(e)?.name ?? "")
-                                        .toList()
-                                        .first
+                                    ? searchItem.genreIds!.map((e) => Genre.getById(e)?.name ?? "").toList().first
                                     : "",
                                 rating: searchItem.voteAverage.toString(),
-                                imageUrl:
-                                    "https://image.tmdb.org/t/p/w780/${searchItem.posterPath}",
+                                imageUrl: "https://image.tmdb.org/t/p/w780/${searchItem.posterPath}",
                                 year: searchItem.firstAirDate ?? "",
                                 duration: searchItem.mediaType ?? "",
                                 type: searchItem.mediaType ?? "",

@@ -118,18 +118,14 @@ void main() {
           build: () => movieInfoDetailsBloc,
           act: (bloc) => bloc.init(),
           expect: () => [
-            isA<MovieInfoDetailsState>()
-                .having((state) => state.isLoading, 'isLoading', isTrue),
+            isA<MovieInfoDetailsState>().having((state) => state.isLoading, 'isLoading', isTrue),
             isA<MovieInfoDetailsState>()
                 .having((state) => state.isLoading, 'isLoading', isFalse)
-                .having(
-                    (state) => state.personDetails, 'personDetails', isNotNull)
-                .having((state) => state.personDetails?.name, 'person name',
-                    'Test Person'),
+                .having((state) => state.personDetails, 'personDetails', isNotNull)
+                .having((state) => state.personDetails?.name, 'person name', 'Test Person'),
             isA<MovieInfoDetailsState>()
                 .having((state) => state.pages.length, 'pages length', 1)
-                .having(
-                    (state) => state.pages.first.length, 'first page items', 2)
+                .having((state) => state.pages.first.length, 'first page items', 2)
                 .having((state) => state.keys.length, 'keys length', 1)
                 .having((state) => state.keys.first, 'first key', 1)
                 .having((state) => state.hasNextPage, 'hasNextPage', isTrue)
@@ -167,18 +163,14 @@ void main() {
           build: () => movieInfoDetailsBloc,
           act: (bloc) => bloc.init(),
           expect: () => [
-            isA<MovieInfoDetailsState>()
-                .having((state) => state.isLoading, 'isLoading', isTrue),
+            isA<MovieInfoDetailsState>().having((state) => state.isLoading, 'isLoading', isTrue),
             isA<MovieInfoDetailsState>()
                 .having((state) => state.isLoading, 'isLoading', isFalse)
-                .having((state) => state.companyDetails, 'companyDetails',
-                    isNotNull)
-                .having((state) => state.companyDetails?.name, 'company name',
-                    'Test Company'),
+                .having((state) => state.companyDetails, 'companyDetails', isNotNull)
+                .having((state) => state.companyDetails?.name, 'company name', 'Test Company'),
             isA<MovieInfoDetailsState>()
                 .having((state) => state.pages.length, 'pages length', 1)
-                .having(
-                    (state) => state.pages.first.length, 'first page items', 2)
+                .having((state) => state.pages.first.length, 'first page items', 2)
                 .having((state) => state.keys.length, 'keys length', 1)
                 .having((state) => state.keys.first, 'first key', 1)
                 .having((state) => state.hasNextPage, 'hasNextPage', isTrue)
@@ -207,14 +199,12 @@ void main() {
           build: () => movieInfoDetailsBloc,
           act: (bloc) => bloc.init(),
           expect: () => [
-            isA<MovieInfoDetailsState>()
-                .having((state) => state.isLoading, 'isLoading', isTrue),
+            isA<MovieInfoDetailsState>().having((state) => state.isLoading, 'isLoading', isTrue),
             isA<MovieInfoDetailsState>()
                 .having((state) => state.isLoading, 'isLoading', isFalse)
                 .having((state) => state.hasError, 'hasError', isTrue)
                 .having((state) => state.error, 'error', isA<ServerError>()),
-            isA<MovieInfoDetailsState>()
-                .having((state) => state.isLoading, 'isLoading', isFalse)
+            isA<MovieInfoDetailsState>().having((state) => state.isLoading, 'isLoading', isFalse)
           ],
         );
       });
@@ -240,14 +230,12 @@ void main() {
           build: () => movieInfoDetailsBloc,
           act: (bloc) => bloc.init(),
           expect: () => [
-            isA<MovieInfoDetailsState>()
-                .having((state) => state.isLoading, 'isLoading', isTrue),
+            isA<MovieInfoDetailsState>().having((state) => state.isLoading, 'isLoading', isTrue),
             isA<MovieInfoDetailsState>()
                 .having((state) => state.isLoading, 'isLoading', isFalse)
                 .having((state) => state.hasError, 'hasError', isTrue)
                 .having((state) => state.error, 'error', isA<ServerError>()),
-            isA<MovieInfoDetailsState>()
-                .having((state) => state.isLoading, 'isLoading', isFalse)
+            isA<MovieInfoDetailsState>().having((state) => state.isLoading, 'isLoading', isFalse)
           ],
         );
       });
@@ -278,12 +266,10 @@ void main() {
           build: () => movieInfoDetailsBloc,
           act: (bloc) => bloc.init(),
           expect: () => [
-            isA<MovieInfoDetailsState>()
-                .having((state) => state.isLoading, 'isLoading', isTrue),
+            isA<MovieInfoDetailsState>().having((state) => state.isLoading, 'isLoading', isTrue),
             isA<MovieInfoDetailsState>()
                 .having((state) => state.isLoading, 'isLoading', isFalse)
-                .having(
-                    (state) => state.personDetails, 'personDetails', isNotNull),
+                .having((state) => state.personDetails, 'personDetails', isNotNull),
             isA<MovieInfoDetailsState>()
                 .having((state) => state.hasError, 'hasError', isTrue)
                 .having((state) => state.error, 'error', isA<ServerError>()),
@@ -385,20 +371,16 @@ void main() {
         build: () => movieInfoDetailsBloc,
         act: (bloc) => bloc.retry(),
         expect: () => [
-          isA<MovieInfoDetailsState>()
-              .having((state) => state.isLoading, 'isLoading', isTrue),
+          isA<MovieInfoDetailsState>().having((state) => state.isLoading, 'isLoading', isTrue),
           isA<MovieInfoDetailsState>()
               .having((state) => state.isLoading, 'isLoading', isFalse)
               .having((state) => state.hasError, 'hasError', isFalse)
               .having((state) => state.error, 'error', isNull)
-              .having(
-                  (state) => state.personDetails, 'personDetails', isNotNull)
-              .having((state) => state.personDetails?.name, 'person name',
-                  'Retry Person'),
+              .having((state) => state.personDetails, 'personDetails', isNotNull)
+              .having((state) => state.personDetails?.name, 'person name', 'Retry Person'),
           isA<MovieInfoDetailsState>()
               .having((state) => state.pages.length, 'pages length', 1)
-              .having(
-                  (state) => state.pages.first.length, 'first page items', 1)
+              .having((state) => state.pages.first.length, 'first page items', 1)
               .having((state) => state.hasNextPage, 'hasNextPage', isTrue)
               .having((state) => state.hasError, 'hasError', isFalse)
               .having((state) => state.error, 'error', isNull),
@@ -429,8 +411,7 @@ void main() {
         expect: () => [
           isA<MovieInfoDetailsState>()
               .having((state) => state.pages.length, 'pages length', 1)
-              .having(
-                  (state) => state.pages.first.length, 'first page items', 2)
+              .having((state) => state.pages.first.length, 'first page items', 2)
               .having((state) => state.keys.length, 'keys length', 1)
               .having((state) => state.keys.first, 'first key', 1)
               .having((state) => state.hasNextPage, 'hasNextPage', isTrue)
@@ -473,8 +454,7 @@ void main() {
       group('isCompanyFilter', () {
         blocTest<MovieInfoDetailsBloc, MovieInfoDetailsState>(
           'returns true for companies filter',
-          build: () =>
-              getMovieInfoDetailsBloc(filterType: SearchFilter.companies),
+          build: () => getMovieInfoDetailsBloc(filterType: SearchFilter.companies),
           verify: (bloc) {
             expect(bloc.state.isPersonFilter, isFalse);
             expect(bloc.state.isCompanyFilter, isTrue);

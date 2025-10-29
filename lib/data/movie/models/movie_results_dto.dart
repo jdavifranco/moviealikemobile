@@ -8,6 +8,5 @@ class MovieResultsDto {
 
   MovieResultsDto({required this.results});
 
-  factory MovieResultsDto.fromJson(Map<String, dynamic> json) =>
-      _$MovieResultsDtoFromJson(json);
+  factory MovieResultsDto.fromJson(Map<String, dynamic> json) => _$MovieResultsDtoFromJson(json);
 }

@@ -4,8 +4,7 @@ import 'package:moviealike/presentation/common/style/app_colors.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
   final String currentRoute;
-  const CustomBottomNavBar({Key? key, required this.currentRoute})
-      : super(key: key);
+  const CustomBottomNavBar({Key? key, required this.currentRoute}) : super(key: key);
 
   @override
   State<CustomBottomNavBar> createState() => _CustomBottomNavBarState();
@@ -15,10 +14,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
   late final List<_NavItem> _navItems = [
     _NavItem(label: context.text.home, icon: Icons.home, route: '/'),
     _NavItem(label: context.text.search, icon: Icons.search, route: '/search'),
-    _NavItem(
-        label: context.text.watchlist,
-        icon: Icons.bookmark,
-        route: '/watchlist'),
+    _NavItem(label: context.text.watchlist, icon: Icons.bookmark, route: '/watchlist'),
     _NavItem(label: context.text.about, icon: Icons.help, route: '/settings'),
   ];
 
@@ -36,8 +32,7 @@ class _CustomBottomNavBarState extends State<CustomBottomNavBar> {
               onTap: () {},
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 300),
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 decoration: BoxDecoration(
                   color: isSelected ? AppColors.secondary : AppColors.primary,
                   borderRadius: BorderRadius.circular(20),

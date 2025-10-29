@@ -62,20 +62,17 @@ class _MainScreenNavigationState extends State<MainScreenNavigation> {
                   },
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 500),
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     decoration: BoxDecoration(
-                      color:
-                          isSelected ? AppColors.secondary : AppColors.primary,
+                      color: isSelected ? AppColors.secondary : AppColors.primary,
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Row(
                       children: [
                         SvgPicture.asset(
                           item.iconAsset,
-                          colorFilter: ColorFilter.mode(
-                              isSelected ? AppColors.accent : AppColors.grey,
-                              BlendMode.srcIn),
+                          colorFilter:
+                              ColorFilter.mode(isSelected ? AppColors.accent : AppColors.grey, BlendMode.srcIn),
                           width: 24,
                         ),
                         if (isSelected)

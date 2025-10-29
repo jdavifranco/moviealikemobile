@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppTypographyScheme extends ThemeExtension<AppTypographyScheme> {
-  static AppTypographyScheme of(BuildContext context) =>
-      Theme.of(context).extension<AppTypographyScheme>()!;
+  static AppTypographyScheme of(BuildContext context) => Theme.of(context).extension<AppTypographyScheme>()!;
 
   final TextStyle heading1;
   final TextStyle heading2;
@@ -32,7 +31,5 @@ class AppTypographyScheme extends ThemeExtension<AppTypographyScheme> {
   ThemeExtension<AppTypographyScheme> copyWith() => this;
 
   @override
-  ThemeExtension<AppTypographyScheme> lerp(
-          covariant ThemeExtension<AppTypographyScheme>? other, double t) =>
-      this;
+  ThemeExtension<AppTypographyScheme> lerp(covariant ThemeExtension<AppTypographyScheme>? other, double t) => this;
 }

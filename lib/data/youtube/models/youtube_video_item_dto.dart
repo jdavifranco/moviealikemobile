@@ -13,6 +13,5 @@ class YoutubeVideoItemDto {
 
   YoutubeVideoItemDto({this.kind, this.etag, this.id, this.snippet});
 
-  factory YoutubeVideoItemDto.fromJson(Map<String, dynamic> json) =>
-      _$YoutubeVideoItemDtoFromJson(json);
+  factory YoutubeVideoItemDto.fromJson(Map<String, dynamic> json) => _$YoutubeVideoItemDtoFromJson(json);
 }

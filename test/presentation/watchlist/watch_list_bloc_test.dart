@@ -65,8 +65,7 @@ void main() {
             posterUrl: 'poster2.jpg',
           ),
         ];
-        final getWatchListStreamMock =
-            GetWatchListStreamMock.dummy(movies: movies);
+        final getWatchListStreamMock = GetWatchListStreamMock.dummy(movies: movies);
 
         final watchListBloc = getWatchListBloc(
           getWatchListStream: getWatchListStreamMock,
@@ -83,10 +82,8 @@ void main() {
             isA<WatchListState>()
                 .having((state) => state.isLoading, 'isLoading', isFalse)
                 .having((state) => state.movies.length, 'movies length', 2)
-                .having((state) => state.movies.first.title,
-                    'first movie title', 'Test Movie 1')
-                .having((state) => state.movies.last.title, 'last movie title',
-                    'Test Movie 2'),
+                .having((state) => state.movies.first.title, 'first movie title', 'Test Movie 1')
+                .having((state) => state.movies.last.title, 'last movie title', 'Test Movie 2'),
           ],
         );
       });
@@ -151,13 +148,11 @@ void main() {
             isA<WatchListState>()
                 .having((state) => state.isLoading, 'isLoading', isFalse)
                 .having((state) => state.movies.length, 'movies length', 1)
-                .having((state) => state.movies.last.title, 'last movie title',
-                    'Movie 1'),
+                .having((state) => state.movies.last.title, 'last movie title', 'Movie 1'),
             isA<WatchListState>()
                 .having((state) => state.isLoading, 'isLoading', isFalse)
                 .having((state) => state.movies.length, 'movies length', 2)
-                .having((state) => state.movies.last.title, 'last movie title',
-                    'Movie 2'),
+                .having((state) => state.movies.last.title, 'last movie title', 'Movie 2'),
           ],
         );
       });

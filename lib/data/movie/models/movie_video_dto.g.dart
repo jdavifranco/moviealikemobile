@@ -6,8 +6,7 @@ part of 'movie_video_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-MovieVideoDto _$MovieVideoDtoFromJson(Map<String, dynamic> json) =>
-    MovieVideoDto(
+MovieVideoDto _$MovieVideoDtoFromJson(Map<String, dynamic> json) => MovieVideoDto(
       iso6391: json['iso6391'] as String?,
       iso31661: json['iso31661'] as String?,
       name: json['name'] as String,

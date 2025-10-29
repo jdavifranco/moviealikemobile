@@ -10,9 +10,7 @@ class SpokenLanguageDto {
   @JsonKey(name: 'name')
   final String name;
 
-  SpokenLanguageDto(
-      {required this.englishName, required this.iso6391, required this.name});
+  SpokenLanguageDto({required this.englishName, required this.iso6391, required this.name});
 
-  factory SpokenLanguageDto.fromJson(Map<String, dynamic> json) =>
-      _$SpokenLanguageDtoFromJson(json);
+  factory SpokenLanguageDto.fromJson(Map<String, dynamic> json) => _$SpokenLanguageDtoFromJson(json);
 }

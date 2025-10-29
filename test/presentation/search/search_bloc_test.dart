@@ -18,8 +18,7 @@ import '../../mocks/models/fake_movie.dart';
 import '../../mocks/models/fake_search_item.dart';
 
 class SearchMovieByTitleMock extends Mock implements SearchMovieByTitle {
-  static SearchMovieByTitleMock dummy(
-      {List<SearchItem>? searchItems, SearchType type = SearchType.movie}) {
+  static SearchMovieByTitleMock dummy({List<SearchItem>? searchItems, SearchType type = SearchType.movie}) {
     final mock = SearchMovieByTitleMock();
     when(() => mock.call(any(), type, any())).thenAnswer(
       (_) => CancelableOperation.fromFuture(
@@ -42,9 +41,7 @@ class GetPopularMoviesMock extends Mock implements GetPopularMovies {
 
 class SearchMovieWithFilterMock extends Mock implements SearchMovieWithFilter {
   static SearchMovieWithFilterMock dummy(
-      {List<SearchItem>? searchItems,
-      SearchType type = SearchType.movie,
-      SearchFilter filter = SearchFilter.genres}) {
+      {List<SearchItem>? searchItems, SearchType type = SearchType.movie, SearchFilter filter = SearchFilter.genres}) {
     final mock = SearchMovieWithFilterMock();
     when(() => mock.call(
           query: any(named: 'query'),
@@ -73,11 +70,9 @@ void main() {
     SearchType initialSearchType = SearchType.movie,
   }) {
     return SearchBloc(
-      searchMovieOrSeriesByTitle:
-          searchMovieByTitle ?? SearchMovieByTitleMock.dummy(),
+      searchMovieOrSeriesByTitle: searchMovieByTitle ?? SearchMovieByTitleMock.dummy(),
       getPopularMovies: getPopularMovies ?? GetPopularMoviesMock.dummy(),
-      searchMovieWithFilter:
-          searchMovieWithFilter ?? SearchMovieWithFilterMock.dummy(),
+      searchMovieWithFilter: searchMovieWithFilter ?? SearchMovieWithFilterMock.dummy(),
       initialSearchType: initialSearchType,
     );
   }
@@ -100,13 +95,11 @@ void main() {
           build: () => searchBloc,
           act: (bloc) => bloc.init(),
           expect: () => [
-            isA<SearchState>()
-                .having((state) => state.isLoading, 'isLoading', isTrue),
+            isA<SearchState>().having((state) => state.isLoading, 'isLoading', isTrue),
             isA<SearchState>()
                 .having((state) => state.isLoading, 'isLoading', isFalse)
                 .having((state) => state.pages?.length, 'pages length', 1)
-                .having(
-                    (state) => state.pages?.first.length, 'first page items', 2)
+                .having((state) => state.pages?.first.length, 'first page items', 2)
                 .having((state) => state.keys?.length, 'keys length', 1)
                 .having((state) => state.keys?.first, 'first key', 1)
                 .having((state) => state.hasNextPage, 'hasNextPage', isFalse),
@@ -136,18 +129,15 @@ void main() {
             type: SearchType.movie,
           ),
           expect: () => [
-            isA<SearchState>()
-                .having((state) => state.isLoading, 'isLoading', isTrue),
+            isA<SearchState>().having((state) => state.isLoading, 'isLoading', isTrue),
             isA<SearchState>()
                 .having((state) => state.isLoading, 'isLoading', isFalse)
                 .having((state) => state.pages?.length, 'pages length', 1)
-                .having(
-                    (state) => state.pages?.first.length, 'first page items', 2)
+                .having((state) => state.pages?.first.length, 'first page items', 2)
                 .having((state) => state.keys?.length, 'keys length', 1)
                 .having((state) => state.keys?.first, 'first key', 1)
                 .having((state) => state.hasNextPage, 'hasNextPage', isTrue)
-                .having((state) => state.searchFilter, 'searchFilter',
-                    SearchFilter.genres),
+                .having((state) => state.searchFilter, 'searchFilter', SearchFilter.genres),
           ],
         );
       });
@@ -169,8 +159,7 @@ void main() {
           build: () => searchBloc,
           act: (bloc) => bloc.init(),
           expect: () => [
-            isA<SearchState>()
-                .having((state) => state.isLoading, 'isLoading', isTrue),
+            isA<SearchState>().having((state) => state.isLoading, 'isLoading', isTrue),
             isA<SearchState>()
                 .having((state) => state.isLoading, 'isLoading', isFalse)
                 .having((state) => state.hasError, 'hasError', isTrue)
@@ -208,8 +197,7 @@ void main() {
             await bloc.loadNextPage();
           },
           expect: () => [
-            isA<SearchState>()
-                .having((state) => state.isLoading, 'isLoading', isTrue),
+            isA<SearchState>().having((state) => state.isLoading, 'isLoading', isTrue),
             isA<SearchState>()
                 .having((state) => state.isLoading, 'isLoading', isFalse)
                 .having((state) => state.searchFilter, 'searchFilter', filter),
@@ -229,8 +217,7 @@ void main() {
         build: () => searchBloc,
         act: (bloc) => bloc.changeSearchType(SearchType.series),
         expect: () => [
-          isA<SearchState>().having(
-              (state) => state.selectedType, 'selectedType', SearchType.series),
+          isA<SearchState>().having((state) => state.selectedType, 'selectedType', SearchType.series),
         ],
       );
     });
@@ -243,8 +230,7 @@ void main() {
         build: () => searchBloc,
         act: (bloc) => bloc.changeSearchFilter(SearchFilter.genres),
         expect: () => [
-          isA<SearchState>().having((state) => state.searchFilter,
-              'searchFilter', SearchFilter.genres),
+          isA<SearchState>().having((state) => state.searchFilter, 'searchFilter', SearchFilter.genres),
         ],
       );
     });
@@ -268,8 +254,7 @@ void main() {
           isA<SearchState>()
               .having((state) => state.isLoading, 'isLoading', isFalse)
               .having((state) => state.pages?.length, 'pages length', 1)
-              .having(
-                  (state) => state.pages?.first.length, 'first page items', 2),
+              .having((state) => state.pages?.first.length, 'first page items', 2),
         ],
       );
     });
@@ -286,16 +271,13 @@ void main() {
       blocTest<SearchBloc, SearchState>(
         'emits state when trying again',
         build: () => searchBloc,
-        seed: () => const SearchState(
-            isLoading: false, searchFilter: SearchFilter.genres),
+        seed: () => const SearchState(isLoading: false, searchFilter: SearchFilter.genres),
         act: (bloc) => bloc.onTryAgain(),
         expect: () => [
-          isA<SearchState>()
-              .having((state) => state.isLoading, 'isLoading', isTrue),
+          isA<SearchState>().having((state) => state.isLoading, 'isLoading', isTrue),
           isA<SearchState>()
               .having((state) => state.pages?.length, 'pages length', 1)
-              .having(
-                  (state) => state.pages?.first.length, 'first page items', 2)
+              .having((state) => state.pages?.first.length, 'first page items', 2)
         ],
       );
     });

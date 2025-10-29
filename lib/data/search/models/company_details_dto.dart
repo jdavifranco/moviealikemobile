@@ -33,8 +33,7 @@ class CompanyDetailsDto {
     this.parentCompany,
   });
 
-  factory CompanyDetailsDto.fromJson(Map<String, dynamic> json) =>
-      _$CompanyDetailsDtoFromJson(json);
+  factory CompanyDetailsDto.fromJson(Map<String, dynamic> json) => _$CompanyDetailsDtoFromJson(json);
 
   CompanyDetails toDomain() => CompanyDetails(
         description: description,

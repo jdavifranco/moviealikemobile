@@ -6,9 +6,6 @@ part of 'movie_results_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-MovieResultsDto _$MovieResultsDtoFromJson(Map<String, dynamic> json) =>
-    MovieResultsDto(
-      results: (json['results'] as List<dynamic>)
-          .map((e) => MovieDto.fromJson(e as Map<String, dynamic>))
-          .toList(),
+MovieResultsDto _$MovieResultsDtoFromJson(Map<String, dynamic> json) => MovieResultsDto(
+      results: (json['results'] as List<dynamic>).map((e) => MovieDto.fromJson(e as Map<String, dynamic>)).toList(),
     );

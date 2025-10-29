@@ -17,46 +17,36 @@ class SearchRepositoryImpl implements SearchRepository {
   SearchRepositoryImpl(this.searchDataSource);
 
   @override
-  CancelableOperation<Result<List<SearchItem>, RequestError>>
-      getMoviesAndSeries(String query, SearchType type, int page) {
-    final cancelableOperation =
-        searchDataSource.getSearchMoviesAndTvShows(query, type, page);
+  CancelableOperation<Result<List<SearchItem>, RequestError>> getMoviesAndSeries(
+      String query, SearchType type, int page) {
+    final cancelableOperation = searchDataSource.getSearchMoviesAndTvShows(query, type, page);
 
     return cancelableOperation.then((result) {
       if (result.isSuccess && result.success.isEmpty) {
         return Failure(NoResultsFound());
       }
-      return result.map((movieDtos) =>
-          movieDtos.map((movieDto) => movieDto.toDomain()).toList());
+      return result.map((movieDtos) => movieDtos.map((movieDto) => movieDto.toDomain()).toList());
     });
   }
 
   @override
   CancelableOperation<Result<List<SearchItem>, RequestError>> getMoviesByFilter(
-      {required SearchType searchType,
-      required SearchFilter filter,
-      required String query,
-      int page = 1}) {
-    final cancelableOperation =
-        searchDataSource.getMoviesWithFilter(filter, query, page);
+      {required SearchType searchType, required SearchFilter filter, required String query, int page = 1}) {
+    final cancelableOperation = searchDataSource.getMoviesWithFilter(filter, query, page);
 
-    return cancelableOperation.then((result) => result.map((movieDtos) =>
-        movieDtos.map((movieDto) => movieDto.toDomain()).toList()));
+    return cancelableOperation
+        .then((result) => result.map((movieDtos) => movieDtos.map((movieDto) => movieDto.toDomain()).toList()));
   }
 
   @override
-  CancelableOperation<Result<PersonDetails, RequestError>> getPersonDetails(
-      int personId) {
+  CancelableOperation<Result<PersonDetails, RequestError>> getPersonDetails(int personId) {
     final cancelableOperation = searchDataSource.getPersonDetails(personId);
-    return cancelableOperation.then((result) =>
-        result.map((personDetailsDto) => personDetailsDto.toDomain()));
+    return cancelableOperation.then((result) => result.map((personDetailsDto) => personDetailsDto.toDomain()));
   }
 
   @override
-  CancelableOperation<Result<CompanyDetails, RequestError>> getCompanyDetails(
-      int companyId) {
+  CancelableOperation<Result<CompanyDetails, RequestError>> getCompanyDetails(int companyId) {
     final cancelableOperation = searchDataSource.getCompanyDetails(companyId);
-    return cancelableOperation.then((result) =>
-        result.map((companyDetailsDto) => companyDetailsDto.toDomain()));
+    return cancelableOperation.then((result) => result.map((companyDetailsDto) => companyDetailsDto.toDomain()));
   }
 }

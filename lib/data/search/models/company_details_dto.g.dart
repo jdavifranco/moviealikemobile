@@ -6,8 +6,7 @@ part of 'company_details_dto.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-CompanyDetailsDto _$CompanyDetailsDtoFromJson(Map<String, dynamic> json) =>
-    CompanyDetailsDto(
+CompanyDetailsDto _$CompanyDetailsDtoFromJson(Map<String, dynamic> json) => CompanyDetailsDto(
       description: json['description'] as String? ?? '',
       headquarters: json['headquarters'] as String? ?? '',
       homepage: json['homepage'] as String?,

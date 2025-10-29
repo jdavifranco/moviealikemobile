@@ -69,17 +69,13 @@ void main() {
                 .having((state) => state.hasError, 'hasError', isFalse)
                 .having((state) => state.error, 'error', isNull),
             isA<HomeState>()
-                .having((state) => state.populaMovies.length,
-                    'populaMovies loaded', 2)
-                .having((state) => state.upcomingMovies.length,
-                    'upcomingMovies loaded', 2)
+                .having((state) => state.populaMovies.length, 'populaMovies loaded', 2)
+                .having((state) => state.upcomingMovies.length, 'upcomingMovies loaded', 2)
                 .having((state) => state.isLoading, 'isLoading', isFalse)
                 .having((state) => state.hasError, 'hasError', isFalse)
                 .having((state) => state.error, 'error', isNull)
-                .having((state) => state.populaMovies.first.title,
-                    'first popular movie title', 'Popular Movie 1')
-                .having((state) => state.upcomingMovies.first.title,
-                    'first upcoming movie title', 'Upcoming Movie 2'),
+                .having((state) => state.populaMovies.first.title, 'first popular movie title', 'Popular Movie 1')
+                .having((state) => state.upcomingMovies.first.title, 'first upcoming movie title', 'Upcoming Movie 2'),
           ],
         );
       });
@@ -168,8 +164,7 @@ void main() {
             isA<HomeState>()
                 .having((state) => state.isLoading, 'isLoading', isFalse)
                 .having((state) => state.hasError, 'hasError', isTrue)
-                .having(
-                    (state) => state.error, 'error', isA<ConnectionError>()),
+                .having((state) => state.error, 'error', isA<ConnectionError>()),
           ],
         );
       });

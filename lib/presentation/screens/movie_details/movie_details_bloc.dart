@@ -48,8 +48,7 @@ class MovieDetailsBloc extends Cubit<MovieDetailsState> {
     emit(state.copyWith(isLoading: true, hasError: false, error: null));
 
     final movieDetailsResult = await _getMovieDetails(selectedMovieId);
-    favoriteSubscription =
-        _isMovieInWatchList(selectedMovieId).listen(_updateIsWatchListMovie);
+    favoriteSubscription = _isMovieInWatchList(selectedMovieId).listen(_updateIsWatchListMovie);
 
     movieDetailsResult.when(
       success: (selectedMovieDetails) async {
@@ -77,8 +76,7 @@ class MovieDetailsBloc extends Cubit<MovieDetailsState> {
     }
   }
 
-  Future<void> _loadGenreRecommendations(
-      MovieDetails selectedMovieDetails) async {
+  Future<void> _loadGenreRecommendations(MovieDetails selectedMovieDetails) async {
     final genreRecommendations = (await _getMoviesWithGenres(
       genreIds: selectedMovieDetails.genres?.map((e) => e.id).toList() ?? [],
       originalMovieId: selectedMovieDetails.id,
@@ -108,22 +106,16 @@ class MovieDetailsBloc extends Cubit<MovieDetailsState> {
       _getCastMembers(selectedMovieDetails.id),
     ]);
 
-    final youtubeVideosByTitleResult =
-        movieDetailsResult[0] as Result<List<YoutubeVideo>, RequestError>;
-    final youtubeVideosResult =
-        movieDetailsResult[1] as Result<List<MovieVideo>, RequestError>;
-    final castMembersResult =
-        movieDetailsResult[2] as Result<List<CastMember>, RequestError>;
+    final youtubeVideosByTitleResult = movieDetailsResult[0] as Result<List<YoutubeVideo>, RequestError>;
+    final youtubeVideosResult = movieDetailsResult[1] as Result<List<MovieVideo>, RequestError>;
+    final castMembersResult = movieDetailsResult[2] as Result<List<CastMember>, RequestError>;
 
-    final youtubeVideosByTitle =
-        youtubeVideosByTitleResult.unwrapOr(<YoutubeVideo>[]);
+    final youtubeVideosByTitle = youtubeVideosByTitleResult.unwrapOr(<YoutubeVideo>[]);
 
     final youtubeVideos = youtubeVideosResult.unwrapOr(<MovieVideo>[]);
 
     final castMembers = castMembersResult.unwrapOr(<CastMember>[]);
-    if (castMembers.isNotEmpty ||
-        youtubeVideos.isNotEmpty ||
-        youtubeVideosByTitle.isNotEmpty) {
+    if (castMembers.isNotEmpty || youtubeVideos.isNotEmpty || youtubeVideosByTitle.isNotEmpty) {
       emit(state.copyWith(
         isLoading: false,
         castMembers: castMembers,
@@ -140,10 +132,7 @@ class MovieDetailsBloc extends Cubit<MovieDetailsState> {
       _addToWatchList(WatchlistMovie(
         movieId: state.selectedMovieDetails!.id,
         title: state.selectedMovieDetails!.title,
-        genre: state.selectedMovieDetails!.genres!
-            .map((e) => e.name)
-            .toList()
-            .first,
+        genre: state.selectedMovieDetails!.genres!.map((e) => e.name).toList().first,
         rating: state.selectedMovieDetails?.voteAverage ?? 0,
         releaseYear: state.selectedMovieDetails?.releaseDate ?? "",
         posterUrl: state.selectedMovieDetails?.posterPath ?? "",

@@ -11,32 +11,24 @@ import 'package:moviealike/presentation/screens/whatchlist/watch_list_entry.dart
 import 'package:moviealike/presentation/screens/movie_info_details/movie_info_details_entry.dart';
 
 class NavigationController {
-  static final NavigationController _instance =
-      NavigationController._internal();
+  static final NavigationController _instance = NavigationController._internal();
 
   static NavigationController get instance => _instance;
 
   static late final GoRouter router;
 
-  static final GlobalKey<NavigatorState> parentNavigatorKey =
-      GlobalKey<NavigatorState>();
-  static final GlobalKey<NavigatorState> homeTabNavigatorKey =
-      GlobalKey<NavigatorState>();
-  static final GlobalKey<NavigatorState> searchTabNavigatorKey =
-      GlobalKey<NavigatorState>();
+  static final GlobalKey<NavigatorState> parentNavigatorKey = GlobalKey<NavigatorState>();
+  static final GlobalKey<NavigatorState> homeTabNavigatorKey = GlobalKey<NavigatorState>();
+  static final GlobalKey<NavigatorState> searchTabNavigatorKey = GlobalKey<NavigatorState>();
 
-  static final GlobalKey<NavigatorState> watchListTabNavigatorKey =
-      GlobalKey<NavigatorState>();
-  static final GlobalKey<NavigatorState> aboutTabNavigatorKey =
-      GlobalKey<NavigatorState>();
+  static final GlobalKey<NavigatorState> watchListTabNavigatorKey = GlobalKey<NavigatorState>();
+  static final GlobalKey<NavigatorState> aboutTabNavigatorKey = GlobalKey<NavigatorState>();
 
-  BuildContext get context =>
-      router.routerDelegate.navigatorKey.currentContext!;
+  BuildContext get context => router.routerDelegate.navigatorKey.currentContext!;
 
   GoRouterDelegate get routerDelegate => router.routerDelegate;
 
-  GoRouteInformationParser get routeInformationParser =>
-      router.routeInformationParser;
+  GoRouteInformationParser get routeInformationParser => router.routeInformationParser;
 
   factory NavigationController() {
     return _instance;
@@ -153,8 +145,7 @@ class NavigationController {
         pageBuilder: (context, state) {
           final filterTypeName = state.pathParameters['filterType'];
           final filterId = int.parse(state.pathParameters['filterId'] ?? "0");
-          final filterType =
-              SearchFilter.getFilterFromName(filterTypeName ?? "");
+          final filterType = SearchFilter.getFilterFromName(filterTypeName ?? "");
 
           if (filterType == null) {
             return getPage(

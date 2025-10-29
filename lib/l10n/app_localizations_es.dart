@@ -111,7 +111,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get legalPolicies => 'Legal y Políticas';
 
   @override
-  String get tmdbAttribution => 'Este producto utiliza la API de TMDB, pero no está respaldado ni certificado por TMDB.';
+  String get tmdbAttribution =>
+      'Este producto utiliza la API de TMDB, pero no está respaldado ni certificado por TMDB.';
 
   @override
   String get close => 'Cerrar';
@@ -171,10 +172,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get noRecommendationsAvailable => 'No hay recomendaciones disponibles.';
 
   @override
-  String get appDescription => '¡Bienvenido a Movie Alike! Esta aplicación fue creada para ayudarte a descubrir películas similares a tus favoritas. Usamos algoritmos avanzados para sugerir recomendaciones personalizadas basadas en la película seleccionada. Explora una amplia colección de películas y series, encuentra nuevos favoritos y comparte tus descubrimientos con amigos. ¡Disfruta de tu experiencia cinematográfica!';
+  String get appDescription =>
+      '¡Bienvenido a Movie Alike! Esta aplicación fue creada para ayudarte a descubrir películas similares a tus favoritas. Usamos algoritmos avanzados para sugerir recomendaciones personalizadas basadas en la película seleccionada. Explora una amplia colección de películas y series, encuentra nuevos favoritos y comparte tus descubrimientos con amigos. ¡Disfruta de tu experiencia cinematográfica!';
 
   @override
-  String get adsDisclosureDescription => 'Esta aplicación muestra anuncios para respaldar su desarrollo. Al usar esta aplicación, aceptas la visualización de anuncios.';
+  String get adsDisclosureDescription =>
+      'Esta aplicación muestra anuncios para respaldar su desarrollo. Al usar esta aplicación, aceptas la visualización de anuncios.';
 
   @override
   String get seeMore => 'Ver más';
@@ -195,7 +198,8 @@ class AppLocalizationsEs extends AppLocalizations {
   String get noResults => 'No se encontraron resultados.';
 
   @override
-  String get noResultsDescription => 'No encontramos ningún resultado para tu búsqueda. Por favor, inténtalo de nuevo con una palabra clave diferente.';
+  String get noResultsDescription =>
+      'No encontramos ningún resultado para tu búsqueda. Por favor, inténtalo de nuevo con una palabra clave diferente.';
 
   @override
   String get availableOn => 'Disponible en';
@@ -255,13 +259,15 @@ class AppLocalizationsEs extends AppLocalizations {
   String get errorTimeout => 'Tiempo de Espera Agotado';
 
   @override
-  String get errorTimeoutMessage => 'La solicitud tardó demasiado. Por favor, verifica tu conexión e inténtalo de nuevo.';
+  String get errorTimeoutMessage =>
+      'La solicitud tardó demasiado. Por favor, verifica tu conexión e inténtalo de nuevo.';
 
   @override
   String get errorServer => 'Error del Servidor';
 
   @override
-  String get errorServerMessage => 'Nuestros servidores están temporalmente no disponibles. Por favor, inténtalo más tarde.';
+  String get errorServerMessage =>
+      'Nuestros servidores están temporalmente no disponibles. Por favor, inténtalo más tarde.';
 
   @override
   String get errorNotFound => 'No Encontrado';

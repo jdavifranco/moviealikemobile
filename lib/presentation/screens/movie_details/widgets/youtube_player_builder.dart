@@ -15,8 +15,7 @@ class YoutubePlayerBuilder extends StatefulWidget {
     this.enableFullScreenOnVerticalDrag = false,
     this.backgroundColor,
     this.isVideoLesson = false,
-    @Deprecated('Unused parameter. Use `YoutubePlayerParam.userAgent` instead.')
-    this.userAgent,
+    @Deprecated('Unused parameter. Use `YoutubePlayerParam.userAgent` instead.') this.userAgent,
   });
 
   final Widget Function(BuildContext context, Widget player) builder;
@@ -53,16 +52,13 @@ class _YoutubePlayerBuilderState extends State<YoutubePlayerBuilder> {
   void initState() {
     super.initState();
     _playerKey = GlobalObjectKey(widget.controller);
-    _progressStream =
-        widget.controller.videoStateStream.map((event) => event.position);
+    _progressStream = widget.controller.videoStateStream.map((event) => event.position);
     _controllerSubscription = widget.controller.listen(_setUpProgressListener);
   }
 
   void _setUpProgressListener(YoutubePlayerValue value) {
     final duration = value.metaData.duration;
-    if (_onePercentFromVideo == null &&
-        duration > Duration.zero &&
-        widget.isVideoLesson) {
+    if (_onePercentFromVideo == null && duration > Duration.zero && widget.isVideoLesson) {
       _videoDuration ??= duration;
       _onePercentFromVideo ??= Duration(seconds: duration.inSeconds ~/ 100);
       _progressSubscription = _progressStream!.listen(_startListenProgress);
@@ -74,8 +70,7 @@ class _YoutubePlayerBuilderState extends State<YoutubePlayerBuilder> {
     _controllerSubscription?.cancel();
     if (!_videoProgress.contains(progress)) {
       _videoProgress.add(progress);
-      if (_videoProgress.last >= _percentProgressToLogEvent &&
-          !_isLoggedEvent) {
+      if (_videoProgress.last >= _percentProgressToLogEvent && !_isLoggedEvent) {
         _isLoggedEvent = true;
 
         _progressSubscription?.cancel();

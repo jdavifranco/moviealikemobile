@@ -10,8 +10,7 @@ class CustomYoutubeVideoFrame extends StatefulWidget {
 
   final bool isVideoLesson;
   final bool isPausedByNavigation;
-  final Widget Function(BuildContext context,
-      YoutubePlayerController controller, bool isVideoLesson) youtubeBuilder;
+  final Widget Function(BuildContext context, YoutubePlayerController controller, bool isVideoLesson) youtubeBuilder;
 
   const CustomYoutubeVideoFrame({
     super.key,
@@ -21,8 +20,7 @@ class CustomYoutubeVideoFrame extends StatefulWidget {
     this.isPausedByNavigation = false,
   });
 
-  static Widget _defaultYoutubeBuilder(BuildContext context,
-          YoutubePlayerController controller, bool isVideoLesson) =>
+  static Widget _defaultYoutubeBuilder(BuildContext context, YoutubePlayerController controller, bool isVideoLesson) =>
       YoutubePlayerBuilder(
         backgroundColor: AppColors.secondary,
         controller: controller,
@@ -31,12 +29,10 @@ class CustomYoutubeVideoFrame extends StatefulWidget {
       );
 
   @override
-  State<CustomYoutubeVideoFrame> createState() =>
-      _CustomYoutubeVideoFrameState();
+  State<CustomYoutubeVideoFrame> createState() => _CustomYoutubeVideoFrameState();
 }
 
-class _CustomYoutubeVideoFrameState extends State<CustomYoutubeVideoFrame>
-    with OnContextReady {
+class _CustomYoutubeVideoFrameState extends State<CustomYoutubeVideoFrame> with OnContextReady {
   List<DeviceOrientation>? defaultOrientations;
 
   @override
@@ -51,9 +47,7 @@ class _CustomYoutubeVideoFrameState extends State<CustomYoutubeVideoFrame>
   Widget build(BuildContext context) {
     final orientation = MediaQuery.of(context).orientation;
     final controller = widget.youtubePlayerController;
-    final height = orientation == Orientation.landscape
-        ? MediaQuery.sizeOf(context).height * 0.5
-        : null;
+    final height = orientation == Orientation.landscape ? MediaQuery.sizeOf(context).height * 0.5 : null;
 
     return AnimatedSize(
       duration: const Duration(milliseconds: 300),
@@ -65,8 +59,7 @@ class _CustomYoutubeVideoFrameState extends State<CustomYoutubeVideoFrame>
                   SizedBox(
                     width: MediaQuery.sizeOf(context).width,
                     height: height,
-                    child: widget.youtubeBuilder(
-                        context, controller, widget.isVideoLesson),
+                    child: widget.youtubeBuilder(context, controller, widget.isVideoLesson),
                   ),
                 ],
               )

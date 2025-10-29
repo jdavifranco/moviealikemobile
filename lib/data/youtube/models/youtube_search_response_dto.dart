@@ -44,6 +44,5 @@ class YoutubeSearchResponseDto {
         [];
   }
 
-  factory YoutubeSearchResponseDto.fromJson(Map<String, dynamic> json) =>
-      _$YoutubeSearchResponseDtoFromJson(json);
+  factory YoutubeSearchResponseDto.fromJson(Map<String, dynamic> json) => _$YoutubeSearchResponseDtoFromJson(json);
 }

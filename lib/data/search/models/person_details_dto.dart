@@ -51,8 +51,7 @@ class PersonDetailsDto {
     this.profilePath,
   });
 
-  factory PersonDetailsDto.fromJson(Map<String, dynamic> json) =>
-      _$PersonDetailsDtoFromJson(json);
+  factory PersonDetailsDto.fromJson(Map<String, dynamic> json) => _$PersonDetailsDtoFromJson(json);
 
   PersonDetails toDomain() => PersonDetails(
         adult: adult,

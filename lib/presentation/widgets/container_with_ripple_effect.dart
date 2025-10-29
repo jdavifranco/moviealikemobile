@@ -40,19 +40,14 @@ class ContainerWithRippleEffect extends StatelessWidget {
             height: height,
             width: width,
             child: ClipRRect(
-              borderRadius:
-                  decoration?.borderRadius?.resolve(null) ?? BorderRadius.zero,
+              borderRadius: decoration?.borderRadius?.resolve(null) ?? BorderRadius.zero,
               child: Material(
                 type: MaterialType.transparency,
                 child: onTap != null
                     ? InkWell(
-                        customBorder: decoration?.shape == BoxShape.circle
-                            ? const CircleBorder()
-                            : null,
+                        customBorder: decoration?.shape == BoxShape.circle ? const CircleBorder() : null,
                         onTap: onTap,
-                        splashFactory: showRipple
-                            ? InkRipple.splashFactory
-                            : NoSplash.splashFactory,
+                        splashFactory: showRipple ? InkRipple.splashFactory : NoSplash.splashFactory,
                       )
                     : Container(),
               ),

@@ -59,8 +59,7 @@ class SerieDetailsDto {
   @JsonKey(name: 'poster_path')
   final String posterPath;
   @JsonKey(name: 'production_companies')
-  final List<ProductionCompanyDto>
-      productionCompanies; // Reuse from your example
+  final List<ProductionCompanyDto> productionCompanies; // Reuse from your example
   @JsonKey(name: 'production_countries')
   final List<ProductionCountryDto> productionCountries;
   @JsonKey(name: 'seasons')
@@ -113,6 +112,5 @@ class SerieDetailsDto {
     required this.voteCount,
   });
 
-  factory SerieDetailsDto.fromJson(Map<String, dynamic> json) =>
-      _$SerieDetailsDtoFromJson(json);
+  factory SerieDetailsDto.fromJson(Map<String, dynamic> json) => _$SerieDetailsDtoFromJson(json);
 }

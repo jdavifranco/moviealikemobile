@@ -20,9 +20,7 @@ abstract class LanguageModule {
     if (locale.contains('pt')) {
       return UserLanguage.portuguese();
     } else {
-      return locale.contains('es')
-          ? UserLanguage.spanish()
-          : UserLanguage.english();
+      return locale.contains('es') ? UserLanguage.spanish() : UserLanguage.english();
     }
   }
 }

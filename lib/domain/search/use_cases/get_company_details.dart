@@ -11,7 +11,6 @@ class GetCompanyDetails {
 
   GetCompanyDetails(this._searchRepository);
 
-  CancelableOperation<Result<CompanyDetails, RequestError>> call(
-          int companyId) =>
+  CancelableOperation<Result<CompanyDetails, RequestError>> call(int companyId) =>
       _searchRepository.getCompanyDetails(companyId);
 }

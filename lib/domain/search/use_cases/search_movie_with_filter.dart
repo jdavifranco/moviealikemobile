@@ -16,10 +16,6 @@ class SearchMovieWithFilter {
   );
 
   CancelableOperation<Result<List<SearchItem>, RequestError>> call(
-          {required String query,
-          SearchType type = SearchType.movie,
-          required SearchFilter filter,
-          int page = 1}) =>
-      _searchRepository.getMoviesByFilter(
-          query: query, searchType: type, filter: filter, page: page);
+          {required String query, SearchType type = SearchType.movie, required SearchFilter filter, int page = 1}) =>
+      _searchRepository.getMoviesByFilter(query: query, searchType: type, filter: filter, page: page);
 }

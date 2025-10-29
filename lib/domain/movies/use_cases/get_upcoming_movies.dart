@@ -13,6 +13,5 @@ class GetUpcomingMovies {
     this._movieRepository,
   );
 
-  Future<Result<List<Movie>, RequestError>> call() =>
-      _movieRepository.getUpcomingMovies();
+  Future<Result<List<Movie>, RequestError>> call() => _movieRepository.getUpcomingMovies();
 }

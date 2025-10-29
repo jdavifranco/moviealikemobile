@@ -17,6 +17,5 @@ class RegionDto {
     this.flatrate,
   });
 
-  factory RegionDto.fromJson(Map<String, dynamic> json) =>
-      _$RegionDtoFromJson(json);
+  factory RegionDto.fromJson(Map<String, dynamic> json) => _$RegionDtoFromJson(json);
 }

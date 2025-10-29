@@ -50,30 +50,25 @@ abstract class _$MovieInfoDetailsStateCWProxy {
 
 /// Callable proxy for `copyWith` functionality.
 /// Use as `instanceOfMovieInfoDetailsState.copyWith(...)` or call `instanceOfMovieInfoDetailsState.copyWith.fieldName(value)` for a single field.
-class _$MovieInfoDetailsStateCWProxyImpl
-    implements _$MovieInfoDetailsStateCWProxy {
+class _$MovieInfoDetailsStateCWProxyImpl implements _$MovieInfoDetailsStateCWProxy {
   const _$MovieInfoDetailsStateCWProxyImpl(this._value);
 
   final MovieInfoDetailsState _value;
 
   @override
-  MovieInfoDetailsState personDetails(PersonDetails? personDetails) =>
-      this(personDetails: personDetails);
+  MovieInfoDetailsState personDetails(PersonDetails? personDetails) => this(personDetails: personDetails);
 
   @override
-  MovieInfoDetailsState companyDetails(CompanyDetails? companyDetails) =>
-      this(companyDetails: companyDetails);
+  MovieInfoDetailsState companyDetails(CompanyDetails? companyDetails) => this(companyDetails: companyDetails);
 
   @override
-  MovieInfoDetailsState pages(List<List<SearchItem>> pages) =>
-      this(pages: pages);
+  MovieInfoDetailsState pages(List<List<SearchItem>> pages) => this(pages: pages);
 
   @override
   MovieInfoDetailsState keys(List<int> keys) => this(keys: keys);
 
   @override
-  MovieInfoDetailsState filterType(SearchFilter? filterType) =>
-      this(filterType: filterType);
+  MovieInfoDetailsState filterType(SearchFilter? filterType) => this(filterType: filterType);
 
   @override
   MovieInfoDetailsState filterId(int? filterId) => this(filterId: filterId);
@@ -88,8 +83,7 @@ class _$MovieInfoDetailsStateCWProxyImpl
   MovieInfoDetailsState error(RequestError? error) => this(error: error);
 
   @override
-  MovieInfoDetailsState hasNextPage(bool hasNextPage) =>
-      this(hasNextPage: hasNextPage);
+  MovieInfoDetailsState hasNextPage(bool hasNextPage) => this(hasNextPage: hasNextPage);
 
   @override
 
@@ -161,6 +155,5 @@ extension $MovieInfoDetailsStateCopyWith on MovieInfoDetailsState {
   /// Returns a callable class used to build a new instance with modified fields.
   /// Example: `instanceOfMovieInfoDetailsState.copyWith(...)` or `instanceOfMovieInfoDetailsState.copyWith.fieldName(...)`.
   // ignore: library_private_types_in_public_api
-  _$MovieInfoDetailsStateCWProxy get copyWith =>
-      _$MovieInfoDetailsStateCWProxyImpl(this);
+  _$MovieInfoDetailsStateCWProxy get copyWith => _$MovieInfoDetailsStateCWProxyImpl(this);
 }

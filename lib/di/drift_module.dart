@@ -21,8 +21,7 @@ abstract class DriftModule {
 QueryExecutor _getNativeQueryExecutor() {
   return LazyDatabase(() async {
     final internalDocuments = await getApplicationDocumentsDirectory();
-    final file =
-        File(join(internalDocuments.path, AppDatabase.databaseBaseName));
+    final file = File(join(internalDocuments.path, AppDatabase.databaseBaseName));
     return NativeDatabase(file);
   });
 }

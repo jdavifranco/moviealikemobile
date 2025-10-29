@@ -34,8 +34,7 @@ class ImageDto {
     this.width,
   });
 
-  factory ImageDto.fromJson(Map<String, dynamic> json) =>
-      _$ImageDtoFromJson(json);
+  factory ImageDto.fromJson(Map<String, dynamic> json) => _$ImageDtoFromJson(json);
 
   MovieImage toDomain() => MovieImage(
         aspectRatio: aspectRatio,

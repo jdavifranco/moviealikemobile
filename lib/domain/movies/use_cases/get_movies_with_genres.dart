@@ -19,8 +19,7 @@ class GetMoviesWithGenres {
 
   Future<Result<List<MovieRecommendation>, RequestError>> call(
       {required List<int> genreIds, required int originalMovieId}) async {
-    final originalMovieKeywordsResult =
-        await _movieRepository.getMovieKeywords(originalMovieId);
+    final originalMovieKeywordsResult = await _movieRepository.getMovieKeywords(originalMovieId);
 
     if (originalMovieKeywordsResult.isFailure) {
       return Failure(originalMovieKeywordsResult.failure);
@@ -28,8 +27,8 @@ class GetMoviesWithGenres {
 
     final originalMovieKeywords = originalMovieKeywordsResult.success;
 
-    final moviesResult = await _movieRepository.getMoviesWithKeywords(
-        originalMovieKeywords.map((e) => e.id).toList(), genreIds);
+    final moviesResult =
+        await _movieRepository.getMoviesWithKeywords(originalMovieKeywords.map((e) => e.id).toList(), genreIds);
 
     if (moviesResult.isFailure) {
       return Failure(moviesResult.failure);
@@ -42,28 +41,23 @@ class GetMoviesWithGenres {
 
     for (final movie in movies) {
       final recommendationGenreIds = movie.genreIds;
-      final genreSimilarity =
-          calculateGenreSimilarity(recommendationGenreIds!, genreIds);
+      final genreSimilarity = calculateGenreSimilarity(recommendationGenreIds!, genreIds);
 
       // Get keywords for this movie
       final keywordsResult = await _movieRepository.getMovieKeywords(movie.id);
 
       if (keywordsResult.isSuccess) {
         final keywords = keywordsResult.success;
-        final textSimilarity =
-            calculateKeywordsSimilarity(keywords, originalMovieKeywords);
+        final textSimilarity = calculateKeywordsSimilarity(keywords, originalMovieKeywords);
         final transformedGenreSimilarity = genreSimilarity * 0.66;
         final transformedTextSimilarity = textSimilarity * 0.23;
         final randomVariation = 0.1 * Random().nextDouble();
-        final combinedSimilarity = transformedGenreSimilarity +
-            transformedTextSimilarity +
-            randomVariation;
+        final combinedSimilarity = transformedGenreSimilarity + transformedTextSimilarity + randomVariation;
         recommendations.add(movie.toMovieRecommendation(combinedSimilarity));
       }
     }
 
-    return Success(
-        recommendations.sorted((a, b) => b.similarity.compareTo(a.similarity)));
+    return Success(recommendations.sorted((a, b) => b.similarity.compareTo(a.similarity)));
   }
 
   double calculateGenreSimilarity(List<int> genresA, List<int> genresB) {
@@ -74,13 +68,11 @@ class GetMoviesWithGenres {
     final jaccardSimilarity = (intersection / union);
 
     // Weighting factor based on the size of the genre lists
-    final sizeFactor =
-        min(setA.length, setB.length) / max(setA.length, setB.length);
+    final sizeFactor = min(setA.length, setB.length) / max(setA.length, setB.length);
     return jaccardSimilarity * sizeFactor;
   }
 
-  double calculateKeywordsSimilarity(
-      List<MovieKeyword> keywordsA, List<MovieKeyword> keywordsB) {
+  double calculateKeywordsSimilarity(List<MovieKeyword> keywordsA, List<MovieKeyword> keywordsB) {
     final setA = keywordsA.map((e) => e.id).toSet();
     final setB = keywordsB.map((e) => e.id).toSet();
     final intersection = setA.intersection(setB).length;
@@ -88,8 +80,7 @@ class GetMoviesWithGenres {
     final jaccardSimilarity = (intersection / union);
 
     // Weighting factor based on the size of the keyword lists
-    final sizeFactor =
-        min(setA.length, setB.length) / max(setA.length, setB.length);
+    final sizeFactor = min(setA.length, setB.length) / max(setA.length, setB.length);
     return jaccardSimilarity * sizeFactor;
   }
 }

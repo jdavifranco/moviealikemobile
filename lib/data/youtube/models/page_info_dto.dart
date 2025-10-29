@@ -9,6 +9,5 @@ class PageInfoDto {
 
   PageInfoDto({this.totalResults, this.resultsPerPage});
 
-  factory PageInfoDto.fromJson(Map<String, dynamic> json) =>
-      _$PageInfoDtoFromJson(json);
+  factory PageInfoDto.fromJson(Map<String, dynamic> json) => _$PageInfoDtoFromJson(json);
 }

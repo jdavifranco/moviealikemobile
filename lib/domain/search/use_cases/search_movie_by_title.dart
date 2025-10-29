@@ -15,8 +15,6 @@ class SearchMovieByTitle {
     this._searchRepository,
   );
 
-  CancelableOperation<Result<List<SearchItem>, RequestError>> call(
-          String query, SearchType type,
-          [int page = 1]) =>
+  CancelableOperation<Result<List<SearchItem>, RequestError>> call(String query, SearchType type, [int page = 1]) =>
       _searchRepository.getMoviesAndSeries(query, type, page);
 }

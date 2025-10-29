@@ -13,6 +13,5 @@ class GetWatchList {
     this._watchListRepository,
   );
 
-  Future<Result<List<WatchlistMovie>, RequestError>> call() =>
-      _watchListRepository.getAll();
+  Future<Result<List<WatchlistMovie>, RequestError>> call() => _watchListRepository.getAll();
 }

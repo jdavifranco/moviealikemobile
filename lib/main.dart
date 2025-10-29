@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
@@ -12,15 +11,10 @@ import 'package:moviealike/presentation/common/remote_image/remote_image_cache_m
 import 'package:moviealike/presentation/common/style/app_colors.dart';
 import 'package:moviealike/presentation/common/style/font_families.dart';
 import 'package:quiver/collection.dart';
-import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  NavigationController.instance;
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
   await configureDependencies();
 
   SystemChrome.setSystemUIOverlayStyle(
@@ -51,9 +45,6 @@ class MovieAlike extends StatelessWidget {
       child: MaterialApp.router(
         routerConfig: NavigationController.router,
         title: 'MovieAlike',
-        scrollBehavior: const MaterialScrollBehavior().copyWith(
-            //  dragDevices: {PointerDeviceKind.mouse},
-            ),
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: AppColors.accent),
           useMaterial3: true,

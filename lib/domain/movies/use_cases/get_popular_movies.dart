@@ -13,6 +13,5 @@ class GetPopularMovies {
     this._movieRepository,
   );
 
-  Future<Result<List<Movie>, RequestError>> call({int limit = 20}) =>
-      _movieRepository.getPopularMovies(limit);
+  Future<Result<List<Movie>, RequestError>> call({int limit = 20}) => _movieRepository.getPopularMovies(limit);
 }

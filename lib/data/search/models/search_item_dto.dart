@@ -75,6 +75,5 @@ class SearchItemDto {
         title: title,
         originalTitle: originalTitle,
       );
-  factory SearchItemDto.fromJson(Map<String, dynamic> json) =>
-      _$SearchItemDtoFromJson(json);
+  factory SearchItemDto.fromJson(Map<String, dynamic> json) => _$SearchItemDtoFromJson(json);
 }

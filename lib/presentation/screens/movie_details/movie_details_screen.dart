@@ -59,8 +59,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final movieWidth =
-        min(MediaQuery.sizeOf(context).width / 1.5, 300).toDouble();
+    final movieWidth = min(MediaQuery.sizeOf(context).width / 1.5, 300).toDouble();
     final movieHeight = movieWidth / context.dimensionScheme.heightRation;
     return BlocBuilder<MovieDetailsBloc, MovieDetailsState>(
       builder: (context, state) => Scaffold(
@@ -68,14 +67,10 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
         backgroundColor: AppColors.primary,
         appBar: AppBar(
           scrolledUnderElevation: 0,
-          backgroundColor: !isScrolled
-              ? Colors.transparent
-              : AppColors.primary.withAlpha(229),
+          backgroundColor: !isScrolled ? Colors.transparent : AppColors.primary.withAlpha(229),
           centerTitle: true,
           title: state.selectedMovieDetails != null &&
-                  state.selectedMovieDetails?.movieImages?.logos?.firstOrNull
-                          ?.filePath !=
-                      null
+                  state.selectedMovieDetails?.movieImages?.logos?.firstOrNull?.filePath != null
               ? SizedBox(
                   child: Image.network(
                     height: kToolbarHeight,
@@ -85,8 +80,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                 )
               : Text(
                   state.selectedMovieDetails?.title ?? "",
-                  style: context.typography.heading2.copyWith(
-                      color: Colors.white, fontWeight: FontWeight.w600),
+                  style: context.typography.heading2.copyWith(color: Colors.white, fontWeight: FontWeight.w600),
                 ),
           leading: IconButton(
             onPressed: () {
@@ -101,8 +95,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
               ),
               child: SvgPicture.asset(
                 AppSvgs.arrowBackIcon,
-                colorFilter:
-                    const ColorFilter.mode(AppColors.white, BlendMode.srcIn),
+                colorFilter: const ColorFilter.mode(AppColors.white, BlendMode.srcIn),
                 height: 24,
                 width: 24,
               ),
@@ -125,9 +118,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                   child: SvgPicture.asset(
                     AppSvgs.heartIcon,
                     height: 17,
-                    colorFilter: ColorFilter.mode(
-                        state.isFavorite ? AppColors.red : AppColors.white,
-                        BlendMode.srcIn),
+                    colorFilter: ColorFilter.mode(state.isFavorite ? AppColors.red : AppColors.white, BlendMode.srcIn),
                   ),
                 ),
               ),
@@ -153,14 +144,11 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                           alignment: Alignment.topCenter,
                           children: [
                             RemoteImage(
-                              imageUrl:
-                                  "https://image.tmdb.org/t/p/w780/${state.selectedMovieDetails?.backdropPath}",
+                              imageUrl: "https://image.tmdb.org/t/p/w780/${state.selectedMovieDetails?.backdropPath}",
                               fit: BoxFit.cover,
-                              imageBuilder: (context, imageProvider) =>
-                                  Container(
+                              imageBuilder: (context, imageProvider) => Container(
                                 width: double.infinity,
-                                height:
-                                    MediaQuery.of(context).size.width / 0.66,
+                                height: MediaQuery.of(context).size.width / 0.66,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
                                     image: imageProvider,
@@ -170,13 +158,11 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                               ),
                               placeholder: SizedBox(
                                 width: double.infinity,
-                                height:
-                                    MediaQuery.of(context).size.width / 0.66,
+                                height: MediaQuery.of(context).size.width / 0.66,
                                 child: Center(
                                   child: SvgPicture.asset(
                                     AppSvgs.movieIcon,
-                                    colorFilter: const ColorFilter.mode(
-                                        AppColors.accent, BlendMode.srcIn),
+                                    colorFilter: const ColorFilter.mode(AppColors.accent, BlendMode.srcIn),
                                     width: 48,
                                   ),
                                 ),
@@ -185,37 +171,27 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                             Container(
                               height: MediaQuery.of(context).size.width / 0.66,
                               decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                    stops: const [
-                                      0,
-                                      1
-                                    ],
-                                    colors: [
-                                      AppColors.primary
-                                          .withValues(alpha: (0.7)),
-                                      AppColors.primary,
-                                    ],
-                                    begin: Alignment.topCenter,
-                                    end: Alignment.bottomCenter),
+                                gradient: LinearGradient(stops: const [
+                                  0,
+                                  1
+                                ], colors: [
+                                  AppColors.primary.withValues(alpha: (0.7)),
+                                  AppColors.primary,
+                                ], begin: Alignment.topCenter, end: Alignment.bottomCenter),
                                 backgroundBlendMode: BlendMode.srcOver,
                               ),
                             ),
                             Column(
                               children: [
                                 SizedBox(
-                                  height: kToolbarHeight +
-                                      40 +
-                                      context.dimensionScheme
-                                          .movieDetailsTopPadding +
-                                      16,
+                                  height: kToolbarHeight + 40 + context.dimensionScheme.movieDetailsTopPadding + 16,
                                 ),
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(20),
                                   child: RemoteImage(
                                     imageUrl:
                                         "https://image.tmdb.org/t/p/w780/${state.selectedMovieDetails?.backdropPath}",
-                                    imageBuilder: (context, imageProvider) =>
-                                        Container(
+                                    imageBuilder: (context, imageProvider) => Container(
                                       width: movieWidth,
                                       height: movieHeight,
                                       decoration: BoxDecoration(
@@ -237,86 +213,53 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 24, vertical: 12),
+                                      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                                       child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
+                                        mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
                                           Flexible(
-                                            child: _buildDetailItem(
-                                                AppSvgs.calendarIcon,
-                                                state.selectedMovieDetails
-                                                        ?.releaseDate
-                                                        ?.split("-")
-                                                        .first ??
-                                                    ""),
+                                            child: _buildDetailItem(AppSvgs.calendarIcon,
+                                                state.selectedMovieDetails?.releaseDate?.split("-").first ?? ""),
                                           ),
                                           const Padding(
-                                            padding: EdgeInsets.symmetric(
-                                                horizontal: 12),
+                                            padding: EdgeInsets.symmetric(horizontal: 12),
                                             child: Text(
                                               "|",
-                                              style: TextStyle(
-                                                  color: Colors.white),
+                                              style: TextStyle(color: Colors.white),
                                             ),
                                           ),
-                                          if (state.selectedMovieDetails
-                                                      ?.runtime !=
-                                                  null &&
-                                              (state.selectedMovieDetails
-                                                          ?.runtime ??
-                                                      0) >
-                                                  0) ...[
+                                          if (state.selectedMovieDetails?.runtime != null &&
+                                              (state.selectedMovieDetails?.runtime ?? 0) > 0) ...[
                                             Flexible(
-                                              child: _buildDetailItem(
-                                                  AppSvgs.clockIcon,
+                                              child: _buildDetailItem(AppSvgs.clockIcon,
                                                   "${state.selectedMovieDetails?.runtime.toString()} ${context.text.minutes}"),
                                             ),
                                             const Padding(
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal: 12),
+                                              padding: EdgeInsets.symmetric(horizontal: 12),
                                               child: Text(
                                                 "|",
-                                                style: TextStyle(
-                                                    color: Colors.white),
+                                                style: TextStyle(color: Colors.white),
                                               ),
                                             ),
                                           ],
                                           Flexible(
-                                            child: _buildDetailItem(
-                                                AppSvgs.movieIcon,
-                                                state.selectedMovieDetails
-                                                        ?.genres?.first.name ??
-                                                    ""),
+                                            child: _buildDetailItem(AppSvgs.movieIcon,
+                                                state.selectedMovieDetails?.genres?.first.name ?? ""),
                                           ),
                                         ],
                                       ),
                                     ),
-                                    if (state.selectedMovieDetails
-                                                ?.voteAverage !=
-                                            null &&
-                                        state.selectedMovieDetails!
-                                                .voteAverage! >
-                                            0)
+                                    if (state.selectedMovieDetails?.voteAverage != null &&
+                                        state.selectedMovieDetails!.voteAverage! > 0)
                                       Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
+                                        mainAxisAlignment: MainAxisAlignment.center,
                                         children: [
-                                          const Icon(Icons.star,
-                                              color: AppColors.orange,
-                                              size: 24),
+                                          const Icon(Icons.star, color: AppColors.orange, size: 24),
                                           const SizedBox(width: 4),
                                           Text(
-                                            (state.selectedMovieDetails
-                                                        ?.voteAverage ??
-                                                    0)
-                                                .toStringAsFixed(2),
+                                            (state.selectedMovieDetails?.voteAverage ?? 0).toStringAsFixed(2),
                                             style: context.typography.heading4
-                                                .copyWith(
-                                                    color: AppColors.orange,
-                                                    fontWeight:
-                                                        FontWeight.bold),
+                                                .copyWith(color: AppColors.orange, fontWeight: FontWeight.bold),
                                           ),
                                         ],
                                       ),
@@ -333,33 +276,24 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                                 SizedBox(
                                   height: movieHeight + 216,
                                 ),
-                                if (state.selectedMovieDetails?.genres !=
-                                        null &&
-                                    state.selectedMovieDetails!.genres!
-                                        .isNotEmpty)
+                                if (state.selectedMovieDetails?.genres != null &&
+                                    state.selectedMovieDetails!.genres!.isNotEmpty)
                                   Padding(
                                     padding: EdgeInsets.only(
                                         bottom: 16,
-                                        left: context
-                                            .dimensionScheme.screenMargin,
-                                        right: context
-                                            .dimensionScheme.screenMargin),
+                                        left: context.dimensionScheme.screenMargin,
+                                        right: context.dimensionScheme.screenMargin),
                                     child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        SectionTitle(
-                                            title: context.text.genres),
+                                        SectionTitle(title: context.text.genres),
                                         const SizedBox(
                                           height: 8,
                                         ),
                                         GenresList(
-                                            genres: state.selectedMovieDetails
-                                                    ?.genres ??
-                                                [],
+                                            genres: state.selectedMovieDetails?.genres ?? [],
                                             onTap: (genre) {
-                                              GoRouter.of(context).push(
-                                                  '/search/${genre.id}/with_genres');
+                                              GoRouter.of(context).push('/search/${genre.id}/with_genres');
                                             }),
                                       ],
                                     ),
@@ -371,47 +305,29 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                                       videos: state.youtubeVideos,
                                     ),
                                   ),
-                                if (state.selectedMovieDetails?.overview !=
-                                        null &&
-                                    state.selectedMovieDetails!.overview
-                                        .isNotEmpty)
+                                if (state.selectedMovieDetails?.overview != null &&
+                                    state.selectedMovieDetails!.overview.isNotEmpty)
                                   Padding(
                                     padding: EdgeInsets.only(
                                         bottom: 24,
-                                        left: context
-                                            .dimensionScheme.screenMargin,
-                                        right: context
-                                            .dimensionScheme.screenMargin),
-                                    child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          SectionTitle(
-                                              title: context.text.overview),
-                                          const SizedBox(
-                                            height: 8,
-                                          ),
-                                          Text(
-                                            state.selectedMovieDetails
-                                                    ?.overview ??
-                                                "",
-                                            style: context.typography.heading5
-                                                .copyWith(
-                                                    fontWeight:
-                                                        FontWeight.normal),
-                                          ),
-                                        ]),
+                                        left: context.dimensionScheme.screenMargin,
+                                        right: context.dimensionScheme.screenMargin),
+                                    child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                                      SectionTitle(title: context.text.overview),
+                                      const SizedBox(
+                                        height: 8,
+                                      ),
+                                      Text(
+                                        state.selectedMovieDetails?.overview ?? "",
+                                        style: context.typography.heading5.copyWith(fontWeight: FontWeight.normal),
+                                      ),
+                                    ]),
                                   ),
-                                if (state.selectedMovieDetails?.providers
-                                        ?.watchProviders.isNotEmpty ==
-                                    true)
+                                if (state.selectedMovieDetails?.providers?.watchProviders.isNotEmpty == true)
                                   Padding(
                                     padding: const EdgeInsets.only(bottom: 24),
                                     child: WatchProvidersList(
-                                        watchProviders: state
-                                            .selectedMovieDetails!
-                                            .providers!
-                                            .watchProviders),
+                                        watchProviders: state.selectedMovieDetails!.providers!.watchProviders),
                                   ),
                                 if (state.castMembers.isNotEmpty)
                                   Padding(
@@ -420,8 +336,7 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                                       members: state.castMembers,
                                       isLoading: false,
                                       onTap: (castId) {
-                                        GoRouter.of(context).push(
-                                            '/movie_info_details/with_people/$castId');
+                                        GoRouter.of(context).push('/movie_info_details/with_people/$castId');
                                       },
                                     ),
                                   ),
@@ -429,17 +344,13 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                                   Padding(
                                     padding: const EdgeInsets.only(bottom: 24),
                                     child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Padding(
                                           padding: EdgeInsets.symmetric(
-                                            horizontal: context
-                                                .dimensionScheme.screenMargin,
+                                            horizontal: context.dimensionScheme.screenMargin,
                                           ),
-                                          child: SectionTitle(
-                                              title:
-                                                  context.text.recommendations),
+                                          child: SectionTitle(title: context.text.recommendations),
                                         ),
                                         MovieRecommendations(
                                           items: state.modelRecommendations,
@@ -447,70 +358,48 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
                                       ],
                                     ),
                                   ),
-                                if (state.selectedMovieDetails
-                                            ?.productionCountries !=
-                                        null &&
-                                    state.selectedMovieDetails!
-                                        .productionCountries!.isNotEmpty)
+                                if (state.selectedMovieDetails?.productionCountries != null &&
+                                    state.selectedMovieDetails!.productionCountries!.isNotEmpty)
                                   Padding(
                                     padding: EdgeInsets.only(
                                         bottom: 24,
-                                        left: context
-                                            .dimensionScheme.screenMargin,
-                                        right: context
-                                            .dimensionScheme.screenMargin),
+                                        left: context.dimensionScheme.screenMargin,
+                                        right: context.dimensionScheme.screenMargin),
                                     child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        SectionTitle(
-                                            title: context
-                                                .text.productionCountries),
+                                        SectionTitle(title: context.text.productionCountries),
                                         const SizedBox(
                                           height: 8,
                                         ),
                                         ProductionCountriesList(
-                                            countries: state
-                                                    .selectedMovieDetails
-                                                    ?.productionCountries ??
-                                                [],
+                                            countries: state.selectedMovieDetails?.productionCountries ?? [],
                                             onTap: (country) {
-                                              GoRouter.of(context).push(
-                                                  '/search/${country.iso31661}/with_origin_country');
+                                              GoRouter.of(context)
+                                                  .push('/search/${country.iso31661}/with_origin_country');
                                             }),
                                       ],
                                     ),
                                   ),
-                                if (state.selectedMovieDetails
-                                            ?.productionCompanies !=
-                                        null &&
-                                    state.selectedMovieDetails!
-                                        .productionCompanies!.isNotEmpty)
+                                if (state.selectedMovieDetails?.productionCompanies != null &&
+                                    state.selectedMovieDetails!.productionCompanies!.isNotEmpty)
                                   Padding(
                                     padding: EdgeInsets.only(
                                         bottom: 24,
-                                        left: context
-                                            .dimensionScheme.screenMargin,
-                                        right: context
-                                            .dimensionScheme.screenMargin),
+                                        left: context.dimensionScheme.screenMargin,
+                                        right: context.dimensionScheme.screenMargin),
                                     child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        SectionTitle(
-                                            title: context
-                                                .text.productionCompanies),
+                                        SectionTitle(title: context.text.productionCompanies),
                                         const SizedBox(
                                           height: 8,
                                         ),
                                         ProductionCompanyList(
-                                            companies: state
-                                                    .selectedMovieDetails
-                                                    ?.productionCompanies ??
-                                                [],
+                                            companies: state.selectedMovieDetails?.productionCompanies ?? [],
                                             onTap: (company) {
-                                              GoRouter.of(context).push(
-                                                  '/movie_info_details/with_companies/${company.id}');
+                                              GoRouter.of(context)
+                                                  .push('/movie_info_details/with_companies/${company.id}');
                                             }),
                                       ],
                                     ),
@@ -530,17 +419,13 @@ class _MovieDetailScreenState extends State<MovieDetailScreen> {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        SvgPicture.asset(iconAsset,
-            colorFilter:
-                const ColorFilter.mode(AppColors.grey, BlendMode.srcIn),
-            height: 16),
+        SvgPicture.asset(iconAsset, colorFilter: const ColorFilter.mode(AppColors.grey, BlendMode.srcIn), height: 16),
         const SizedBox(width: 4),
         Flexible(
           child: Text(
             text,
             overflow: TextOverflow.ellipsis,
-            style: context.typography.heading5
-                .copyWith(color: Colors.white, fontWeight: FontWeight.normal),
+            style: context.typography.heading5.copyWith(color: Colors.white, fontWeight: FontWeight.normal),
           ),
         ),
       ],

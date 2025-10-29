@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-class GridItem{
+class GridItem {
   final IconData iconData;
   final String title;
 

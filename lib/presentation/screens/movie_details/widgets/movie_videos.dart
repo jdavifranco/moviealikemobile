@@ -52,8 +52,7 @@ class _MovieVideosState extends State<MovieVideos> {
         AnimatedSize(
           duration: const Duration(milliseconds: 300),
           child: SizedBox(
-            height:
-                listSize, // Make the container tall enough for the expanded video
+            height: listSize, // Make the container tall enough for the expanded video
             child: ListView.separated(
               controller: _scrollController,
               scrollDirection: Axis.horizontal,
@@ -64,15 +63,12 @@ class _MovieVideosState extends State<MovieVideos> {
                 final isSelected = selectedVideoId == video.id;
                 return Padding(
                   key: _itemKeys[index],
-                  padding: EdgeInsets.only(
-                      left: index == 0 ? 16 : 6,
-                      right: index == widget.videos.length - 1 ? 16 : 6),
+                  padding:
+                      EdgeInsets.only(left: index == 0 ? 16 : 6, right: index == widget.videos.length - 1 ? 16 : 6),
                   child: AnimatedContainer(
                     duration: const Duration(milliseconds: 350),
                     curve: Curves.easeInOut,
-                    width: isSelected
-                        ? MediaQuery.sizeOf(context).width - 24
-                        : defaultWidth,
+                    width: isSelected ? MediaQuery.sizeOf(context).width - 24 : defaultWidth,
                     height: isSelected ? expandedHeight : defaultHeight,
                     child: isSelected
                         ? _YoutubePlayerVideoItem(
@@ -132,18 +128,12 @@ class _MovieVideosState extends State<MovieVideos> {
       final context = _itemKeys[index].currentContext;
       if (context != null) {
         final box = context.findRenderObject() as RenderBox?;
-        final listBox = _scrollController.position.context.storageContext
-            .findRenderObject() as RenderBox?;
+        final listBox = _scrollController.position.context.storageContext.findRenderObject() as RenderBox?;
         if (box != null && listBox != null) {
-          final itemOffset =
-              box.localToGlobal(Offset.zero, ancestor: listBox).dx;
-          final itemWidth = isSelected(index)
-              ? MediaQuery.sizeOf(context).width - 24
-              : defaultWidth;
+          final itemOffset = box.localToGlobal(Offset.zero, ancestor: listBox).dx;
+          final itemWidth = isSelected(index) ? MediaQuery.sizeOf(context).width - 24 : defaultWidth;
           final listWidth = listBox.size.width;
-          final targetScrollOffset = _scrollController.offset +
-              itemOffset -
-              (listWidth - itemWidth) / 2;
+          final targetScrollOffset = _scrollController.offset + itemOffset - (listWidth - itemWidth) / 2;
           _scrollController.animateTo(
             targetScrollOffset,
             duration: const Duration(milliseconds: 400),
@@ -182,8 +172,7 @@ class _YoutubePlayerVideoItem extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<_YoutubePlayerVideoItem> createState() =>
-      _YoutubePlayerVideoItemState();
+  State<_YoutubePlayerVideoItem> createState() => _YoutubePlayerVideoItemState();
 }
 
 class _YoutubePlayerVideoItemState extends State<_YoutubePlayerVideoItem> {
@@ -201,9 +190,7 @@ class _YoutubePlayerVideoItemState extends State<_YoutubePlayerVideoItem> {
                   width: width,
                   height: height,
                   color: Colors.black.withAlpha(217),
-                  child: CustomYoutubePlayer(
-                      youtubeId: widget.video.id,
-                      onReady: widget.onPlayerReady),
+                  child: CustomYoutubePlayer(youtubeId: widget.video.id, onReady: widget.onPlayerReady),
                 )
               : const SizedBox.shrink(),
           if (!widget.playerIsReady) ...[
@@ -215,8 +202,7 @@ class _YoutubePlayerVideoItemState extends State<_YoutubePlayerVideoItem> {
                         width: width,
                         height: height,
                         fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) =>
-                            _buildPlaceholder(width, height),
+                        errorBuilder: (context, error, stackTrace) => _buildPlaceholder(width, height),
                       )
                     : _buildPlaceholder(width, height),
                 Container(
@@ -234,11 +220,9 @@ class _YoutubePlayerVideoItemState extends State<_YoutubePlayerVideoItem> {
                         children: [
                           CircularProgressIndicator(
                             strokeWidth: 4,
-                            valueColor:
-                                AlwaysStoppedAnimation<Color>(AppColors.accent),
+                            valueColor: AlwaysStoppedAnimation<Color>(AppColors.accent),
                           ),
-                          Icon(Icons.play_arrow,
-                              color: AppColors.accent, size: 28),
+                          Icon(Icons.play_arrow, color: AppColors.accent, size: 28),
                         ],
                       ),
                     ),
@@ -251,8 +235,7 @@ class _YoutubePlayerVideoItemState extends State<_YoutubePlayerVideoItem> {
             top: 8,
             right: 8,
             child: IconButton(
-              icon: Icon(Icons.close,
-                  color: Colors.white.withAlpha(217), size: 32),
+              icon: Icon(Icons.close, color: Colors.white.withAlpha(217), size: 32),
               onPressed: widget.onClose,
             ),
           ),
@@ -308,8 +291,7 @@ class _VideoItem extends StatelessWidget {
                     width: width,
                     height: height,
                     fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) =>
-                        placeholderBuilder(width, height),
+                    errorBuilder: (context, error, stackTrace) => placeholderBuilder(width, height),
                   )
                 : placeholderBuilder(width, height),
             Positioned(
@@ -333,8 +315,7 @@ class _VideoItem extends StatelessWidget {
             Positioned(
               top: 8,
               right: 8,
-              child: Icon(Icons.play_circle_fill,
-                  color: Colors.white.withAlpha(217), size: 32),
+              child: Icon(Icons.play_circle_fill, color: Colors.white.withAlpha(217), size: 32),
             ),
           ],
         ),

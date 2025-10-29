@@ -14,8 +14,7 @@ class WatchListRepositoryImpl implements WatchListRepository {
 
   @override
   Future<Result<void, RequestError>> addMovie(WatchlistMovie movie) async {
-    return await watchlistDataSource
-        .addMovie(WatchlistMovieDto.fromDomain(movie));
+    return await watchlistDataSource.addMovie(WatchlistMovieDto.fromDomain(movie));
   }
 
   @override
@@ -31,9 +30,7 @@ class WatchListRepositoryImpl implements WatchListRepository {
 
   @override
   Stream<List<WatchlistMovie>> getAllMoviesStream() {
-    return watchlistDataSource
-        .getAllMoviesStream()
-        .map((movies) => movies.map((movie) => movie.toDomain()).toList());
+    return watchlistDataSource.getAllMoviesStream().map((movies) => movies.map((movie) => movie.toDomain()).toList());
   }
 
   @override

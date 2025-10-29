@@ -171,10 +171,12 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noRecommendationsAvailable => 'No recommendations available.';
 
   @override
-  String get appDescription => 'Welcome to Movie Alike! This app was created to help you discover movies similar to your favorites. We use advanced algorithms to suggest personalized recommendations based on the selected movie. Browse a vast collection of movies and series, find new favorites, and share your discoveries with friends. Enjoy your cinematic experience!';
+  String get appDescription =>
+      'Welcome to Movie Alike! This app was created to help you discover movies similar to your favorites. We use advanced algorithms to suggest personalized recommendations based on the selected movie. Browse a vast collection of movies and series, find new favorites, and share your discoveries with friends. Enjoy your cinematic experience!';
 
   @override
-  String get adsDisclosureDescription => 'This app displays advertisements to support its development. By using this app, you agree to the display of ads.';
+  String get adsDisclosureDescription =>
+      'This app displays advertisements to support its development. By using this app, you agree to the display of ads.';
 
   @override
   String get seeMore => 'See more';
@@ -195,7 +197,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noResults => 'No results found.';
 
   @override
-  String get noResultsDescription => 'We couldn\'t find any results for your search. Please try again with a different keyword.';
+  String get noResultsDescription =>
+      'We couldn\'t find any results for your search. Please try again with a different keyword.';
 
   @override
   String get availableOn => 'Available on';

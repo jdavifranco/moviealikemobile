@@ -10,6 +10,5 @@ class IsMovieInWatchList {
     this._watchListRepository,
   );
 
-  Stream<bool> call(int movieId) =>
-      _watchListRepository.isMovieInWatchList(movieId);
+  Stream<bool> call(int movieId) => _watchListRepository.isMovieInWatchList(movieId);
 }

@@ -9,6 +9,5 @@ class YoutubeVideoIdDto {
 
   YoutubeVideoIdDto({this.kind, this.videoId});
 
-  factory YoutubeVideoIdDto.fromJson(Map<String, dynamic> json) =>
-      _$YoutubeVideoIdDtoFromJson(json);
+  factory YoutubeVideoIdDto.fromJson(Map<String, dynamic> json) => _$YoutubeVideoIdDtoFromJson(json);
 }

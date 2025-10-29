@@ -14,7 +14,6 @@ enum SearchFilter {
   const SearchFilter({required this.name});
 
   static SearchFilter? getFilterFromName(String name) {
-    return SearchFilter.values
-        .firstWhereOrNull((element) => element.name == name);
+    return SearchFilter.values.firstWhereOrNull((element) => element.name == name);
   }
 }
